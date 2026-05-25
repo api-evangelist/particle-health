@@ -1,0 +1,192 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Particle Health API — FHIR
+  description: 'Particle Health API — FHIR R4 resource search, read, and $everything bundle retrieval
+    for aggregated patient records returned from network queries.'
+  tags:
+  - Particle Health
+  - FHIR
+  - HL7
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    PARTICLE_HEALTH_API_TOKEN: PARTICLE_HEALTH_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: fhir
+    baseUri: https://api.particlehealth.com
+    description: Particle Health FHIR business capability.
+    resources:
+    - name: FhirPatient
+      path: /r4/Patient
+      operations:
+      - name: createfhirpatient
+        method: POST
+        description: Create FHIR Patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: FhirPatientEverything
+      path: /r4/Patient/{patient_id}/$everything
+      operations:
+      - name: getfhirpatienteverything
+        method: GET
+        description: Get FHIR Patient $everything Bundle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: FhirResource
+      path: /r4/{resource_type}
+      operations:
+      - name: searchfhirresources
+        method: GET
+        description: Search FHIR Resources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: FhirResourceById
+      path: /r4/{resource_type}/{resource_id}
+      operations:
+      - name: readfhirresource
+        method: GET
+        description: Read FHIR Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: PatientFhirBundle
+      path: /api/v2/patients/{particle_patient_id}/fhir
+      operations:
+      - name: getfhirdatasets
+        method: GET
+        description: Get FHIR Datasets for a Patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.PARTICLE_HEALTH_API_TOKEN}}'
+  exposes:
+  - type: rest
+    namespace: fhir-rest
+    port: 8080
+    description: REST adapter for Particle Health FHIR.
+    resources:
+    - path: /v1/fhir/patient
+      name: fhir-patient
+      operations:
+      - method: POST
+        name: createfhirpatient
+        description: Create FHIR Patient
+        call: fhir.createfhirpatient
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/fhir/patient/{patient_id}/everything
+      name: fhir-patient-everything
+      operations:
+      - method: GET
+        name: getfhirpatienteverything
+        description: Get Patient Everything
+        call: fhir.getfhirpatienteverything
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/fhir/{resource_type}
+      name: fhir-search
+      operations:
+      - method: GET
+        name: searchfhirresources
+        description: Search FHIR Resources
+        call: fhir.searchfhirresources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/fhir/{resource_type}/{resource_id}
+      name: fhir-read
+      operations:
+      - method: GET
+        name: readfhirresource
+        description: Read FHIR Resource
+        call: fhir.readfhirresource
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/patients/{particle_patient_id}/fhir
+      name: patient-fhir-bundle
+      operations:
+      - method: GET
+        name: getfhirdatasets
+        description: Get FHIR Datasets
+        call: fhir.getfhirdatasets
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fhir-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Particle Health FHIR.
+    tools:
+    - name: create-fhir-patient
+      description: Create FHIR Patient
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fhir.createfhirpatient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-fhir-patient-everything
+      description: Get FHIR Patient Bundle (everything)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fhir.getfhirpatienteverything
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-fhir-resources
+      description: Search FHIR Resources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fhir.searchfhirresources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-fhir-resource
+      description: Read FHIR Resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fhir.readfhirresource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-fhir-datasets
+      description: Get FHIR Datasets for a Patient
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fhir.getfhirdatasets
+      outputParameters:
+      - type: object
+        mapping: $.

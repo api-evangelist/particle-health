@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Particle Health API — Signal
+  description: 'Particle Health API — Signal real-time alerting. Retrieve network alerts and per-patient
+    Signal alert history for subscribed cohorts.'
+  tags:
+  - Particle Health
+  - Signal
+  - Alerts
+  - ADT
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    PARTICLE_HEALTH_API_TOKEN: PARTICLE_HEALTH_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: signal
+    baseUri: https://api.particlehealth.com
+    description: Particle Health Signal business capability.
+    resources:
+    - name: NetworkAlerts
+      path: /api/v1/alerts/network
+      operations:
+      - name: getnetworkalerts
+        method: GET
+        description: Get Network Alerts
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: NetworkAlert
+      path: /api/v1/alerts/network/{id}
+      operations:
+      - name: getnetworkalert
+        method: GET
+        description: Get Network Alert
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: PatientSignals
+      path: /api/v1/patients/{id}/signals
+      operations:
+      - name: getpatientsignals
+        method: GET
+        description: Get Patient Signal History
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: PatientSignalsCohort
+      path: /api/v1/patients/signalscohort
+      operations:
+      - name: getpatientsignalscohort
+        method: GET
+        description: Get Patient Signals Cohort
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication:
+      type: bearer
+      token: '{{env.PARTICLE_HEALTH_API_TOKEN}}'
+  exposes:
+  - type: rest
+    namespace: signal-rest
+    port: 8080
+    description: REST adapter for Particle Health Signal.
+    resources:
+    - path: /v1/alerts/network
+      name: network-alerts
+      operations:
+      - method: GET
+        name: getnetworkalerts
+        description: Get Network Alerts
+        call: signal.getnetworkalerts
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/alerts/network/{id}
+      name: network-alert
+      operations:
+      - method: GET
+        name: getnetworkalert
+        description: Get Network Alert
+        call: signal.getnetworkalert
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/patients/{id}/signals
+      name: patient-signals
+      operations:
+      - method: GET
+        name: getpatientsignals
+        description: Get Patient Signal History
+        call: signal.getpatientsignals
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/patients/signalscohort
+      name: signals-cohort
+      operations:
+      - method: GET
+        name: getpatientsignalscohort
+        description: Get Patient Signals Cohort
+        call: signal.getpatientsignalscohort
+        outputParameters: [{ type: object, mapping: $. }]
+  - type: mcp
+    namespace: signal-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Particle Health Signal.
+    tools:
+    - name: get-network-alerts
+      description: Get Network Alerts
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: signal.getnetworkalerts
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-network-alert
+      description: Get Network Alert
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: signal.getnetworkalert
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-patient-signals
+      description: Get Patient Signal History
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: signal.getpatientsignals
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-patient-signals-cohort
+      description: Get Patient Signals Cohort
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: signal.getpatientsignalscohort
+      outputParameters: [{ type: object, mapping: $. }]

@@ -1,0 +1,157 @@
+executed: '2026-05-24T00:00:00.000Z'
+results:
+  - code: apis-json-specification-aid-info
+    message: There is an aid.
+    path:
+      - aid
+    severity: 2
+  - code: apis-json-specification-name-info
+    message: There is a name.
+    path:
+      - name
+    severity: 2
+  - code: apis-json-specification-description-info
+    message: There is a description.
+    path:
+      - description
+    severity: 2
+  - code: apis-json-specification-url-info
+    message: There is a URL.
+    path:
+      - url
+    severity: 2
+  - code: apis-json-specification-tags-info
+    message: There are tags.
+    path:
+      - tags
+    severity: 2
+  - code: apis-json-apis-info
+    message: Has APIs.
+    path:
+      - apis
+    severity: 2
+  - code: apis-json-apis-aid-info
+    message: API has an aid property.
+    path:
+      - apis
+      - '0'
+      - aid
+    severity: 2
+  - code: apis-json-apis-name-info
+    message: API has a name.
+    path:
+      - apis
+      - '0'
+      - name
+    severity: 2
+  - code: apis-json-apis-description-info
+    message: API has a description.
+    path:
+      - apis
+      - '0'
+      - description
+    severity: 2
+  - code: apis-json-apis-baseURL-info
+    message: API has a base URL.
+    path:
+      - apis
+      - '0'
+      - baseURL
+    severity: 2
+  - code: apis-json-apis-humanURL-info
+    message: API has a human URL.
+    path:
+      - apis
+      - '0'
+      - humanURL
+    severity: 2
+  - code: apis-json-apis-tags-info
+    message: API has tags.
+    path:
+      - apis
+      - '0'
+      - tags
+    severity: 2
+  - code: apis-json-apis-properties-info
+    message: API has properties.
+    path:
+      - apis
+      - '0'
+      - properties
+    severity: 2
+  - code: apis-json-apis-properties-openapi-info
+    message: API has an OpenAPI property.
+    path:
+      - apis
+      - '0'
+      - properties
+    severity: 2
+  - code: apis-json-apis-properties-naftiko-info
+    message: API declares Naftiko capability properties.
+    path:
+      - apis
+      - '0'
+      - properties
+    severity: 2
+  - code: apis-json-apis-contact-info
+    message: API has a contact.
+    path:
+      - apis
+      - '0'
+      - contact
+    severity: 2
+  - code: apis-json-common-info
+    message: Common properties present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-github-info
+    message: GitHub Organization common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-website-info
+    message: Website common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-statuspage-info
+    message: StatusPage common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-plans-info
+    message: Plans common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-ratelimits-info
+    message: RateLimits common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-finops-info
+    message: FinOps common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-jsonld-info
+    message: JSON-LD context common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-jsonschema-info
+    message: JSON Schema common properties present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-vocabulary-info
+    message: Vocabulary common property present.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-maintainers-info
+    message: Maintainers declared.
+    path:
+      - maintainers
+    severity: 2

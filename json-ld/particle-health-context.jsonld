@@ -1,0 +1,148 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "particle": "https://particlehealth.com/schemas/",
+    "fhir": "http://hl7.org/fhir/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Patient": {
+      "@id": "fhir:Patient",
+      "@context": {
+        "id": "fhir:id",
+        "particlePatientId": "particle:ParticlePatientID",
+        "identifier": "fhir:Patient.identifier",
+        "name": "fhir:Patient.name",
+        "gender": "fhir:Patient.gender",
+        "birthDate": {
+          "@id": "fhir:Patient.birthDate",
+          "@type": "xsd:date"
+        },
+        "address": "fhir:Patient.address",
+        "telecom": "fhir:Patient.telecom"
+      }
+    },
+
+    "Query": {
+      "@id": "particle:Query",
+      "@context": {
+        "id": "particle:queryId",
+        "purposeOfUse": "particle:purposeOfUse",
+        "state": "particle:queryState",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "completedAt": {
+          "@id": "dcterms:date",
+          "@type": "xsd:dateTime"
+        },
+        "files": "particle:files"
+      }
+    },
+
+    "Encounter": {
+      "@id": "fhir:Encounter",
+      "@context": {
+        "id": "fhir:id",
+        "status": "fhir:Encounter.status",
+        "class": "fhir:Encounter.class",
+        "subject": {
+          "@id": "fhir:Encounter.subject",
+          "@type": "@id"
+        },
+        "period": "fhir:Encounter.period"
+      }
+    },
+
+    "Observation": {
+      "@id": "fhir:Observation",
+      "@context": {
+        "id": "fhir:id",
+        "status": "fhir:Observation.status",
+        "category": "fhir:Observation.category",
+        "code": "fhir:Observation.code",
+        "subject": {
+          "@id": "fhir:Observation.subject",
+          "@type": "@id"
+        },
+        "effectiveDateTime": {
+          "@id": "fhir:Observation.effectiveDateTime",
+          "@type": "xsd:dateTime"
+        },
+        "valueQuantity": "fhir:Observation.valueQuantity"
+      }
+    },
+
+    "Condition": {
+      "@id": "fhir:Condition",
+      "@context": {
+        "id": "fhir:id",
+        "clinicalStatus": "fhir:Condition.clinicalStatus",
+        "verificationStatus": "fhir:Condition.verificationStatus",
+        "category": "fhir:Condition.category",
+        "code": "fhir:Condition.code",
+        "subject": {
+          "@id": "fhir:Condition.subject",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "MedicationRequest": {
+      "@id": "fhir:MedicationRequest",
+      "@context": {
+        "id": "fhir:id",
+        "status": "fhir:MedicationRequest.status",
+        "intent": "fhir:MedicationRequest.intent",
+        "medicationCodeableConcept": "fhir:MedicationRequest.medicationCodeableConcept",
+        "subject": {
+          "@id": "fhir:MedicationRequest.subject",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "AllergyIntolerance": {
+      "@id": "fhir:AllergyIntolerance",
+      "@context": {
+        "id": "fhir:id",
+        "clinicalStatus": "fhir:AllergyIntolerance.clinicalStatus",
+        "code": "fhir:AllergyIntolerance.code",
+        "patient": {
+          "@id": "fhir:AllergyIntolerance.patient",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "NetworkParticipant": {
+      "@id": "particle:NetworkParticipant",
+      "@context": {
+        "id": "particle:participantId",
+        "name": "schema:name",
+        "npi": "particle:NPI",
+        "managingOrganization": "particle:managingOrganization",
+        "address": "schema:address",
+        "network": "particle:network"
+      }
+    },
+
+    "SignalAlert": {
+      "@id": "particle:SignalAlert",
+      "@context": {
+        "id": "particle:alertId",
+        "type": "particle:alertType",
+        "patient": {
+          "@id": "particle:patient",
+          "@type": "@id"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}

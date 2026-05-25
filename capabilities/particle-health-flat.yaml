@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Particle Health API — Flat
+  description: 'Particle Health API — Flat normalized clinical data domain access (allergies, encounters,
+    medications, labs, immunizations, vital signs, transitions, etc.).'
+  tags:
+  - Particle Health
+  - Flat
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    PARTICLE_HEALTH_API_TOKEN: PARTICLE_HEALTH_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: flat
+    baseUri: https://api.particlehealth.com
+    description: Particle Health Flat business capability.
+    resources:
+    - name: FlatSubmit
+      path: /flat
+      operations:
+      - name: submitflatpatient
+        method: POST
+        description: Submit Flat Patient Query
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: FlatPatient
+      path: /flat/{id}
+      operations:
+      - name: getflatpatient
+        method: GET
+        description: Get Flat Patient
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: FlatCollect
+      path: /flat/{id}/collect-data
+      operations:
+      - name: collectflatdatasets
+        method: GET
+        description: Collect Flat Datasets
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: FlatResource
+      path: /flat/{patient_id}/{resource_type}/{resource_id}
+      operations:
+      - name: getflatresource
+        method: GET
+        description: Get Flat Resource
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: V2PatientFlat
+      path: /api/v2/patients/{particle_patient_id}/flat
+      operations:
+      - name: collectv2flatdatasets
+        method: GET
+        description: Collect v2 Flat Datasets
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication:
+      type: bearer
+      token: '{{env.PARTICLE_HEALTH_API_TOKEN}}'
+  exposes:
+  - type: rest
+    namespace: flat-rest
+    port: 8080
+    description: REST adapter for Particle Health Flat.
+    resources:
+    - path: /v1/flat
+      name: flat-submit
+      operations:
+      - method: POST
+        name: submitflatpatient
+        description: Submit Flat Patient
+        call: flat.submitflatpatient
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/flat/{id}
+      name: flat-patient
+      operations:
+      - method: GET
+        name: getflatpatient
+        description: Get Flat Patient
+        call: flat.getflatpatient
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/flat/{id}/collect-data
+      name: flat-collect
+      operations:
+      - method: GET
+        name: collectflatdatasets
+        description: Collect Flat Datasets
+        call: flat.collectflatdatasets
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/flat/{patient_id}/{resource_type}/{resource_id}
+      name: flat-resource
+      operations:
+      - method: GET
+        name: getflatresource
+        description: Get Flat Resource
+        call: flat.getflatresource
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/patients/{particle_patient_id}/flat
+      name: v2-patient-flat
+      operations:
+      - method: GET
+        name: collectv2flatdatasets
+        description: Collect v2 Flat Datasets
+        call: flat.collectv2flatdatasets
+        outputParameters: [{ type: object, mapping: $. }]
+  - type: mcp
+    namespace: flat-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Particle Health Flat.
+    tools:
+    - name: submit-flat-patient
+      description: Submit Flat Patient Query
+      hints: { readOnly: false, destructive: false, idempotent: false }
+      call: flat.submitflatpatient
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-flat-patient
+      description: Get Flat Patient
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: flat.getflatpatient
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: collect-flat-datasets
+      description: Collect Flat Datasets
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: flat.collectflatdatasets
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-flat-resource
+      description: Get Flat Resource
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: flat.getflatresource
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: collect-v2-flat-datasets
+      description: Collect v2 Flat Datasets
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: flat.collectv2flatdatasets
+      outputParameters: [{ type: object, mapping: $. }]

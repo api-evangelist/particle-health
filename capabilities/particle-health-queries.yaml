@@ -1,0 +1,183 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Particle Health API — Queries
+  description: 'Particle Health API — Network query orchestration: create one-time queries against
+    connected HIEs / TEFCA partners, list queries, and check query status. Self-contained Naftiko
+    capability.'
+  tags:
+  - Particle Health
+  - Queries
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    PARTICLE_HEALTH_API_TOKEN: PARTICLE_HEALTH_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: queries
+    baseUri: https://api.particlehealth.com
+    description: Particle Health Queries business capability. Self-contained, no shared references.
+    resources:
+    - name: Queries
+      path: /api/v1/queries
+      operations:
+      - name: listqueries
+        method: GET
+        description: List Queries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createquery
+        method: POST
+        description: Create Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Query
+      path: /api/v1/queries/{id}
+      operations:
+      - name: getquery
+        method: GET
+        description: Get Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: PatientQuery
+      path: /api/v2/patients/{particle_patient_id}/query
+      operations:
+      - name: getpatientquerystatus
+        method: GET
+        description: Get Query Status for a Patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createpatientquery
+        method: POST
+        description: Create Query for a Patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.PARTICLE_HEALTH_API_TOKEN}}'
+  exposes:
+  - type: rest
+    namespace: queries-rest
+    port: 8080
+    description: REST adapter for Particle Health Queries.
+    resources:
+    - path: /v1/queries
+      name: queries
+      description: REST surface for Queries.
+      operations:
+      - method: GET
+        name: listqueries
+        description: List Queries
+        call: queries.listqueries
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createquery
+        description: Create Query
+        call: queries.createquery
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/queries/{id}
+      name: query
+      description: REST surface for individual Query.
+      operations:
+      - method: GET
+        name: getquery
+        description: Get Query
+        call: queries.getquery
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/patients/{particle_patient_id}/query
+      name: patient-query
+      description: REST surface for Patient Query.
+      operations:
+      - method: GET
+        name: getpatientquerystatus
+        description: Get Query Status
+        call: queries.getpatientquerystatus
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpatientquery
+        description: Create Patient Query
+        call: queries.createpatientquery
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: queries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Particle Health Queries.
+    tools:
+    - name: list-queries
+      description: List Queries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: queries.listqueries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-query
+      description: Create Network Query
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: queries.createquery
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-query
+      description: Get Query Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: queries.getquery
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-patient-query-status
+      description: Get Patient Query Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: queries.getpatientquerystatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-patient-query
+      description: Create Patient Query
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: queries.createpatientquery
+      outputParameters:
+      - type: object
+        mapping: $.

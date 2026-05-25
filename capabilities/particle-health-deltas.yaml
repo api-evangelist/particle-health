@@ -1,0 +1,220 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Particle Health API — Deltas
+  description: 'Particle Health API — Deltas incremental query flow (Particle''s recommended query
+    pattern). Submit deltas queries and retrieve changed FHIR and Flat resources since the last sync.'
+  tags:
+  - Particle Health
+  - Deltas
+  - FHIR
+  - Flat
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    PARTICLE_HEALTH_API_TOKEN: PARTICLE_HEALTH_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: deltas
+    baseUri: https://api.particlehealth.com
+    description: Particle Health Deltas business capability.
+    resources:
+    - name: DeltasQuery
+      path: /deltas
+      operations:
+      - name: submitdeltasquery
+        method: POST
+        description: Submit Deltas Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: DeltasStatus
+      path: /deltas/{particle_patient_id}
+      operations:
+      - name: getdeltasquerystatus
+        method: GET
+        description: Get Deltas Query Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: DeltasFhirEverything
+      path: /deltas/r4/Patient/{particle_patient_id}/$everything
+      operations:
+      - name: collectdeltasfhireverything
+        method: GET
+        description: Collect Deltas FHIR Bundle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: DeltasFhirResources
+      path: /deltas/r4/{resource_type}
+      operations:
+      - name: searchdeltasfhirresources
+        method: GET
+        description: Search Deltas FHIR Resources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: DeltasFhirResource
+      path: /deltas/r4/{resource_type}/{resource_id}
+      operations:
+      - name: readdeltasfhirresource
+        method: GET
+        description: Read Deltas FHIR Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: DeltasFlatPatient
+      path: /deltas/flat/{particle_patient_id}
+      operations:
+      - name: collectdeltasflatdatasets
+        method: GET
+        description: Collect Deltas Flat Datasets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: DeltasFlatResource
+      path: /deltas/flat/{particle_patient_id}/{resource_type}/{resource_id}
+      operations:
+      - name: getdeltasflatresource
+        method: GET
+        description: Get Deltas Flat Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.PARTICLE_HEALTH_API_TOKEN}}'
+  exposes:
+  - type: rest
+    namespace: deltas-rest
+    port: 8080
+    description: REST adapter for Particle Health Deltas.
+    resources:
+    - path: /v1/deltas
+      name: deltas-query
+      operations:
+      - method: POST
+        name: submitdeltasquery
+        description: Submit Deltas Query
+        call: deltas.submitdeltasquery
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deltas/{particle_patient_id}
+      name: deltas-status
+      operations:
+      - method: GET
+        name: getdeltasquerystatus
+        description: Get Deltas Query Status
+        call: deltas.getdeltasquerystatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deltas/r4/patient/{particle_patient_id}/everything
+      name: deltas-fhir-everything
+      operations:
+      - method: GET
+        name: collectdeltasfhireverything
+        description: Collect Deltas FHIR Bundle
+        call: deltas.collectdeltasfhireverything
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deltas/r4/{resource_type}
+      name: deltas-fhir-search
+      operations:
+      - method: GET
+        name: searchdeltasfhirresources
+        description: Search Deltas FHIR Resources
+        call: deltas.searchdeltasfhirresources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deltas/r4/{resource_type}/{resource_id}
+      name: deltas-fhir-read
+      operations:
+      - method: GET
+        name: readdeltasfhirresource
+        description: Read Deltas FHIR Resource
+        call: deltas.readdeltasfhirresource
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deltas/flat/{particle_patient_id}
+      name: deltas-flat
+      operations:
+      - method: GET
+        name: collectdeltasflatdatasets
+        description: Collect Deltas Flat Datasets
+        call: deltas.collectdeltasflatdatasets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deltas/flat/{particle_patient_id}/{resource_type}/{resource_id}
+      name: deltas-flat-read
+      operations:
+      - method: GET
+        name: getdeltasflatresource
+        description: Get Deltas Flat Resource
+        call: deltas.getdeltasflatresource
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: deltas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Particle Health Deltas.
+    tools:
+    - name: submit-deltas-query
+      description: Submit Deltas Query
+      hints: { readOnly: false, destructive: false, idempotent: false }
+      call: deltas.submitdeltasquery
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-deltas-query-status
+      description: Get Deltas Query Status
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: deltas.getdeltasquerystatus
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: collect-deltas-fhir-everything
+      description: Collect Deltas FHIR Bundle
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: deltas.collectdeltasfhireverything
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: search-deltas-fhir-resources
+      description: Search Deltas FHIR Resources
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: deltas.searchdeltasfhirresources
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: read-deltas-fhir-resource
+      description: Read Deltas FHIR Resource
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: deltas.readdeltasfhirresource
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: collect-deltas-flat-datasets
+      description: Collect Deltas Flat Datasets
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: deltas.collectdeltasflatdatasets
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-deltas-flat-resource
+      description: Get Deltas Flat Resource
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: deltas.getdeltasflatresource
+      outputParameters: [{ type: object, mapping: $. }]

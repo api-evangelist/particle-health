@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://particlehealth.com/schemas/query.json",
+  "title": "Particle Health Query",
+  "description": "Network query executed against connected HIEs (Carequality, CommonWell, eHealth Exchange), TEFCA partners, and state HIEs to retrieve a patient's longitudinal medical record.",
+  "type": "object",
+  "required": ["particle_patient_id", "purpose_of_use"],
+  "properties": {
+    "query_id": {
+      "type": "string",
+      "description": "Particle-assigned query identifier."
+    },
+    "particle_patient_id": {
+      "type": "string",
+      "description": "Particle Patient ID this query is scoped to."
+    },
+    "purpose_of_use": {
+      "type": "string",
+      "description": "Reason data is being requested.",
+      "enum": [
+        "TREATMENT",
+        "PAYMENT",
+        "OPERATIONS",
+        "PUBLIC_HEALTH",
+        "COVERAGE_DETERMINATION",
+        "BENEFITS_DETERMINATION",
+        "CARE_COORDINATION",
+        "PATIENT_REQUEST",
+        "RESEARCH"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": ["PENDING", "RUNNING", "COMPLETE", "FAILED"]
+    },
+    "hints": {
+      "type": "array",
+      "description": "Optional locality or organization hints to bias the query.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": { "type": "string" },
+          "zip": { "type": "string" },
+          "npi": { "type": "string" }
+        }
+      }
+    },
+    "specialties": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Specialty filters for Specialty Search / FOCUS by Specialty."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "file_id": { "type": "string" },
+          "content_type": { "type": "string" },
+          "size_bytes": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

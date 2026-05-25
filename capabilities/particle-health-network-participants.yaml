@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Particle Health API — Network Participants
+  description: 'Particle Health API — Network Participant directory search. Search for healthcare
+    organizations participating in Particle''s connected networks by free-text query, state, or zip
+    code. Also includes Patient Provider Map.'
+  tags:
+  - Particle Health
+  - Network Participants
+  - Provider Map
+  - Carequality
+  - CommonWell
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    PARTICLE_HEALTH_API_TOKEN: PARTICLE_HEALTH_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: networkparticipants
+    baseUri: https://api.particlehealth.com
+    description: Particle Health Network Participants business capability.
+    resources:
+    - name: NetworkParticipants
+      path: /api/v1/networkparticipants
+      operations:
+      - name: searchnetworkparticipants
+        method: GET
+        description: Search Network Participants
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: NetworkParticipantsByState
+      path: /api/v1/networkparticipants/state/{state}
+      operations:
+      - name: searchnetworkparticipantsbystate
+        method: GET
+        description: Search Network Participants by State
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: NetworkParticipantsByZip
+      path: /api/v1/networkparticipants/zipcode/{zip}
+      operations:
+      - name: searchnetworkparticipantsbyzipcode
+        method: GET
+        description: Search Network Participants by Zipcode
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    - name: ProviderMap
+      path: /api/v1/patients/{particle_patient_id}/provider-map
+      operations:
+      - name: getpatientprovidermap
+        method: GET
+        description: Get Patient Provider Map
+        outputRawFormat: json
+        outputParameters: [{ name: result, type: object, value: $. }]
+    authentication:
+      type: bearer
+      token: '{{env.PARTICLE_HEALTH_API_TOKEN}}'
+  exposes:
+  - type: rest
+    namespace: networkparticipants-rest
+    port: 8080
+    description: REST adapter for Particle Health Network Participants.
+    resources:
+    - path: /v1/networkparticipants
+      name: networkparticipants
+      operations:
+      - method: GET
+        name: searchnetworkparticipants
+        description: Search Network Participants
+        call: networkparticipants.searchnetworkparticipants
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/networkparticipants/state/{state}
+      name: networkparticipants-by-state
+      operations:
+      - method: GET
+        name: searchnetworkparticipantsbystate
+        description: Search Network Participants by State
+        call: networkparticipants.searchnetworkparticipantsbystate
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/networkparticipants/zipcode/{zip}
+      name: networkparticipants-by-zip
+      operations:
+      - method: GET
+        name: searchnetworkparticipantsbyzipcode
+        description: Search Network Participants by Zipcode
+        call: networkparticipants.searchnetworkparticipantsbyzipcode
+        outputParameters: [{ type: object, mapping: $. }]
+    - path: /v1/patients/{particle_patient_id}/provider-map
+      name: provider-map
+      operations:
+      - method: GET
+        name: getpatientprovidermap
+        description: Get Patient Provider Map
+        call: networkparticipants.getpatientprovidermap
+        outputParameters: [{ type: object, mapping: $. }]
+  - type: mcp
+    namespace: networkparticipants-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Particle Health Network Participants.
+    tools:
+    - name: search-network-participants
+      description: Search Network Participants
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: networkparticipants.searchnetworkparticipants
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: search-network-participants-by-state
+      description: Search Network Participants by State
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: networkparticipants.searchnetworkparticipantsbystate
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: search-network-participants-by-zipcode
+      description: Search Network Participants by Zipcode
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: networkparticipants.searchnetworkparticipantsbyzipcode
+      outputParameters: [{ type: object, mapping: $. }]
+    - name: get-patient-provider-map
+      description: Get Patient Provider Map
+      hints: { readOnly: true, destructive: false, idempotent: true }
+      call: networkparticipants.getpatientprovidermap
+      outputParameters: [{ type: object, mapping: $. }]

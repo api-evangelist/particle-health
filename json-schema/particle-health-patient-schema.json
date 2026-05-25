@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://particlehealth.com/schemas/patient.json",
+  "title": "Particle Health Patient",
+  "description": "Patient resource as registered with Particle Health, used to obtain a Particle Patient ID (PPID) and execute network queries.",
+  "type": "object",
+  "required": ["family_name", "given_name", "date_of_birth"],
+  "properties": {
+    "particle_patient_id": {
+      "type": "string",
+      "description": "Particle-assigned unique patient identifier (PPID) returned after registration."
+    },
+    "external_id": {
+      "type": "string",
+      "description": "Customer-controlled external identifier."
+    },
+    "family_name": {
+      "type": "string"
+    },
+    "given_name": {
+      "type": "string"
+    },
+    "middle_name": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["male", "female", "other", "unknown"]
+    },
+    "ssn": {
+      "type": "string",
+      "description": "Optional Social Security Number (used for record linkage on supported networks)."
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "line": { "type": "array", "items": { "type": "string" } },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "postal_code": { "type": "string" },
+          "country": { "type": "string" }
+        }
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string", "enum": ["phone", "email"] },
+          "value": { "type": "string" },
+          "use": { "type": "string" }
+        }
+      }
+    }
+  }
+}

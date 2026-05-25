@@ -1,0 +1,166 @@
+specification: API Commons Vocabulary
+specificationVersion: '0.1'
+provider: Particle Health
+providerId: particle-health
+created: '2026-05-24'
+modified: '2026-05-24'
+description: Operational and capability vocabulary for the Particle Health API surface. Captures the
+  terms a developer or AI agent needs to navigate Particle's healthcare interoperability platform.
+tags:
+  - Carequality
+  - CommonWell
+  - FHIR
+  - HIE
+  - Interoperability
+  - QHIN
+  - TEFCA
+operationalDimensions:
+  authentication:
+    - OAuth 2 Client-Credentials
+    - JWT Bearer Token
+    - One-Hour Token Lifetime
+    - Project-Scoped Credentials
+    - Quarterly Key Rotation
+  identifiers:
+    - Particle Patient ID (PPID)
+    - External Patient ID
+    - Query ID
+    - Batch ID
+    - Project ID
+    - Service Account ID
+  resources:
+    - Patient
+    - Query
+    - Batch
+    - Document
+    - HL7v2 Message
+    - Network Alert
+    - Patient Signal
+    - Subscription
+    - Network Participant
+    - Patient Provider Map
+    - Project
+    - Notification
+  dataFormats:
+    - FHIR R4 Bundle
+    - C-CDA XML
+    - Flat Domain JSON
+    - Deltas (Incremental)
+    - HL7v2 ADT
+    - Zip Archive
+  fhirResources:
+    - AllergyIntolerance
+    - Basic
+    - CarePlan
+    - Composition
+    - Condition
+    - Coverage
+    - Device
+    - DiagnosticReport
+    - DocumentReference
+    - Encounter
+    - FamilyMemberHistory
+    - Immunization
+    - Location
+    - Medication
+    - MedicationRequest
+    - MedicationStatement
+    - Observation
+    - Organization
+    - Patient
+    - Person
+    - Practitioner
+    - PractitionerRole
+    - Procedure
+    - RelatedPerson
+  flatDomains:
+    - ALLERGIES
+    - COMPOSITIONS
+    - COVERAGES
+    - DOCUMENT_REFERENCES
+    - ENCOUNTERS
+    - FAMILY_MEMBER_HISTORIES
+    - IMMUNIZATIONS
+    - LABS
+    - LOCATIONS
+    - MEDICATIONS
+    - ORGANIZATIONS
+    - PRACTITIONERS
+    - PATIENTS
+    - PROBLEMS
+    - PROCEDURES
+    - SOCIAL_HISTORIES
+    - TRANSITIONS
+    - VITAL_SIGNS
+  errorBehavior:
+    - 429 Too Many Requests
+    - 503 Service Unavailable
+    - Retry-After Backoff
+capabilityDimensions:
+  workflowPrimitives:
+    - Register Patient
+    - Submit Query
+    - Poll Query Status
+    - Download Query Results
+    - Submit Deltas Query
+    - Submit Batch Query
+    - Subscribe to Signal
+    - Receive Webhook Notification
+    - Search Network Participants
+    - Fetch Provider Map
+    - Generate Snapshot Summary
+  webhookEventTypes:
+    - com.particlehealth.api.v2.query
+    - com.particlehealth.api.v2.hl7v2
+    - com.particlehealth.api.v2.aioutput
+    - com.particlehealth.api.v2.transitionalerts
+    - com.particlehealth.api.v2.encounter
+    - com.particlehealth.api.v2.providermap
+  webhookSignature:
+    - HMAC SHA-256
+    - x-ph-signature-256 header
+    - CloudEvents 1.0 envelope
+  networks:
+    - Carequality
+    - CommonWell Health Alliance
+    - eHealth Exchange
+    - TEFCA / QHIN
+    - Healthix (NY HIE)
+    - Manifest MedEx (CA HIE)
+    - Surescripts
+  purposesOfUse:
+    - TREATMENT
+    - PAYMENT
+    - OPERATIONS
+    - PUBLIC_HEALTH
+    - COVERAGE_DETERMINATION
+    - CARE_COORDINATION
+    - PATIENT_REQUEST
+    - RESEARCH
+  products:
+    - Particle Insights Platform
+    - Particle Snapshot
+    - Particle Signal
+    - Particle Workbench
+    - Particle Navigator
+    - Particle FOCUS
+    - FOCUS by Specialty
+    - Specialty Search
+    - ADT Feeds
+    - TEFCA in a Box
+  compliance:
+    - HIPAA
+    - HITRUST
+    - SOC 2
+    - DAuth (Delegation of Authority)
+    - Carequality Connection Agreement
+    - TEFCA Common Agreement
+  dataQuality:
+    - Data Deduplication (up to 90% reduction)
+    - Data Normalization
+    - Data Imputation (gaps reduced from 50% to 17%)
+    - Data Provenance
+    - Record Validator
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

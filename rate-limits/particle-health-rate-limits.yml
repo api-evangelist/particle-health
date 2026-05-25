@@ -1,0 +1,80 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Particle Health
+providerId: particle-health
+created: '2026-05-24'
+modified: '2026-05-24'
+tags:
+  - Carequality
+  - CommonWell
+  - FHIR
+  - Health Data
+  - HIE
+  - Interoperability
+  - Patients
+  - QHIN
+  - TEFCA
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: Machine-readable rate limit definitions for the Particle Health API. Particle configures
+  limits on a per-project basis with a documented default of approximately 50 queries per minute per
+  project. Multi-project customers receive separate limits per project. Particle reserves the right
+  to apply additional limits to any API. When a client exceeds a limit the API returns HTTP 429 and
+  the client is expected to back off and retry after roughly 60 seconds.
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: sandbox
+    name: Sandbox Default Rate Limit
+    scope: project
+    metric: requests_per_minute
+    limit: 50
+    timeFrame: minute
+    applies:
+      - Particle Health API
+    notes: Sandbox environment limit; aligns with the documented per-project default.
+  - tier: production
+    name: Production Default Per-Project Rate Limit
+    scope: project
+    metric: requests_per_minute
+    limit: 50
+    timeFrame: minute
+    applies:
+      - Particle Health API
+    notes: Documented baseline of 50 queries per minute per project. Customers with multiple projects
+      stack separately (e.g., 3 projects yields 150 queries per minute aggregate).
+  - tier: enterprise
+    name: Enterprise Negotiated Rate Limit
+    scope: contract
+    metric: requests_per_minute
+    limit: 500
+    timeFrame: minute
+    applies:
+      - Particle Health API
+    notes: Negotiated ceiling for enterprise customers; actual value is set in the commercial agreement.
+policies:
+  - name: HTTP 429 Backoff
+    description: On a 429 response, clients should wait approximately 60 seconds before retrying since
+      rate limits are tracked per minute. Particle recommends implementing exponential backoff with
+      jitter.
+  - name: Per-Project Scoping
+    description: Rate limits are configured per project. Customers with multiple projects benefit from
+      separate independent limits.
+  - name: Reservation Clause
+    description: Particle reserves the right to implement rate limits on all APIs. Current scope may
+      expand and customers should monitor for 429 responses across all endpoints.
+  - name: Limit Increases
+    description: Customers requiring higher limits should contact their Particle Health success team
+      to negotiate a project-specific increase.
+  - name: Fair Use
+    description: Even on uncapped enterprise tiers, sustained patterns that materially impact shared
+      infrastructure may be subject to fair-use throttling.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

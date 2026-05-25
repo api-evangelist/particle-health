@@ -1,0 +1,235 @@
+aid: particle-health
+name: Particle Health
+description: Particle Health is a healthcare data interoperability platform that aggregates patient
+  medical records from across the US healthcare system into a single RESTful API. Particle is connected
+  to all three nationwide health information exchange networks (Carequality, CommonWell, eHealth Exchange),
+  TEFCA / QHIN partners, state HIEs (Healthix in New York, Manifest MedEx in California), and Surescripts
+  for pharmacy data. The platform exposes patient demographics, clinical resources, and document retrieval
+  via FHIR R4, C-CDA, Flat, and Deltas formats, layered with deduplication, normalization, AI summarization
+  (Particle Snapshot), real-time encounter and transition alerts (Particle Signal), and longitudinal patient
+  journey tracking (Particle Navigator). Customer segments include value-based care organizations, payers,
+  health systems, primary and specialty providers, and digital health developers.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/particle-health/refs/heads/main/apis.yml
+type: Index
+access: 3rd-Party
+position: Consumer
+tags:
+  - ADT
+  - C-CDA
+  - Care Coordination
+  - Carequality
+  - Clinical Data
+  - CommonWell
+  - Deltas
+  - eHealth Exchange
+  - EHR
+  - FHIR
+  - Health Data
+  - Health Information Exchange
+  - Healthcare
+  - HIE
+  - HL7
+  - HL7v2
+  - Interoperability
+  - Medical Records
+  - Patients
+  - Pharmacy
+  - QHIN
+  - Surescripts
+  - TEFCA
+  - USCDI
+created: '2026-05-24'
+modified: '2026-05-24'
+specificationVersion: '0.20'
+apis:
+  - aid: particle-health:patient-data-api
+    name: Particle Health API
+    description: The Particle Health API is a RESTful interface for patient demographic registration,
+      clinical data querying, and document retrieval across all major US health information networks.
+      Developers register a patient via demographics, submit a query under a defined Purpose of Use,
+      and asynchronously receive normalized clinical data in FHIR R4 Bundles, C-CDA documents, Flat
+      datasets, or Deltas (incremental change sets). The API also exposes batch query, network participant
+      search, patient provider mapping, and webhook event notifications for query completion, ADT,
+      transitions, encounters, and AI output. Authentication uses OAuth 2 Client-Credentials grant
+      with JWT access tokens scoped to a project.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.particlehealth.com/
+    baseURL: https://api.particlehealth.com
+    tags:
+      - C-CDA
+      - Carequality
+      - CommonWell
+      - Deltas
+      - eHealth Exchange
+      - FHIR
+      - Health Data
+      - HIE
+      - HL7
+      - HL7v2
+      - Interoperability
+      - Patients
+      - QHIN
+      - TEFCA
+      - USCDI
+    properties:
+      - type: Documentation
+        url: https://docs.particlehealth.com/
+      - type: APIReference
+        url: https://docs.particlehealth.com/reference/getting-started
+      - type: Authentication
+        url: https://docs.particlehealth.com/docs/auth-and-keys
+      - type: GettingStarted
+        url: https://docs.particlehealth.com/docs/getting-started-for-developers
+      - type: Sandbox
+        url: https://docs.particlehealth.com/docs/test-patient-sandbox
+      - type: Postman
+        url: https://www.postman.com/particlehealth/particle-health-api
+      - type: LLMs
+        url: https://docs.particlehealth.com/llms.txt
+      - type: Webhooks
+        url: https://docs.particlehealth.com/docs/webhook-event-notifications
+      - type: RateLimits
+        url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+      - type: SupportedFHIRResources
+        url: https://docs.particlehealth.com/docs/supported-fhir-resources
+      - type: Networks
+        url: https://docs.particlehealth.com/docs/networks
+      - type: DataNormalization
+        url: https://docs.particlehealth.com/docs/data-normalization
+      - type: DataDeduplication
+        url: https://docs.particlehealth.com/docs/data-deduplication
+      - type: DataProvenance
+        url: https://docs.particlehealth.com/docs/data-provenance
+      - type: PurposesOfUse
+        url: https://docs.particlehealth.com/docs/purposes-of-use
+      - type: DelegationOfAuthority
+        url: https://docs.particlehealth.com/docs/delegation-of-authority
+      - type: OpenAPI
+        url: openapi/particle-health-openapi.yml
+      - type: Spectral
+        url: spectral/particle-health-spectral.yml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-patients.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-queries.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-fhir.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-deltas.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-flat.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-ccda.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-documents.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-batches.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-signal.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-subscriptions.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-network-participants.yaml
+      - type: NaftikoCapability
+        url: capabilities/particle-health-hl7v2.yaml
+    contact:
+      - FN: Particle Health Support
+        email: support@particlehealth.com
+solutions:
+  - Value-Based Care Patient Data Aggregation
+  - Readmission Reduction with ADT Alerts
+  - Care Gap Closure
+  - Referral Management and Continuity of Care
+  - Patient Risk Stratification
+  - Treatment Eligibility Determination
+  - Medication Management and Reconciliation
+  - Pre-Visit Chart Preparation
+  - Onboarding and Initial Patient Visit Workflows
+  - Centers of Excellence Specialty Record Retrieval
+  - AI-Powered Clinical Summarization
+useCases:
+  - Pull a longitudinal patient record from 320M+ patients across 160K+ healthcare organizations
+  - Receive real-time admission, discharge, and transfer alerts for a subscribed patient cohort
+  - Run a batch query over a patient panel and download FHIR R4, C-CDA, Flat, or Deltas results
+  - Subscribe a patient cohort to Signal monitoring for ongoing encounter and transition alerts
+  - Generate AI-driven clinical Snapshot summaries from raw aggregated medical records
+  - Locate Centers of Excellence and specialty providers via Network Participant search
+  - Map the set of healthcare organizations a patient has been seen at via Patient Provider Map
+  - Retrieve medication prescription and fill data from pharmacies and PBMs via Surescripts
+  - Submit and route Delegation of Authority (DAuth) notices for Carequality compliance
+  - Test integrations against the privacy-safe Sandbox before production cutover
+integrations:
+  - Carequality
+  - CommonWell Health Alliance
+  - eHealth Exchange
+  - TEFCA Trusted Exchange Framework
+  - Healthix (NY HIE)
+  - Manifest MedEx (CA HIE)
+  - Surescripts
+  - Epic
+  - Postman
+  - HL7 FHIR R4
+  - C-CDA
+  - HL7v2
+  - USCDI v2
+common:
+  - type: GitHubOrganization
+    url: https://github.com/ParticleHealth
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/particle-health
+  - type: Twitter
+    url: https://twitter.com/particle_health
+  - type: YouTube
+    url: https://www.youtube.com/channel/UCMT35sx6GKvA1mzMP6qyVkw
+  - type: Website
+    url: https://particlehealth.com/
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Developer
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: StatusPage
+    url: https://status.particlehealth.com/
+  - type: Changelog
+    url: https://docs.particlehealth.com/docs/
+  - type: Glossary
+    url: https://docs.particlehealth.com/docs/glossary
+  - type: Blog
+    url: https://particlehealth.com/blog
+  - type: Resources
+    url: https://particlehealth.com/resources
+  - type: Contact
+    url: https://particlehealth.com/contact
+  - type: Support
+    email: support@particlehealth.com
+  - type: ComplianceContact
+    email: compliance@particlehealth.com
+  - type: MediaContact
+    email: media@particlehealth.com
+  - type: PressReleases
+    url: https://particlehealth.com/blog
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: JSONLD
+    url: json-ld/particle-health-context.jsonld
+  - type: JSONSchema
+    url: json-schema/particle-health-patient-schema.json
+  - type: JSONSchema
+    url: json-schema/particle-health-query-schema.json
+  - type: Plans
+    url: plans/particle-health-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/particle-health-rate-limits.yml
+  - type: FinOps
+    url: finops/particle-health-finops.yml
+  - type: Vocabulary
+    url: vocabulary/particle-health-vocabulary.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

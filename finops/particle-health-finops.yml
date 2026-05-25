@@ -1,0 +1,166 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Particle Health
+providerId: particle-health
+publisherName: Particle Health
+serviceCategory: API
+created: '2026-05-24'
+modified: '2026-05-24'
+tags:
+  - Carequality
+  - CommonWell
+  - FHIR
+  - Health Data
+  - HIE
+  - Interoperability
+  - Patients
+  - QHIN
+  - TEFCA
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Particle Health API surface. Provides a FOCUS-aligned
+  mapping for cost allocation, usage measurement, and unit-economics reporting across patient queries,
+  Signal subscriptions, Snapshot AI outputs, and data egress. Particle's commercial model is custom
+  contract-based; meters reflect the chargeable surface customers should instrument internally.
+principles:
+  - name: Visibility
+    description: Make Particle Health consumption (queries, subscribed patients, Snapshot generations)
+      visible to engineering, product, clinical operations, and finance teams.
+  - name: Allocation
+    description: Tag every chargeable call with the consuming team, environment, application, line
+      of business, and purpose of use so cost can be allocated by clinical or product workflow.
+  - name: Optimization
+    description: Evaluate query patterns (one-time vs Deltas), batch vs streaming, cohort sizing, and
+      Signal subscription churn to reduce cost per useful clinical event.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming clinical
+      program (e.g., value-based care, readmission reduction, referral management).
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Subscription + Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Particle Health API
+  ServiceCategory: Healthcare Interoperability / API
+  ProviderName: Particle Health
+  PublisherName: Particle Health
+  InvoiceIssuerName: Particle Health
+  PricingCategory: Subscription + Usage-Based
+  PricingUnit: query
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: patient_queries
+    description: Count of network queries executed against connected HIEs and TEFCA partners.
+    unit: query
+    aggregation: sum
+    dimensions:
+      - project
+      - purpose_of_use
+      - format
+      - network
+      - consumer
+  - name: signal_subscriptions
+    description: Patients actively subscribed to Signal monitoring for ADT and encounter alerts.
+    unit: patient_month
+    aggregation: average
+    dimensions:
+      - project
+      - alert_type
+      - consumer
+  - name: snapshot_generations
+    description: AI-generated clinical summaries produced by Particle Snapshot.
+    unit: summary
+    aggregation: sum
+    dimensions:
+      - project
+      - patient_cohort
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses (CCDA bundles, FHIR Bundles, Flat
+      datasets, zip archives).
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - project
+      - format
+      - region
+      - consumer
+  - name: batch_jobs
+    description: Batch query jobs executed across patient cohorts.
+    unit: batch
+    aggregation: sum
+    dimensions:
+      - project
+      - batch_type
+      - cohort_size
+apis:
+  - name: Particle Health API
+    baseURL: https://api.particlehealth.com
+    tags:
+      - Carequality
+      - CommonWell
+      - FHIR
+      - HIE
+      - Interoperability
+      - QHIN
+      - TEFCA
+    serviceName: Particle Health API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per Successful Patient Query
+    metric: billed_cost / successful_patient_queries
+    target: TBD
+  - name: Cost per Subscribed Patient Month
+    metric: billed_cost / signal_subscriptions
+    target: TBD
+  - name: Cost per Snapshot Summary
+    metric: billed_cost / snapshot_generations
+    target: TBD
+  - name: Cost per Care Gap Closed
+    metric: billed_cost / care_gaps_closed
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
