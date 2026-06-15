@@ -1,14 +1,14 @@
 aid: particle-health
 name: Particle Health
-description: Particle Health is a healthcare data interoperability platform that aggregates patient
-  medical records from across the US healthcare system into a single RESTful API. Particle is connected
-  to all three nationwide health information exchange networks (Carequality, CommonWell, eHealth Exchange),
-  TEFCA / QHIN partners, state HIEs (Healthix in New York, Manifest MedEx in California), and Surescripts
-  for pharmacy data. The platform exposes patient demographics, clinical resources, and document retrieval
-  via FHIR R4, C-CDA, Flat, and Deltas formats, layered with deduplication, normalization, AI summarization
-  (Particle Snapshot), real-time encounter and transition alerts (Particle Signal), and longitudinal patient
-  journey tracking (Particle Navigator). Customer segments include value-based care organizations, payers,
-  health systems, primary and specialty providers, and digital health developers.
+description: >-
+  Particle Health is a healthcare data interoperability platform that aggregates patient medical records from across the
+  US healthcare system into a single RESTful API. Particle is connected to all three nationwide health information
+  exchange networks (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs (Healthix in New
+  York, Manifest MedEx in California), and Surescripts for pharmacy data. The platform exposes patient demographics,
+  clinical resources, and document retrieval via FHIR R4, C-CDA, Flat, and Deltas formats, layered with deduplication,
+  normalization, AI summarization (Particle Snapshot), real-time encounter and transition alerts (Particle Signal), and
+  longitudinal patient journey tracking (Particle Navigator). Customer segments include value-based care organizations,
+  payers, health systems, primary and specialty providers, and digital health developers.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/particle-health/refs/heads/main/apis.yml
 type: Index
@@ -45,14 +45,14 @@ specificationVersion: '0.20'
 apis:
   - aid: particle-health:patient-data-api
     name: Particle Health API
-    description: The Particle Health API is a RESTful interface for patient demographic registration,
-      clinical data querying, and document retrieval across all major US health information networks.
-      Developers register a patient via demographics, submit a query under a defined Purpose of Use,
-      and asynchronously receive normalized clinical data in FHIR R4 Bundles, C-CDA documents, Flat
-      datasets, or Deltas (incremental change sets). The API also exposes batch query, network participant
-      search, patient provider mapping, and webhook event notifications for query completion, ADT,
-      transitions, encounters, and AI output. Authentication uses OAuth 2 Client-Credentials grant
-      with JWT access tokens scoped to a project.
+    description: >-
+      The Particle Health API is a RESTful interface for patient demographic registration, clinical data querying, and
+      document retrieval across all major US health information networks. Developers register a patient via
+      demographics, submit a query under a defined Purpose of Use, and asynchronously receive normalized clinical data
+      in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental change sets). The API also exposes
+      batch query, network participant search, patient provider mapping, and webhook event notifications for query
+      completion, ADT, transitions, encounters, and AI output. Authentication uses OAuth 2 Client-Credentials grant with
+      JWT access tokens scoped to a project.
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://docs.particlehealth.com/
     baseURL: https://api.particlehealth.com
@@ -109,30 +109,6 @@ apis:
         url: openapi/particle-health-openapi.yml
       - type: Spectral
         url: spectral/particle-health-spectral.yml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-patients.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-queries.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-fhir.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-deltas.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-flat.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-ccda.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-documents.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-batches.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-signal.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-subscriptions.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-network-participants.yaml
-      - type: NaftikoCapability
-        url: capabilities/particle-health-hl7v2.yaml
     contact:
       - FN: Particle Health Support
         email: support@particlehealth.com

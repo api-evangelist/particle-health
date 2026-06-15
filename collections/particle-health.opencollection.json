@@ -1,0 +1,1166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a JSON Web Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/auth",
+            "headers": [
+              {
+                "name": "client_id",
+                "value": ""
+              },
+              {
+                "name": "client_secret",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Generate a JSON Web Token (JWT) via the OAuth 2 client-credentials grant. The returned token is valid for one hour and must be sent as a Bearer token on subsequent calls."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Patients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients"
+          },
+          "docs": "List patients registered under the current project."
+        },
+        {
+          "info": {
+            "name": "Submit Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v2/patients"
+          },
+          "docs": "Register a patient's demographics and obtain a unique Particle Patient ID (PPID)."
+        },
+        {
+          "info": {
+            "name": "Get Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patient"
+        },
+        {
+          "info": {
+            "name": "Delete Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.particlehealth.com/api/v2/patients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Patient"
+        },
+        {
+          "info": {
+            "name": "Search Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v2/patients/search"
+          },
+          "docs": "Search for patients by demographic identifiers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Query Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/query",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns the current state and timestamps for the most recent query for a patient."
+        },
+        {
+          "info": {
+            "name": "Create Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/query",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Starts a one-time query for this Particle Patient ID under a Purpose of Use."
+        },
+        {
+          "info": {
+            "name": "List Queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/queries"
+          },
+          "docs": "Lists queries you have created."
+        },
+        {
+          "info": {
+            "name": "Create Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/queries"
+          },
+          "docs": "Starts a one-time network query using demographics."
+        },
+        {
+          "info": {
+            "name": "Get Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/queries/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns status and result pointers for a query."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Deltas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Deltas Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/deltas"
+          },
+          "docs": "Initiates an incremental query with Purpose of Use, hints, and specialty filters."
+        },
+        {
+          "info": {
+            "name": "Get Deltas Query Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/:particle_patient_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Get Deltas Query Status"
+        },
+        {
+          "info": {
+            "name": "Collect Deltas FHIR Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/Patient/:particle_patient_id/$everything",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns a FHIR Bundle of changed resources for the patient since the last sync."
+        },
+        {
+          "info": {
+            "name": "Search Deltas FHIR Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/:resource_type",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              }
+            ]
+          },
+          "docs": "Searches deltas for a specific FHIR resource type."
+        },
+        {
+          "info": {
+            "name": "Read Deltas FHIR Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reads a specific changed FHIR resource."
+        },
+        {
+          "info": {
+            "name": "Collect Deltas Flat Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/flat/:particle_patient_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns Flat datasets changed since the supplied `_since` timestamp."
+        },
+        {
+          "info": {
+            "name": "Get Deltas Flat Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/flat/:particle_patient_id/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Deltas Flat Resource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "FHIR",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create FHIR Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/r4/Patient"
+          },
+          "docs": "Creates a FHIR R4 Patient resource."
+        },
+        {
+          "info": {
+            "name": "Get Patient $everything",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/$everything",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a FHIR Bundle of all resources related to the patient with paging and date filters."
+        },
+        {
+          "info": {
+            "name": "Get FHIR Patient Query Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/query",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get FHIR Patient Query Status"
+        },
+        {
+          "info": {
+            "name": "Create FHIR Patient Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/query",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create FHIR Patient Query"
+        },
+        {
+          "info": {
+            "name": "Search FHIR Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/:resource_type",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search a FHIR resource type (Patient, Encounter, Condition, etc.) scoped by patient."
+        },
+        {
+          "info": {
+            "name": "Read FHIR Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read FHIR Resource"
+        },
+        {
+          "info": {
+            "name": "Get FHIR Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/fhir",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns a FHIR Bundle with paging and incremental sync semantics."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Flat Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/flat"
+          },
+          "docs": "Initiates a Flat query for a specific patient using demographics."
+        },
+        {
+          "info": {
+            "name": "Get Flat Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/flat/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flat Patient"
+        },
+        {
+          "info": {
+            "name": "Collect Flat Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/flat/:id/collect-data",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Flat clinical data domains (allergies, encounters, medications, labs, etc.)."
+        },
+        {
+          "info": {
+            "name": "Get Flat Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/flat/:patient_id/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flat Resource"
+        },
+        {
+          "info": {
+            "name": "Collect v2 Flat Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/flat",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Retrieve flat datasets filtered by domain (ALLERGIES, ENCOUNTERS, MEDICATIONS, LABS, IMMUNIZATIONS, VITAL_SIGNS, etc.) or a specific resource."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CCDA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get CCDA Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/ccda",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Download a zip of CCDA files or a single CCDA document for a patient."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/documents"
+          },
+          "docs": "Upload a document (CCDA, discharge summary, etc.) with metadata for ingestion."
+        },
+        {
+          "info": {
+            "name": "Get Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Document"
+        },
+        {
+          "info": {
+            "name": "Delete Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.particlehealth.com/api/v1/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Document"
+        },
+        {
+          "info": {
+            "name": "Get Patient Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/documents/patient/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patient Documents"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Batches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Batches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/batches"
+          },
+          "docs": "Lists batch jobs with state, type, and counts."
+        },
+        {
+          "info": {
+            "name": "Create Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/batches/:batch_type",
+            "params": [
+              {
+                "name": "batch_type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Starts a batch job of type CCDA, FHIR_R4, FLAT, or DELTAS over a patient cohort."
+        },
+        {
+          "info": {
+            "name": "Get Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/batches/:batch_id",
+            "params": [
+              {
+                "name": "batch_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns batch metadata, progress, and results summary."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "HL7v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get HL7v2 Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/hl7v2/message/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single HL7v2 ADT message."
+        },
+        {
+          "info": {
+            "name": "Get HL7v2 Messages by Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/hl7v2/patient/:particle_patient_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Get HL7v2 Messages by Patient"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Signal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/alerts/network"
+          },
+          "docs": "Retrieve network alerts generated for subscribed patients in the project."
+        },
+        {
+          "info": {
+            "name": "Get Network Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/alerts/network/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Network Alert"
+        },
+        {
+          "info": {
+            "name": "Get Patient Signals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/patients/:id/signals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the Signal alert history for a specific patient."
+        },
+        {
+          "info": {
+            "name": "Get Patient Signals Cohort",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/patients/signalscohort"
+          },
+          "docs": "Retrieve the list of patients currently enrolled in Signal monitoring."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Patient Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Lists subscriptions for a patient with an optional type filter."
+        },
+        {
+          "info": {
+            "name": "Create Patient Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Adds subscriptions for a single patient."
+        },
+        {
+          "info": {
+            "name": "Delete Patient Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Delete Patient Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Create Subscriptions for Multiple Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/patients/subscriptions"
+          },
+          "docs": "Subscribe a batch of patients to Signal monitoring in a single API call."
+        },
+        {
+          "info": {
+            "name": "Trigger Sandbox Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions/trigger-sandbox-workflow",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Triggers sandbox webhook notification events for testing."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "NetworkParticipants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Network Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/networkparticipants"
+          },
+          "docs": "Search for healthcare organizations participating in Particle's connected networks."
+        },
+        {
+          "info": {
+            "name": "Search Network Participants by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/networkparticipants/state/:state",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Search Network Participants by State"
+        },
+        {
+          "info": {
+            "name": "Search Network Participants by Zipcode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/networkparticipants/zipcode/:zip",
+            "params": [
+              {
+                "name": "zip",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Search Network Participants by Zipcode"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProviderMap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Patient Provider Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/provider-map",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns the set of healthcare organizations associated with the given patient across Particle's network, enriched with NPI, address, and managing organization details."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download a File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/files/:query_id/:file_id",
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download an individual file from a query result."
+        },
+        {
+          "info": {
+            "name": "Download Query Zip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/files/:query_id/zip",
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a zipped archive of all results for a query."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/projects"
+          },
+          "docs": "Searches projects by simple field filter."
+        },
+        {
+          "info": {
+            "name": "Search Service Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/service-accounts"
+          },
+          "docs": "Searches service accounts by simple field filter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Project Notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/projects/:project_id/notifications",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Project Notifications"
+        },
+        {
+          "info": {
+            "name": "Create Project Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/projects/:project_id/notifications",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates a webhook notification under a specific project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
