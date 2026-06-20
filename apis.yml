@@ -9,7 +9,7 @@ description: >-
   normalization, AI summarization (Particle Snapshot), real-time encounter and transition alerts (Particle Signal), and
   longitudinal patient journey tracking (Particle Navigator). Customer segments include value-based care organizations,
   payers, health systems, primary and specialty providers, and digital health developers.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/particle-health/refs/heads/main/apis.yml
 type: Index
 access: 3rd-Party
@@ -53,7 +53,7 @@ apis:
       batch query, network participant search, patient provider mapping, and webhook event notifications for query
       completion, ADT, transitions, encounters, and AI output. Authentication uses OAuth 2 Client-Credentials grant with
       JWT access tokens scoped to a project.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.particlehealth.com/
     baseURL: https://api.particlehealth.com
     tags:
