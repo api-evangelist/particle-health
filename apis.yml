@@ -170,7 +170,7 @@ common:
     url: https://docs.particlehealth.com/docs/test-patient-sandbox
   - type: StatusPage
     url: https://status.particlehealth.com/
-  - type: Changelog
+  - type: ChangeLog
     url: https://docs.particlehealth.com/docs/
   - type: Glossary
     url: https://docs.particlehealth.com/docs/glossary

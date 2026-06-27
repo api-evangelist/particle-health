@@ -3,16 +3,12 @@
   "feeds": [
     {
       "source": "https://particlehealth.com/blog",
-      "feed_url": "https://particlehealth.com/blog",
-      "title": "",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://docs.particlehealth.com/docs/glossary",
-      "error": "HTTPError"
+      "method": "agent-scrape"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:00:06Z",
+  "agent_pulled": "2026-06-27"
 }
