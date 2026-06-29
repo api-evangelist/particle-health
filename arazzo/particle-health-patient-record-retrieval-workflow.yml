@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Particle Health National Patient Record Retrieval
+  summary: Authenticate, register a patient demographic, run a national query across the health information networks, poll until the query completes, then collect the aggregated clinical record.
+  description: >-
+    The canonical Particle Health record-retrieval flow, modeled on the HL7 Da
+    Vinci Payer Data Exchange (PDex) and patient-access pattern. A demographic is
+    submitted to create a Particle patient, a network query is launched to gather
+    records from connected exchanges (Carequality / eHealth Exchange / CommonWell),
+    the query is polled to completion, and the consolidated record is retrieved as
+    a C-CDA package and as a FHIR R4 $everything bundle. Every step inlines its
+    request so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: particleApi
+  url: ../openapi/particle-health-openapi.yml
+  type: openapi
+workflows:
+- workflowId: national-patient-record-retrieval
+  summary: Register a patient, query the national networks, and collect the consolidated clinical record.
+  description: >-
+    Implements the Da Vinci PDex national record-retrieval sequence end to end:
+    token, patient registration, network query, status polling, and record
+    collection as C-CDA and FHIR R4.
+  inputs:
+    type: object
+    required:
+    - clientId
+    - clientSecret
+    - demographics
+    properties:
+      clientId:
+        type: string
+        description: Particle client id used to obtain a bearer token.
+      clientSecret:
+        type: string
+        description: Particle client secret used to obtain a bearer token.
+      demographics:
+        type: object
+        description: Patient demographic packet (name, dob, gender, address, ssn) used to match records across the networks.
+  steps:
+  - stepId: authenticate
+    description: Exchange the client credentials for a bearer token used by every subsequent call.
+    operationId: getAuthToken
+    parameters:
+    - name: client_id
+      in: header
+      value: $inputs.clientId
+    - name: client_secret
+      in: header
+      value: $inputs.clientSecret
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      token: $response.body#/token
+  - stepId: registerPatient
+    description: Submit the patient demographic to create a Particle patient record that the network query will resolve against.
+    operationId: submitPatient
+    requestBody:
+      contentType: application/json
+      payload: $inputs.demographics
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      patientId: $response.body#/id
+  - stepId: launchNetworkQuery
+    description: Launch a national query that fans the demographic out to the connected health information networks.
+    operationId: createPatientQuery
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollQueryStatus
+    description: Poll the query until the networks have finished returning records (status COMPLETE).
+    operationId: getPatientQueryStatus
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - context: $response.body
+      condition: $.status == "COMPLETE"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+  - stepId: collectCcda
+    description: Retrieve the consolidated record as C-CDA documents once the query is complete.
+    operationId: getCcdaFiles
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ccda: $response.body
+  - stepId: collectFhir
+    description: Retrieve the same consolidated record as a FHIR R4 dataset for structured processing.
+    operationId: getFhirDatasets
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      fhir: $response.body
+  outputs:
+    patientId: $steps.registerPatient.outputs.patientId
+    ccda: $steps.collectCcda.outputs.ccda
+    fhir: $steps.collectFhir.outputs.fhir

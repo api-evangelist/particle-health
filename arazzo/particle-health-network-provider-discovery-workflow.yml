@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Particle Health Network Provider Discovery
+  summary: Register a patient, run a network query, then discover which providers and organizations hold records for that patient.
+  description: >-
+    A care-team and provider-directory discovery flow aligned with the HL7 Da
+    Vinci Payer Data Exchange (PDex) Plan-Net / provider-directory intent. The
+    patient is registered and a network query is launched and polled to
+    completion; once records have been gathered, the provider map is read to see
+    which organizations responded, and the geographic network participants for the
+    patient's state are listed. Each step inlines its request so the flow is
+    self-contained.
+  version: 1.0.0
+sourceDescriptions:
+- name: particleApi
+  url: ../openapi/particle-health-openapi.yml
+  type: openapi
+workflows:
+- workflowId: network-provider-discovery
+  summary: Discover the providers and network participants that hold records for a patient.
+  description: >-
+    Registers a patient, runs and polls a network query, reads the provider map
+    of responding organizations, and lists network participants in the patient's
+    state.
+  inputs:
+    type: object
+    required:
+    - clientId
+    - clientSecret
+    - demographics
+    - state
+    properties:
+      clientId:
+        type: string
+        description: Particle client id used to obtain a bearer token.
+      clientSecret:
+        type: string
+        description: Particle client secret used to obtain a bearer token.
+      demographics:
+        type: object
+        description: Patient demographic packet used to register the patient.
+      state:
+        type: string
+        description: Two-letter US state code used to list network participants in the patient's region.
+  steps:
+  - stepId: authenticate
+    description: Exchange the client credentials for a bearer token used by every subsequent call.
+    operationId: getAuthToken
+    parameters:
+    - name: client_id
+      in: header
+      value: $inputs.clientId
+    - name: client_secret
+      in: header
+      value: $inputs.clientSecret
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      token: $response.body#/token
+  - stepId: registerPatient
+    description: Register the patient that the network query will resolve against.
+    operationId: submitPatient
+    requestBody:
+      contentType: application/json
+      payload: $inputs.demographics
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      patientId: $response.body#/id
+  - stepId: launchNetworkQuery
+    description: Launch a national query so the responding organizations can be identified.
+    operationId: createPatientQuery
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollQueryStatus
+    description: Poll the query until the networks have finished responding.
+    operationId: getPatientQueryStatus
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - context: $response.body
+      condition: $.status == "COMPLETE"
+      type: jsonpath
+  - stepId: readProviderMap
+    description: Read the provider map showing which organizations returned records for the patient.
+    operationId: getPatientProviderMap
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      providerMap: $response.body
+  - stepId: listStateParticipants
+    description: List the network participants operating in the patient's state for directory context.
+    operationId: searchNetworkParticipantsByState
+    parameters:
+    - name: state
+      in: path
+      value: $inputs.state
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      participants: $response.body
+  outputs:
+    patientId: $steps.registerPatient.outputs.patientId
+    providerMap: $steps.readProviderMap.outputs.providerMap
+    participants: $steps.listStateParticipants.outputs.participants

@@ -206,6 +206,23 @@ common:
     url: finops/particle-health-finops.yml
   - type: Vocabulary
     url: vocabulary/particle-health-vocabulary.yml
+  - type: ArazzoWorkflows
+    workflows:
+    - url: arazzo/particle-health-adt-subscription-workflow.yml
+      name: Particle Health ADT Event Subscription
+      summary: "Register a patient, subscribe to encounter (ADT) notifications, trigger a sandbox event, and retrieve the resulting HL7 v2 messages."
+    - url: arazzo/particle-health-clinical-document-exchange-workflow.yml
+      name: Particle Health Clinical Document Exchange
+      summary: "Submit a clinical document to the network, then retrieve it and list all documents on file for the patient."
+    - url: arazzo/particle-health-fhir-r4-resource-query-workflow.yml
+      name: Particle Health FHIR R4 Resource Query
+      summary: "Create a FHIR Patient, run a FHIR-native network query, poll for completion, then search and read individual US Core resources."
+    - url: arazzo/particle-health-network-provider-discovery-workflow.yml
+      name: Particle Health Network Provider Discovery
+      summary: "Register a patient, run a network query, then discover which providers and organizations hold records for that patient."
+    - url: arazzo/particle-health-patient-record-retrieval-workflow.yml
+      name: Particle Health National Patient Record Retrieval
+      summary: "Authenticate, register a patient demographic, run a national query across the health information networks, poll until the query completes, then collect the aggregated clinical record."
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

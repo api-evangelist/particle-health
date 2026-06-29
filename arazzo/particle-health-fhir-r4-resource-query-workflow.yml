@@ -1,0 +1,133 @@
+arazzo: 1.0.1
+info:
+  title: Particle Health FHIR R4 Resource Query
+  summary: Create a FHIR Patient, run a FHIR-native network query, poll for completion, then search and read individual US Core resources.
+  description: >-
+    The FHIR R4 flavor of Particle's record retrieval, aligned with SMART on FHIR
+    and US Core resource access. A FHIR Patient is created, a FHIR query is run
+    across the networks, the query is polled to completion, and the caller then
+    pulls the patient $everything bundle and drills into a specific US Core
+    resource type (for example Observation, Condition, or MedicationRequest)
+    before reading a single resource by id. Each step inlines its request so the
+    flow is self-contained.
+  version: 1.0.0
+sourceDescriptions:
+- name: particleApi
+  url: ../openapi/particle-health-openapi.yml
+  type: openapi
+workflows:
+- workflowId: fhir-r4-resource-query
+  summary: Run a FHIR-native network query and retrieve US Core resources for a patient.
+  description: >-
+    Creates a FHIR Patient, launches and polls a FHIR query, collects the
+    $everything bundle, then searches and reads a specific US Core resource type.
+  inputs:
+    type: object
+    required:
+    - clientId
+    - clientSecret
+    - patient
+    - resourceType
+    properties:
+      clientId:
+        type: string
+        description: Particle client id used to obtain a bearer token.
+      clientSecret:
+        type: string
+        description: Particle client secret used to obtain a bearer token.
+      patient:
+        type: object
+        description: A FHIR R4 Patient resource used to register the patient with Particle.
+      resourceType:
+        type: string
+        description: The US Core resource type to search after the query completes (e.g. Observation, Condition, MedicationRequest).
+  steps:
+  - stepId: authenticate
+    description: Exchange the client credentials for a bearer token used by every subsequent call.
+    operationId: getAuthToken
+    parameters:
+    - name: client_id
+      in: header
+      value: $inputs.clientId
+    - name: client_secret
+      in: header
+      value: $inputs.clientSecret
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      token: $response.body#/token
+  - stepId: createPatient
+    description: Create a FHIR R4 Patient resource that the FHIR query will resolve against.
+    operationId: createFhirPatient
+    requestBody:
+      contentType: application/fhir+json
+      payload: $inputs.patient
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      patientId: $response.body#/id
+  - stepId: launchFhirQuery
+    description: Launch a FHIR-native network query for the created patient.
+    operationId: createFhirPatientQuery
+    parameters:
+    - name: patient_id
+      in: path
+      value: $steps.createPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollFhirQuery
+    description: Poll the FHIR query until the networks finish returning records.
+    operationId: getFhirPatientQueryStatus
+    parameters:
+    - name: patient_id
+      in: path
+      value: $steps.createPatient.outputs.patientId
+    successCriteria:
+    - context: $response.body
+      condition: $.status == "COMPLETE"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+  - stepId: collectEverything
+    description: Retrieve the consolidated FHIR R4 $everything bundle for the patient.
+    operationId: getFhirPatientEverything
+    parameters:
+    - name: patient_id
+      in: path
+      value: $steps.createPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bundle: $response.body
+  - stepId: searchResources
+    description: Search a specific US Core resource type for the patient within the returned record set.
+    operationId: searchFhirResources
+    parameters:
+    - name: resource_type
+      in: path
+      value: $inputs.resourceType
+    - name: patient
+      in: query
+      value: $steps.createPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstResourceId: $response.body#/entry/0/resource/id
+  - stepId: readResource
+    description: Read a single resource by id from the searched resource type.
+    operationId: readFhirResource
+    parameters:
+    - name: resource_type
+      in: path
+      value: $inputs.resourceType
+    - name: resource_id
+      in: path
+      value: $steps.searchResources.outputs.firstResourceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      resource: $response.body
+  outputs:
+    patientId: $steps.createPatient.outputs.patientId
+    bundle: $steps.collectEverything.outputs.bundle
+    resource: $steps.readResource.outputs.resource

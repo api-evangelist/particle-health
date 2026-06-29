@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Particle Health ADT Event Subscription
+  summary: Register a patient, subscribe to encounter (ADT) notifications, trigger a sandbox event, and retrieve the resulting HL7 v2 messages.
+  description: >-
+    Implements an event-notification flow aligned with the HL7 Da Vinci Alerts /
+    Notifications pattern. After registering a patient, the caller subscribes to
+    network ADT (admit / discharge / transfer) events, fires a sandbox event to
+    exercise the subscription, and then pulls the resulting HL7 v2 messages for
+    the patient. This is the basis for care-coordination alerting and event-driven
+    follow-up. Each step inlines its request so the flow is self-contained.
+  version: 1.0.0
+sourceDescriptions:
+- name: particleApi
+  url: ../openapi/particle-health-openapi.yml
+  type: openapi
+workflows:
+- workflowId: adt-event-subscription
+  summary: Subscribe a patient to ADT notifications and retrieve the resulting HL7 v2 messages.
+  description: >-
+    Registers a patient, creates an ADT subscription, triggers a sandbox event,
+    and collects the HL7 v2 messages generated for that patient.
+  inputs:
+    type: object
+    required:
+    - clientId
+    - clientSecret
+    - demographics
+    - subscription
+    properties:
+      clientId:
+        type: string
+        description: Particle client id used to obtain a bearer token.
+      clientSecret:
+        type: string
+        description: Particle client secret used to obtain a bearer token.
+      demographics:
+        type: object
+        description: Patient demographic packet used to register the patient.
+      subscription:
+        type: object
+        description: Subscription definition selecting the ADT / encounter event types to be notified about.
+  steps:
+  - stepId: authenticate
+    description: Exchange the client credentials for a bearer token used by every subsequent call.
+    operationId: getAuthToken
+    parameters:
+    - name: client_id
+      in: header
+      value: $inputs.clientId
+    - name: client_secret
+      in: header
+      value: $inputs.clientSecret
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      token: $response.body#/token
+  - stepId: registerPatient
+    description: Register the patient that the ADT subscription will watch.
+    operationId: submitPatient
+    requestBody:
+      contentType: application/json
+      payload: $inputs.demographics
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      patientId: $response.body#/id
+  - stepId: createSubscription
+    description: Subscribe the patient to ADT / encounter notifications across the networks.
+    operationId: createPatientSubscriptions
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    requestBody:
+      contentType: application/json
+      payload: $inputs.subscription
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: triggerSandboxEvent
+    description: Fire a sandbox workflow event so the subscription produces a test notification.
+    operationId: triggerSandboxWorkflow
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: collectHl7v2
+    description: Retrieve the HL7 v2 messages generated for the patient by the ADT event.
+    operationId: getHl7v2Messages
+    parameters:
+    - name: particle_patient_id
+      in: path
+      value: $steps.registerPatient.outputs.patientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      messages: $response.body
+  outputs:
+    patientId: $steps.registerPatient.outputs.patientId
+    messages: $steps.collectHl7v2.outputs.messages

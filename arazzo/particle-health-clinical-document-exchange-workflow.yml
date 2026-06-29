@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Particle Health Clinical Document Exchange
+  summary: Submit a clinical document to the network, then retrieve it and list all documents on file for the patient.
+  description: >-
+    A clinical document exchange flow aligned with the HL7 Da Vinci Clinical Data
+    Exchange (CDex) pattern. A document (for example a C-CDA, referral, or
+    discharge summary) is pushed to the network, the stored document is read back
+    by id to confirm receipt, and the full set of documents on file for the
+    patient is listed. Each step inlines its request so the flow is self-contained.
+  version: 1.0.0
+sourceDescriptions:
+- name: particleApi
+  url: ../openapi/particle-health-openapi.yml
+  type: openapi
+workflows:
+- workflowId: clinical-document-exchange
+  summary: Push a clinical document and confirm it by reading it back and listing the patient's documents.
+  description: >-
+    Submits a clinical document, reads the stored document by id, and lists all
+    documents available for the patient.
+  inputs:
+    type: object
+    required:
+    - clientId
+    - clientSecret
+    - particlePatientId
+    - document
+    properties:
+      clientId:
+        type: string
+        description: Particle client id used to obtain a bearer token.
+      clientSecret:
+        type: string
+        description: Particle client secret used to obtain a bearer token.
+      particlePatientId:
+        type: string
+        description: The Particle patient id the document belongs to.
+      document:
+        type: object
+        description: The clinical document payload (content, type, and metadata) to submit.
+  steps:
+  - stepId: authenticate
+    description: Exchange the client credentials for a bearer token used by every subsequent call.
+    operationId: getAuthToken
+    parameters:
+    - name: client_id
+      in: header
+      value: $inputs.clientId
+    - name: client_secret
+      in: header
+      value: $inputs.clientSecret
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      token: $response.body#/token
+  - stepId: submitDocument
+    description: Push the clinical document into the network for the patient.
+    operationId: submitDocument
+    requestBody:
+      contentType: application/json
+      payload: $inputs.document
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      documentId: $response.body#/id
+  - stepId: readDocument
+    description: Read the stored document back by id to confirm it was received and indexed.
+    operationId: getDocument
+    parameters:
+    - name: id
+      in: path
+      value: $steps.submitDocument.outputs.documentId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      document: $response.body
+  - stepId: listPatientDocuments
+    description: List every document currently on file for the patient.
+    operationId: getPatientDocuments
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.particlePatientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      documents: $response.body
+  outputs:
+    documentId: $steps.submitDocument.outputs.documentId
+    documents: $steps.listPatientDocuments.outputs.documents
