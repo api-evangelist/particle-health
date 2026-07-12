@@ -150,6 +150,14 @@ integrations:
   - HL7v2
   - USCDI v2
 common:
+  - type: TrustCenter
+    url: security/particle-health-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/particle-health-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/particle-health-domain-security.yml
+  - type: Authentication
+    url: authentication/particle-health-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/ParticleHealth
   - type: LinkedIn

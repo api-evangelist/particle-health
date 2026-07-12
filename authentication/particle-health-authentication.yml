@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/particle-health-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth 2 client-credentials JWT issued by `/auth`. Token expires after one hour.
+  sources:
+  - openapi/particle-health-openapi.yml
