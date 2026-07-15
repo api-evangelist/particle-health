@@ -150,6 +150,8 @@ integrations:
   - HL7v2
   - USCDI v2
 common:
+  - type: AgenticAccess
+    url: agentic-access/particle-health-agentic-access.yml
   - type: TrustCenter
     url: security/particle-health-trust-center.yml
   - type: VulnerabilityDisclosure
