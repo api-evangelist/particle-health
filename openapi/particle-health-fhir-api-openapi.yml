@@ -1,0 +1,184 @@
+openapi: 3.1.0
+info:
+  title: Particle Health Authentication FHIR API
+  description: Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.
+  version: v1
+  contact:
+    name: Particle Health Support
+    email: support@particlehealth.com
+    url: https://particlehealth.com/contact
+  license:
+    name: Particle Health Terms of Service
+    url: https://particlehealth.com/
+servers:
+- url: https://api.particlehealth.com
+  description: Particle Health Production
+security:
+- bearerAuth: []
+tags:
+- name: FHIR
+  description: FHIR R4 resource search and read.
+paths:
+  /deltas/r4/Patient/{particle_patient_id}/$everything:
+    get:
+      operationId: collectDeltasFhirEverything
+      summary: Collect Deltas FHIR Datasets
+      description: Returns a FHIR Bundle of changed resources for the patient since the last sync.
+      tags:
+      - FHIR
+      parameters:
+      - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: FHIR Bundle of changed resources
+  /deltas/r4/{resource_type}:
+    get:
+      operationId: searchDeltasFhirResources
+      summary: Search Deltas FHIR Resources
+      description: Searches deltas for a specific FHIR resource type.
+      tags:
+      - FHIR
+      parameters:
+      - $ref: '#/components/parameters/resourceTypeParam'
+      responses:
+        '200':
+          description: FHIR Bundle of changed resources
+  /deltas/r4/{resource_type}/{resource_id}:
+    get:
+      operationId: readDeltasFhirResource
+      summary: Read Deltas FHIR Resource
+      description: Reads a specific changed FHIR resource.
+      tags:
+      - FHIR
+      parameters:
+      - $ref: '#/components/parameters/resourceTypeParam'
+      - $ref: '#/components/parameters/resourceIdParam'
+      responses:
+        '200':
+          description: FHIR resource
+  /r4/Patient:
+    post:
+      operationId: createFhirPatient
+      summary: Create FHIR Patient
+      description: Creates a FHIR R4 Patient resource.
+      tags:
+      - FHIR
+      responses:
+        '201':
+          description: FHIR Patient created
+  /r4/Patient/{patient_id}/$everything:
+    get:
+      operationId: getFhirPatientEverything
+      summary: Get Patient $everything
+      description: Returns a FHIR Bundle of all resources related to the patient with paging and date filters.
+      tags:
+      - FHIR
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: FHIR Bundle
+  /r4/Patient/{patient_id}/query:
+    get:
+      operationId: getFhirPatientQueryStatus
+      summary: Get FHIR Patient Query Status
+      tags:
+      - FHIR
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Query status
+    post:
+      operationId: createFhirPatientQuery
+      summary: Create FHIR Patient Query
+      tags:
+      - FHIR
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Query accepted
+  /r4/{resource_type}:
+    get:
+      operationId: searchFhirResources
+      summary: Search FHIR Resources
+      description: Search a FHIR resource type (Patient, Encounter, Condition, etc.) scoped by patient.
+      tags:
+      - FHIR
+      parameters:
+      - $ref: '#/components/parameters/resourceTypeParam'
+      - name: patient
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: FHIR Bundle
+  /r4/{resource_type}/{resource_id}:
+    get:
+      operationId: readFhirResource
+      summary: Read FHIR Resource
+      tags:
+      - FHIR
+      parameters:
+      - $ref: '#/components/parameters/resourceTypeParam'
+      - $ref: '#/components/parameters/resourceIdParam'
+      responses:
+        '200':
+          description: FHIR resource
+  /api/v2/patients/{particle_patient_id}/fhir:
+    get:
+      operationId: getFhirDatasets
+      summary: Get FHIR Datasets
+      description: Returns a FHIR Bundle with paging and incremental sync semantics.
+      tags:
+      - FHIR
+      parameters:
+      - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: FHIR Bundle
+components:
+  parameters:
+    particlePatientIdParam:
+      name: particle_patient_id
+      in: path
+      required: true
+      description: Particle Patient ID (PPID)
+      schema:
+        type: string
+    resourceTypeParam:
+      name: resource_type
+      in: path
+      required: true
+      description: FHIR resource type (Patient, Encounter, Condition, Observation, etc.)
+      schema:
+        type: string
+    resourceIdParam:
+      name: resource_id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2 client-credentials JWT issued by `/auth`. Token expires after one hour.
+externalDocs:
+  description: Particle Health API Documentation
+  url: https://docs.particlehealth.com/
