@@ -9,7 +9,20 @@ description: >-
   normalization, AI summarization (Particle Snapshot), real-time encounter and transition alerts (Particle Signal), and
   longitudinal patient journey tracking (Particle Navigator). Customer segments include value-based care organizations,
   payers, health systems, primary and specialty providers, and digital health developers.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/particle-health.png
 url: https://raw.githubusercontent.com/api-evangelist/particle-health/refs/heads/main/apis.yml
 type: Index
 access: 3rd-Party
@@ -43,75 +56,754 @@ created: '2026-05-24'
 modified: '2026-05-24'
 specificationVersion: '0.20'
 apis:
-  - aid: particle-health:patient-data-api
-    name: Particle Health API
-    description: >-
-      The Particle Health API is a RESTful interface for patient demographic registration, clinical data querying, and
-      document retrieval across all major US health information networks. Developers register a patient via
-      demographics, submit a query under a defined Purpose of Use, and asynchronously receive normalized clinical data
-      in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental change sets). The API also exposes
-      batch query, network participant search, patient provider mapping, and webhook event notifications for query
-      completion, ADT, transitions, encounters, and AI output. Authentication uses OAuth 2 Client-Credentials grant with
-      JWT access tokens scoped to a project.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.particlehealth.com/
-    baseURL: https://api.particlehealth.com
-    tags:
-      - C-CDA
-      - Carequality
-      - CommonWell
-      - Deltas
-      - eHealth Exchange
-      - FHIR
-      - Health Data
-      - HIE
-      - HL7
-      - HL7v2
-      - Interoperability
-      - Patients
-      - QHIN
-      - TEFCA
-      - USCDI
-    properties:
-      - type: Documentation
-        url: https://docs.particlehealth.com/
-      - type: APIReference
-        url: https://docs.particlehealth.com/reference/getting-started
-      - type: Authentication
-        url: https://docs.particlehealth.com/docs/auth-and-keys
-      - type: GettingStarted
-        url: https://docs.particlehealth.com/docs/getting-started-for-developers
-      - type: Sandbox
-        url: https://docs.particlehealth.com/docs/test-patient-sandbox
-      - type: Postman
-        url: https://www.postman.com/particlehealth/particle-health-api
-      - type: LLMs
-        url: https://docs.particlehealth.com/llms.txt
-      - type: Webhooks
-        url: https://docs.particlehealth.com/docs/webhook-event-notifications
-      - type: RateLimits
-        url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
-      - type: SupportedFHIRResources
-        url: https://docs.particlehealth.com/docs/supported-fhir-resources
-      - type: Networks
-        url: https://docs.particlehealth.com/docs/networks
-      - type: DataNormalization
-        url: https://docs.particlehealth.com/docs/data-normalization
-      - type: DataDeduplication
-        url: https://docs.particlehealth.com/docs/data-deduplication
-      - type: DataProvenance
-        url: https://docs.particlehealth.com/docs/data-provenance
-      - type: PurposesOfUse
-        url: https://docs.particlehealth.com/docs/purposes-of-use
-      - type: DelegationOfAuthority
-        url: https://docs.particlehealth.com/docs/delegation-of-authority
-      - type: OpenAPI
-        url: openapi/particle-health-openapi.yml
-      - type: Spectral
-        url: spectral/particle-health-spectral.yml
-    contact:
-      - FN: Particle Health Support
-        email: support@particlehealth.com
+- aid: particle-health:particle-health-authentication-api
+  name: Particle Health Authentication API
+  description: OAuth 2 client-credentials JWT issuance.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-batches-api
+  name: Particle Health Batches API
+  description: Batch query orchestration over patient cohorts.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Batches
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-batches-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-ccda-api
+  name: Particle Health CCDA API
+  description: C-CDA clinical document retrieval.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - CCDA
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-ccda-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-deltas-api
+  name: Particle Health Deltas API
+  description: Incremental change retrieval since a previous query.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Deltas
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-deltas-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-documents-api
+  name: Particle Health Documents API
+  description: Document upload, retrieval, and deletion.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-documents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-fhir-api
+  name: Particle Health FHIR API
+  description: FHIR R4 resource search and read.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - FHIR
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-fhir-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-files-api
+  name: Particle Health Files API
+  description: Query result file download.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-files-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-flat-api
+  name: Particle Health Flat API
+  description: Flat (normalized columnar) clinical data domains.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Flat
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-flat-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-hl7v2-api
+  name: Particle Health HL7v2 API
+  description: HL7v2 ADT messages.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - HL7v2
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-hl7v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-networkparticipants-api
+  name: Particle Health NetworkParticipants API
+  description: Directory search over connected network organizations.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - NetworkParticipants
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-networkparticipants-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-notifications-api
+  name: Particle Health Notifications API
+  description: Project-level webhook notification configuration.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-patients-api
+  name: Particle Health Patients API
+  description: Patient demographic registration and lookup.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Patients
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-patients-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-projects-api
+  name: Particle Health Projects API
+  description: Project and service-account management.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-providermap-api
+  name: Particle Health ProviderMap API
+  description: Patient provider mapping across the network.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - ProviderMap
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-providermap-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-queries-api
+  name: Particle Health Queries API
+  description: One-time network query orchestration.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Queries
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-queries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-signal-api
+  name: Particle Health Signal API
+  description: Real-time encounter, transition, and ADT alerts.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Signal
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-signal-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
+- aid: particle-health:particle-health-subscriptions-api
+  name: Particle Health Subscriptions API
+  description: Patient subscription management for Signal.
+  humanURL: https://docs.particlehealth.com/
+  baseURL: https://api.particlehealth.com
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/particle-health-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.particlehealth.com/
+  - type: APIReference
+    url: https://docs.particlehealth.com/reference/getting-started
+  - type: Authentication
+    url: https://docs.particlehealth.com/docs/auth-and-keys
+  - type: GettingStarted
+    url: https://docs.particlehealth.com/docs/getting-started-for-developers
+  - type: Sandbox
+    url: https://docs.particlehealth.com/docs/test-patient-sandbox
+  - type: Postman
+    url: https://www.postman.com/particlehealth/particle-health-api
+  - type: LLMs
+    url: https://docs.particlehealth.com/llms.txt
+  - type: Webhooks
+    url: https://docs.particlehealth.com/docs/webhook-event-notifications
+  - type: RateLimits
+    url: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - type: SupportedFHIRResources
+    url: https://docs.particlehealth.com/docs/supported-fhir-resources
+  - type: Networks
+    url: https://docs.particlehealth.com/docs/networks
+  - type: DataNormalization
+    url: https://docs.particlehealth.com/docs/data-normalization
+  - type: DataDeduplication
+    url: https://docs.particlehealth.com/docs/data-deduplication
+  - type: DataProvenance
+    url: https://docs.particlehealth.com/docs/data-provenance
+  - type: PurposesOfUse
+    url: https://docs.particlehealth.com/docs/purposes-of-use
+  - type: DelegationOfAuthority
+    url: https://docs.particlehealth.com/docs/delegation-of-authority
+  - type: Spectral
+    url: spectral/particle-health-spectral.yml
 solutions:
   - Value-Based Care Patient Data Aggregation
   - Readmission Reduction with ADT Alerts
@@ -150,6 +842,8 @@ integrations:
   - HL7v2
   - USCDI v2
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/particle-health/overview
   - type: AgenticAccess
     url: agentic-access/particle-health-agentic-access.yml
   - type: TrustCenter
