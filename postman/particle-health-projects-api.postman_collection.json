@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "d5dc9461-dce4-4265-a4f6-276c8a5d2182",
+    "name": "Particle Health Authentication Projects API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:41.000Z",
+    "updatedAt": "2026-07-28T02:32:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d5dc9461-dce4-4265-a4f6-276c8a5d2182"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "Search Projects",
+          "id": "5e45bed2-800d-41c9-866a-ac77ecb4aafb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "Searches projects by simple field filter."
+          },
+          "response": [
+            {
+              "id": "c754e83c-b242-46b7-a597-8182aa33df6f",
+              "name": "Project list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:32:41.000Z",
+              "updatedAt": "2026-07-28T02:32:41.000Z",
+              "uid": "35240-c754e83c-b242-46b7-a597-8182aa33df6f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:41.000Z",
+          "updatedAt": "2026-07-28T02:32:41.000Z",
+          "uid": "35240-5e45bed2-800d-41c9-866a-ac77ecb4aafb"
+        }
+      ],
+      "id": "1675d46b-053d-4c3b-8fd1-0de55b2267d1",
+      "createdAt": "2026-07-28T02:32:41.000Z",
+      "updatedAt": "2026-07-28T02:32:41.000Z",
+      "uid": "35240-1675d46b-053d-4c3b-8fd1-0de55b2267d1"
+    },
+    {
+      "name": "service-accounts",
+      "item": [
+        {
+          "name": "Search Service Accounts",
+          "id": "24ac2e92-4303-4398-b65b-4f75200e6622",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/service-accounts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "service-accounts"
+              ]
+            },
+            "description": "Searches service accounts by simple field filter."
+          },
+          "response": [
+            {
+              "id": "243f5a5a-33c1-4435-9cee-39f5b8dedd18",
+              "name": "Service account list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/service-accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "service-accounts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:32:41.000Z",
+              "updatedAt": "2026-07-28T02:32:41.000Z",
+              "uid": "35240-243f5a5a-33c1-4435-9cee-39f5b8dedd18"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:41.000Z",
+          "updatedAt": "2026-07-28T02:32:41.000Z",
+          "uid": "35240-24ac2e92-4303-4398-b65b-4f75200e6622"
+        }
+      ],
+      "id": "fa84deda-9cf3-4b7c-b644-5fef3fc6eeb1",
+      "createdAt": "2026-07-28T02:32:41.000Z",
+      "updatedAt": "2026-07-28T02:32:41.000Z",
+      "uid": "35240-fa84deda-9cf3-4b7c-b644-5fef3fc6eeb1"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "info": {
+    "_postman_id": "2a7e18cf-11b0-402f-b177-9e22c1863a43",
+    "name": "Particle Health Authentication Documents API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:11.000Z",
+    "updatedAt": "2026-07-28T02:32:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2a7e18cf-11b0-402f-b177-9e22c1863a43"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "documents",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Get Document",
+                      "id": "2a5ae937-67a5-480e-b4a4-613cd989e927",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/documents/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "documents",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4ba483db-16a5-40e5-823d-f73555f1c505",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "db1e4547-0b88-4f68-a63c-239ab3e74a9e",
+                          "name": "Document",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/documents/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "documents",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:11.000Z",
+                          "updatedAt": "2026-07-28T02:32:11.000Z",
+                          "uid": "35240-db1e4547-0b88-4f68-a63c-239ab3e74a9e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:11.000Z",
+                      "updatedAt": "2026-07-28T02:32:11.000Z",
+                      "uid": "35240-2a5ae937-67a5-480e-b4a4-613cd989e927"
+                    },
+                    {
+                      "name": "Delete Document",
+                      "id": "d2fa0b54-3a95-4f24-b583-a0a753fbeb49",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/documents/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "documents",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d4617bf1-7707-438f-9652-c52e1a308b10",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "20bf3004-13b3-4666-bca9-0fc67bcbd443",
+                          "name": "Document deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/documents/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "documents",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:11.000Z",
+                          "updatedAt": "2026-07-28T02:32:11.000Z",
+                          "uid": "35240-20bf3004-13b3-4666-bca9-0fc67bcbd443"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:11.000Z",
+                      "updatedAt": "2026-07-28T02:32:11.000Z",
+                      "uid": "35240-d2fa0b54-3a95-4f24-b583-a0a753fbeb49"
+                    }
+                  ],
+                  "id": "778454bf-02a9-4dc8-92bc-e9611002d6f6",
+                  "createdAt": "2026-07-28T02:32:11.000Z",
+                  "updatedAt": "2026-07-28T02:32:11.000Z",
+                  "uid": "35240-778454bf-02a9-4dc8-92bc-e9611002d6f6"
+                },
+                {
+                  "name": "patient",
+                  "item": [
+                    {
+                      "name": "{id}",
+                      "item": [
+                        {
+                          "name": "Get Patient Documents",
+                          "id": "abd4e683-eb15-4fc4-8afe-f939c9b44376",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/documents/patient/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "documents",
+                                "patient",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8e1a091b-ca8f-415e-9db2-80529a94fcb0",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "36e430d6-ce98-4307-9ad3-5edddad1d6ef",
+                              "name": "Document list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/documents/patient/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "documents",
+                                    "patient",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:11.000Z",
+                              "updatedAt": "2026-07-28T02:32:11.000Z",
+                              "uid": "35240-36e430d6-ce98-4307-9ad3-5edddad1d6ef"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:11.000Z",
+                          "updatedAt": "2026-07-28T02:32:11.000Z",
+                          "uid": "35240-abd4e683-eb15-4fc4-8afe-f939c9b44376"
+                        }
+                      ],
+                      "id": "42c56743-840d-40d6-85bd-02da367d71a9",
+                      "createdAt": "2026-07-28T02:32:11.000Z",
+                      "updatedAt": "2026-07-28T02:32:11.000Z",
+                      "uid": "35240-42c56743-840d-40d6-85bd-02da367d71a9"
+                    }
+                  ],
+                  "id": "9256beca-c330-44c1-b164-0954a8959950",
+                  "createdAt": "2026-07-28T02:32:11.000Z",
+                  "updatedAt": "2026-07-28T02:32:11.000Z",
+                  "uid": "35240-9256beca-c330-44c1-b164-0954a8959950"
+                },
+                {
+                  "name": "Submit Document",
+                  "id": "09c1c2bc-8cc0-410a-9ade-93024df60ac8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/documents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "documents"
+                      ]
+                    },
+                    "description": "Upload a document (CCDA, discharge summary, etc.) with metadata for ingestion."
+                  },
+                  "response": [
+                    {
+                      "id": "9267d2e6-8203-4502-ae2f-1400ac6fae8d",
+                      "name": "Document accepted",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "documents"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:11.000Z",
+                      "updatedAt": "2026-07-28T02:32:11.000Z",
+                      "uid": "35240-9267d2e6-8203-4502-ae2f-1400ac6fae8d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:11.000Z",
+                  "updatedAt": "2026-07-28T02:32:11.000Z",
+                  "uid": "35240-09c1c2bc-8cc0-410a-9ade-93024df60ac8"
+                }
+              ],
+              "id": "a4264903-279c-4e26-9b54-579ba29ebb5d",
+              "createdAt": "2026-07-28T02:32:11.000Z",
+              "updatedAt": "2026-07-28T02:32:11.000Z",
+              "uid": "35240-a4264903-279c-4e26-9b54-579ba29ebb5d"
+            }
+          ],
+          "id": "586d6a70-095f-4a7a-a052-02234c8eefaf",
+          "createdAt": "2026-07-28T02:32:11.000Z",
+          "updatedAt": "2026-07-28T02:32:11.000Z",
+          "uid": "35240-586d6a70-095f-4a7a-a052-02234c8eefaf"
+        }
+      ],
+      "id": "dcfa1ae3-2162-409e-97e1-fef66da9ee23",
+      "createdAt": "2026-07-28T02:32:11.000Z",
+      "updatedAt": "2026-07-28T02:32:11.000Z",
+      "uid": "35240-dcfa1ae3-2162-409e-97e1-fef66da9ee23"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

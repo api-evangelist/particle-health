@@ -1,0 +1,226 @@
+{
+  "info": {
+    "_postman_id": "9b55bd29-3f96-45d8-8f59-d57a1d76abd6",
+    "name": "Particle Health Authentication HL7v2 API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:15.000Z",
+    "updatedAt": "2026-07-28T02:32:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9b55bd29-3f96-45d8-8f59-d57a1d76abd6"
+  },
+  "item": [
+    {
+      "name": "hl7v2",
+      "item": [
+        {
+          "name": "message",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get HL7v2 Message",
+                  "id": "b86b0bae-6ef4-4c78-b178-61e970368cdf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/hl7v2/message/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "hl7v2",
+                        "message",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c6d25d80-8f58-465e-8b21-34f9fa0e9ccc",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns a single HL7v2 ADT message."
+                  },
+                  "response": [
+                    {
+                      "id": "6dbe7e5c-7ee1-408c-9cc1-35dee596a5ae",
+                      "name": "HL7v2 message",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/hl7v2/message/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "hl7v2",
+                            "message",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:15.000Z",
+                      "updatedAt": "2026-07-28T02:32:15.000Z",
+                      "uid": "35240-6dbe7e5c-7ee1-408c-9cc1-35dee596a5ae"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:15.000Z",
+                  "updatedAt": "2026-07-28T02:32:15.000Z",
+                  "uid": "35240-b86b0bae-6ef4-4c78-b178-61e970368cdf"
+                }
+              ],
+              "id": "1efa6bd0-af3a-4c79-9c69-3cc999ce604e",
+              "createdAt": "2026-07-28T02:32:15.000Z",
+              "updatedAt": "2026-07-28T02:32:15.000Z",
+              "uid": "35240-1efa6bd0-af3a-4c79-9c69-3cc999ce604e"
+            }
+          ],
+          "id": "49b9d0f3-d3b7-4951-a416-5632d8ae464c",
+          "createdAt": "2026-07-28T02:32:15.000Z",
+          "updatedAt": "2026-07-28T02:32:15.000Z",
+          "uid": "35240-49b9d0f3-d3b7-4951-a416-5632d8ae464c"
+        },
+        {
+          "name": "patient",
+          "item": [
+            {
+              "name": "{particle_patient_id}",
+              "item": [
+                {
+                  "name": "Get HL7v2 Messages by Patient",
+                  "id": "4fe983f9-63ee-4f38-b105-39a9cc84f870",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/hl7v2/patient/:particle_patient_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "hl7v2",
+                        "patient",
+                        ":particle_patient_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b1263b01-850f-4b50-93de-dc487a5d3473",
+                          "key": "particle_patient_id",
+                          "value": "<string>",
+                          "description": "(Required) Particle Patient ID (PPID)"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "39787175-0a1d-416f-a4aa-4ebf411302ab",
+                      "name": "HL7v2 message list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/hl7v2/patient/:particle_patient_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "hl7v2",
+                            "patient",
+                            ":particle_patient_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "particle_patient_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:15.000Z",
+                      "updatedAt": "2026-07-28T02:32:15.000Z",
+                      "uid": "35240-39787175-0a1d-416f-a4aa-4ebf411302ab"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:15.000Z",
+                  "updatedAt": "2026-07-28T02:32:15.000Z",
+                  "uid": "35240-4fe983f9-63ee-4f38-b105-39a9cc84f870"
+                }
+              ],
+              "id": "29fbd788-f08f-4143-92dd-9180581b8eca",
+              "createdAt": "2026-07-28T02:32:15.000Z",
+              "updatedAt": "2026-07-28T02:32:15.000Z",
+              "uid": "35240-29fbd788-f08f-4143-92dd-9180581b8eca"
+            }
+          ],
+          "id": "d090447f-8540-4294-8fe4-5c867ef3bd60",
+          "createdAt": "2026-07-28T02:32:15.000Z",
+          "updatedAt": "2026-07-28T02:32:15.000Z",
+          "uid": "35240-d090447f-8540-4294-8fe4-5c867ef3bd60"
+        }
+      ],
+      "id": "fd62404e-4da0-466d-bd8f-09dfe036a4cb",
+      "createdAt": "2026-07-28T02:32:15.000Z",
+      "updatedAt": "2026-07-28T02:32:15.000Z",
+      "uid": "35240-fd62404e-4da0-466d-bd8f-09dfe036a4cb"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

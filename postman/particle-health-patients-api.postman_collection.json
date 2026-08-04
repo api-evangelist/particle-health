@@ -1,0 +1,499 @@
+{
+  "info": {
+    "_postman_id": "ac8cb27e-4280-42c0-95ec-888e02ee3e69",
+    "name": "Particle Health Authentication Patients API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:40.000Z",
+    "updatedAt": "2026-07-28T02:32:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ac8cb27e-4280-42c0-95ec-888e02ee3e69"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "patients",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Get Patient",
+                      "id": "f7355e18-eb60-469d-9b5c-2f816e3a4a26",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/patients/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "patients",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f411ba15-7f90-4737-98de-cdd9d169e4ab",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "f61d7543-28cc-4162-827a-6dd83d7625a5",
+                          "name": "Patient resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/patients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "patients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:40.000Z",
+                          "updatedAt": "2026-07-28T02:32:40.000Z",
+                          "uid": "35240-f61d7543-28cc-4162-827a-6dd83d7625a5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:40.000Z",
+                      "updatedAt": "2026-07-28T02:32:40.000Z",
+                      "uid": "35240-f7355e18-eb60-469d-9b5c-2f816e3a4a26"
+                    },
+                    {
+                      "name": "Delete Patient",
+                      "id": "446aea89-a0fb-4d81-8281-7c837b8ee78b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/patients/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "patients",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1e6340bb-bf2a-40c8-82dc-5d165d431c65",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "202634b7-9ace-49cc-b6df-f123aee74e52",
+                          "name": "Patient deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/patients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "patients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:40.000Z",
+                          "updatedAt": "2026-07-28T02:32:40.000Z",
+                          "uid": "35240-202634b7-9ace-49cc-b6df-f123aee74e52"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:40.000Z",
+                      "updatedAt": "2026-07-28T02:32:40.000Z",
+                      "uid": "35240-446aea89-a0fb-4d81-8281-7c837b8ee78b"
+                    }
+                  ],
+                  "id": "dd2b4239-33d8-4840-9502-293b9898cd59",
+                  "createdAt": "2026-07-28T02:32:40.000Z",
+                  "updatedAt": "2026-07-28T02:32:40.000Z",
+                  "uid": "35240-dd2b4239-33d8-4840-9502-293b9898cd59"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Search Patient",
+                      "id": "8748504f-cbd9-4180-bd3a-4676a2130138",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/patients/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "patients",
+                            "search"
+                          ]
+                        },
+                        "description": "Search for patients by demographic identifiers."
+                      },
+                      "response": [
+                        {
+                          "id": "8ee48554-c181-4ff7-9b43-86e7b33fc282",
+                          "name": "Patient search results",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/patients/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "patients",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:40.000Z",
+                          "updatedAt": "2026-07-28T02:32:40.000Z",
+                          "uid": "35240-8ee48554-c181-4ff7-9b43-86e7b33fc282"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:40.000Z",
+                      "updatedAt": "2026-07-28T02:32:40.000Z",
+                      "uid": "35240-8748504f-cbd9-4180-bd3a-4676a2130138"
+                    }
+                  ],
+                  "id": "3f0945af-719a-4026-9176-03ff99ce7441",
+                  "createdAt": "2026-07-28T02:32:40.000Z",
+                  "updatedAt": "2026-07-28T02:32:40.000Z",
+                  "uid": "35240-3f0945af-719a-4026-9176-03ff99ce7441"
+                },
+                {
+                  "name": "List Patients",
+                  "id": "832b3973-d4d0-42a4-a1ff-c820833f5b3e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/patients",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "patients"
+                      ]
+                    },
+                    "description": "List patients registered under the current project."
+                  },
+                  "response": [
+                    {
+                      "id": "f3966e1c-a1e8-4ef5-a904-ee41d14bb6cb",
+                      "name": "Patient list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/patients",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "patients"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:40.000Z",
+                      "updatedAt": "2026-07-28T02:32:40.000Z",
+                      "uid": "35240-f3966e1c-a1e8-4ef5-a904-ee41d14bb6cb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:40.000Z",
+                  "updatedAt": "2026-07-28T02:32:40.000Z",
+                  "uid": "35240-832b3973-d4d0-42a4-a1ff-c820833f5b3e"
+                },
+                {
+                  "name": "Submit Patient",
+                  "id": "00d041a2-5ce1-4424-8b2a-c0725fe71087",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/patients",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "patients"
+                      ]
+                    },
+                    "description": "Register a patient's demographics and obtain a unique Particle Patient ID (PPID)."
+                  },
+                  "response": [
+                    {
+                      "id": "eee37248-6783-4873-8bbe-36d25c2cd138",
+                      "name": "Patient created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/patients",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "patients"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:40.000Z",
+                      "updatedAt": "2026-07-28T02:32:40.000Z",
+                      "uid": "35240-eee37248-6783-4873-8bbe-36d25c2cd138"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:40.000Z",
+                  "updatedAt": "2026-07-28T02:32:40.000Z",
+                  "uid": "35240-00d041a2-5ce1-4424-8b2a-c0725fe71087"
+                }
+              ],
+              "id": "212776c7-7285-4a64-9980-b9752bf74824",
+              "createdAt": "2026-07-28T02:32:40.000Z",
+              "updatedAt": "2026-07-28T02:32:40.000Z",
+              "uid": "35240-212776c7-7285-4a64-9980-b9752bf74824"
+            }
+          ],
+          "id": "2f6f3190-08e4-433e-aaf9-a1cbd7550021",
+          "createdAt": "2026-07-28T02:32:40.000Z",
+          "updatedAt": "2026-07-28T02:32:40.000Z",
+          "uid": "35240-2f6f3190-08e4-433e-aaf9-a1cbd7550021"
+        }
+      ],
+      "id": "0e2dc55f-c17a-4cef-894b-a91f3748a55f",
+      "createdAt": "2026-07-28T02:32:40.000Z",
+      "updatedAt": "2026-07-28T02:32:40.000Z",
+      "uid": "35240-0e2dc55f-c17a-4cef-894b-a91f3748a55f"
+    },
+    {
+      "name": "r4",
+      "item": [
+        {
+          "name": "Patient",
+          "item": [
+            {
+              "name": "Create FHIR Patient",
+              "id": "a3d64b1b-78f2-45be-b684-baf61c9d5865",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/r4/Patient",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "r4",
+                    "Patient"
+                  ]
+                },
+                "description": "Creates a FHIR R4 Patient resource."
+              },
+              "response": [
+                {
+                  "id": "d981d107-087c-4004-9365-adf344cc5941",
+                  "name": "FHIR Patient created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/r4/Patient",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "r4",
+                        "Patient"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:32:40.000Z",
+                  "updatedAt": "2026-07-28T02:32:40.000Z",
+                  "uid": "35240-d981d107-087c-4004-9365-adf344cc5941"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:40.000Z",
+              "updatedAt": "2026-07-28T02:32:40.000Z",
+              "uid": "35240-a3d64b1b-78f2-45be-b684-baf61c9d5865"
+            }
+          ],
+          "id": "f21894c6-5fb4-43e8-b50e-af628a3cbd11",
+          "createdAt": "2026-07-28T02:32:40.000Z",
+          "updatedAt": "2026-07-28T02:32:40.000Z",
+          "uid": "35240-f21894c6-5fb4-43e8-b50e-af628a3cbd11"
+        }
+      ],
+      "id": "1c02d4c4-1bc0-4567-a20e-a3bcb2ee6112",
+      "createdAt": "2026-07-28T02:32:40.000Z",
+      "updatedAt": "2026-07-28T02:32:40.000Z",
+      "uid": "35240-1c02d4c4-1bc0-4567-a20e-a3bcb2ee6112"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

@@ -1,0 +1,656 @@
+{
+  "info": {
+    "_postman_id": "74a4ff72-9191-4b17-a912-153718e60414",
+    "name": "Particle Health Authentication Queries API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:43.000Z",
+    "updatedAt": "2026-07-28T02:32:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74a4ff72-9191-4b17-a912-153718e60414"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "patients",
+              "item": [
+                {
+                  "name": "{particle_patient_id}",
+                  "item": [
+                    {
+                      "name": "query",
+                      "item": [
+                        {
+                          "name": "Get Query Status",
+                          "id": "949e9f3f-eddc-4239-a98f-259b0a0f530e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/query",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "patients",
+                                ":particle_patient_id",
+                                "query"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6437fa20-4d49-44b6-bdff-aafffa1cc298",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Returns the current state and timestamps for the most recent query for a patient."
+                          },
+                          "response": [
+                            {
+                              "id": "5c8ea267-8591-4f3f-8a5f-02ace1d57ce5",
+                              "name": "Query status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/query",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "query"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:43.000Z",
+                              "updatedAt": "2026-07-28T02:32:43.000Z",
+                              "uid": "35240-5c8ea267-8591-4f3f-8a5f-02ace1d57ce5"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:43.000Z",
+                          "updatedAt": "2026-07-28T02:32:43.000Z",
+                          "uid": "35240-949e9f3f-eddc-4239-a98f-259b0a0f530e"
+                        },
+                        {
+                          "name": "Create Query",
+                          "id": "3eed7965-bd8b-47b4-bedf-f0e46ced7b8d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/query",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "patients",
+                                ":particle_patient_id",
+                                "query"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "529aeca3-eb31-4968-9266-d26aae6670b9",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Starts a one-time query for this Particle Patient ID under a Purpose of Use."
+                          },
+                          "response": [
+                            {
+                              "id": "df414895-b98e-4211-9cde-a29ded404a42",
+                              "name": "Query accepted",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/query",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "query"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:43.000Z",
+                              "updatedAt": "2026-07-28T02:32:43.000Z",
+                              "uid": "35240-df414895-b98e-4211-9cde-a29ded404a42"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:43.000Z",
+                          "updatedAt": "2026-07-28T02:32:43.000Z",
+                          "uid": "35240-3eed7965-bd8b-47b4-bedf-f0e46ced7b8d"
+                        }
+                      ],
+                      "id": "c62dd3df-aa50-478c-b092-341d91cd50c8",
+                      "createdAt": "2026-07-28T02:32:43.000Z",
+                      "updatedAt": "2026-07-28T02:32:43.000Z",
+                      "uid": "35240-c62dd3df-aa50-478c-b092-341d91cd50c8"
+                    }
+                  ],
+                  "id": "bc2f6df1-b6d1-4274-81d1-63ee75259f34",
+                  "createdAt": "2026-07-28T02:32:43.000Z",
+                  "updatedAt": "2026-07-28T02:32:43.000Z",
+                  "uid": "35240-bc2f6df1-b6d1-4274-81d1-63ee75259f34"
+                }
+              ],
+              "id": "303ceb3d-8f3c-416c-b5b6-80ca5084c74c",
+              "createdAt": "2026-07-28T02:32:43.000Z",
+              "updatedAt": "2026-07-28T02:32:43.000Z",
+              "uid": "35240-303ceb3d-8f3c-416c-b5b6-80ca5084c74c"
+            }
+          ],
+          "id": "909e583a-de55-46b3-b7ff-e3e24610f5f8",
+          "createdAt": "2026-07-28T02:32:43.000Z",
+          "updatedAt": "2026-07-28T02:32:43.000Z",
+          "uid": "35240-909e583a-de55-46b3-b7ff-e3e24610f5f8"
+        },
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "queries",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Get Query",
+                      "id": "57bd5481-304b-47e2-acd5-04d056eb97b2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/queries/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "queries",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1e9a17a6-7868-4562-9bb4-9925c130a226",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns status and result pointers for a query."
+                      },
+                      "response": [
+                        {
+                          "id": "e78bc1e3-785e-412c-bdb3-f9fe2cd2e312",
+                          "name": "Query status",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/queries/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "queries",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:43.000Z",
+                          "updatedAt": "2026-07-28T02:32:43.000Z",
+                          "uid": "35240-e78bc1e3-785e-412c-bdb3-f9fe2cd2e312"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:43.000Z",
+                      "updatedAt": "2026-07-28T02:32:43.000Z",
+                      "uid": "35240-57bd5481-304b-47e2-acd5-04d056eb97b2"
+                    }
+                  ],
+                  "id": "466db8c6-ddd3-4841-b0ed-4b95c7081be5",
+                  "createdAt": "2026-07-28T02:32:43.000Z",
+                  "updatedAt": "2026-07-28T02:32:43.000Z",
+                  "uid": "35240-466db8c6-ddd3-4841-b0ed-4b95c7081be5"
+                },
+                {
+                  "name": "List Queries",
+                  "id": "7a1cf6ec-c0d6-448b-b3ff-40ff354fcb0c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/queries",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "queries"
+                      ]
+                    },
+                    "description": "Lists queries you have created."
+                  },
+                  "response": [
+                    {
+                      "id": "48fa75ab-a286-4377-a86d-4160d00e604f",
+                      "name": "Query list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/queries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "queries"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:43.000Z",
+                      "updatedAt": "2026-07-28T02:32:43.000Z",
+                      "uid": "35240-48fa75ab-a286-4377-a86d-4160d00e604f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:43.000Z",
+                  "updatedAt": "2026-07-28T02:32:43.000Z",
+                  "uid": "35240-7a1cf6ec-c0d6-448b-b3ff-40ff354fcb0c"
+                },
+                {
+                  "name": "Create Query",
+                  "id": "55702969-88ab-4cd3-bb7d-974844bee749",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/queries",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "queries"
+                      ]
+                    },
+                    "description": "Starts a one-time network query using demographics."
+                  },
+                  "response": [
+                    {
+                      "id": "96cb660c-41da-4c14-af91-6188522fdd62",
+                      "name": "Query accepted",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/queries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "queries"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:43.000Z",
+                      "updatedAt": "2026-07-28T02:32:43.000Z",
+                      "uid": "35240-96cb660c-41da-4c14-af91-6188522fdd62"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:43.000Z",
+                  "updatedAt": "2026-07-28T02:32:43.000Z",
+                  "uid": "35240-55702969-88ab-4cd3-bb7d-974844bee749"
+                }
+              ],
+              "id": "2968098a-fc08-4302-8d8c-5482f529a473",
+              "createdAt": "2026-07-28T02:32:43.000Z",
+              "updatedAt": "2026-07-28T02:32:43.000Z",
+              "uid": "35240-2968098a-fc08-4302-8d8c-5482f529a473"
+            }
+          ],
+          "id": "2cd128db-ed73-4c46-8491-c7c0e8c27f0b",
+          "createdAt": "2026-07-28T02:32:43.000Z",
+          "updatedAt": "2026-07-28T02:32:43.000Z",
+          "uid": "35240-2cd128db-ed73-4c46-8491-c7c0e8c27f0b"
+        }
+      ],
+      "id": "fee56e7d-6ed7-4f24-a6fd-1dae899e6237",
+      "createdAt": "2026-07-28T02:32:43.000Z",
+      "updatedAt": "2026-07-28T02:32:43.000Z",
+      "uid": "35240-fee56e7d-6ed7-4f24-a6fd-1dae899e6237"
+    },
+    {
+      "name": "r4",
+      "item": [
+        {
+          "name": "Patient",
+          "item": [
+            {
+              "name": "{patient_id}",
+              "item": [
+                {
+                  "name": "query",
+                  "item": [
+                    {
+                      "name": "Get FHIR Patient Query Status",
+                      "id": "7570300a-2cf7-42d3-baf6-f72ff65a7304",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/r4/Patient/:patient_id/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "r4",
+                            "Patient",
+                            ":patient_id",
+                            "query"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cb8483b5-8118-46a0-b9e1-590a32872c29",
+                              "key": "patient_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ec79a993-f862-4d58-b5d5-50256699e7e7",
+                          "name": "Query status",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/r4/Patient/:patient_id/query",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "r4",
+                                "Patient",
+                                ":patient_id",
+                                "query"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "patient_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:43.000Z",
+                          "updatedAt": "2026-07-28T02:32:43.000Z",
+                          "uid": "35240-ec79a993-f862-4d58-b5d5-50256699e7e7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:43.000Z",
+                      "updatedAt": "2026-07-28T02:32:43.000Z",
+                      "uid": "35240-7570300a-2cf7-42d3-baf6-f72ff65a7304"
+                    },
+                    {
+                      "name": "Create FHIR Patient Query",
+                      "id": "403afa7b-a72a-401a-b1a5-3ccec018e4f0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/r4/Patient/:patient_id/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "r4",
+                            "Patient",
+                            ":patient_id",
+                            "query"
+                          ],
+                          "variable": [
+                            {
+                              "id": "995bd1be-729d-49fa-a03a-3c8bf4f9866e",
+                              "key": "patient_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2997397b-d035-4a4a-9782-1e8ba681cfbc",
+                          "name": "Query accepted",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/r4/Patient/:patient_id/query",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "r4",
+                                "Patient",
+                                ":patient_id",
+                                "query"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "patient_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:43.000Z",
+                          "updatedAt": "2026-07-28T02:32:43.000Z",
+                          "uid": "35240-2997397b-d035-4a4a-9782-1e8ba681cfbc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:43.000Z",
+                      "updatedAt": "2026-07-28T02:32:43.000Z",
+                      "uid": "35240-403afa7b-a72a-401a-b1a5-3ccec018e4f0"
+                    }
+                  ],
+                  "id": "cbf21739-9ce6-4ded-ad33-00b5c72fb300",
+                  "createdAt": "2026-07-28T02:32:43.000Z",
+                  "updatedAt": "2026-07-28T02:32:43.000Z",
+                  "uid": "35240-cbf21739-9ce6-4ded-ad33-00b5c72fb300"
+                }
+              ],
+              "id": "54fcb184-f5cf-4d4f-b8e2-ead36fccf35c",
+              "createdAt": "2026-07-28T02:32:43.000Z",
+              "updatedAt": "2026-07-28T02:32:43.000Z",
+              "uid": "35240-54fcb184-f5cf-4d4f-b8e2-ead36fccf35c"
+            }
+          ],
+          "id": "f8ad162b-a2b3-493d-819e-39ca851f1461",
+          "createdAt": "2026-07-28T02:32:43.000Z",
+          "updatedAt": "2026-07-28T02:32:43.000Z",
+          "uid": "35240-f8ad162b-a2b3-493d-819e-39ca851f1461"
+        }
+      ],
+      "id": "02605be9-2b23-4fba-a9b3-22b61bc11602",
+      "createdAt": "2026-07-28T02:32:43.000Z",
+      "updatedAt": "2026-07-28T02:32:43.000Z",
+      "uid": "35240-02605be9-2b23-4fba-a9b3-22b61bc11602"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

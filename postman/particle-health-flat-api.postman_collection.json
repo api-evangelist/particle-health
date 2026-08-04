@@ -1,0 +1,730 @@
+{
+  "info": {
+    "_postman_id": "b9283f0c-f3cf-4cfb-9f8d-d72b078f6a72",
+    "name": "Particle Health Authentication Flat API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:14.000Z",
+    "updatedAt": "2026-07-28T02:32:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b9283f0c-f3cf-4cfb-9f8d-d72b078f6a72"
+  },
+  "item": [
+    {
+      "name": "deltas",
+      "item": [
+        {
+          "name": "flat",
+          "item": [
+            {
+              "name": "{particle_patient_id}",
+              "item": [
+                {
+                  "name": "{resource_type}",
+                  "item": [
+                    {
+                      "name": "{resource_id}",
+                      "item": [
+                        {
+                          "name": "Get Deltas Flat Resource",
+                          "id": "af2e00f9-892f-4c1b-a6e7-1aa97efd57eb",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id/:resource_type/:resource_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deltas",
+                                "flat",
+                                ":particle_patient_id",
+                                ":resource_type",
+                                ":resource_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "590fb4ea-bc09-456d-92f3-56e301dccfe4",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                },
+                                {
+                                  "id": "fa8def57-0491-472a-9413-7f7d3b1c8efc",
+                                  "key": "resource_type",
+                                  "value": "<string>",
+                                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                                },
+                                {
+                                  "id": "a8af45af-f51e-4f09-a0b1-e2e3b57afd2e",
+                                  "key": "resource_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "c5eb7a89-7f52-4ab3-a915-6b70a6a4f930",
+                              "name": "Flat resource",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id/:resource_type/:resource_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "deltas",
+                                    "flat",
+                                    ":particle_patient_id",
+                                    ":resource_type",
+                                    ":resource_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    },
+                                    {
+                                      "key": "resource_type"
+                                    },
+                                    {
+                                      "key": "resource_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:14.000Z",
+                              "updatedAt": "2026-07-28T02:32:14.000Z",
+                              "uid": "35240-c5eb7a89-7f52-4ab3-a915-6b70a6a4f930"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:14.000Z",
+                          "updatedAt": "2026-07-28T02:32:14.000Z",
+                          "uid": "35240-af2e00f9-892f-4c1b-a6e7-1aa97efd57eb"
+                        }
+                      ],
+                      "id": "cd60890d-c8e0-4cbc-a1f4-7ce25f132cf0",
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-cd60890d-c8e0-4cbc-a1f4-7ce25f132cf0"
+                    }
+                  ],
+                  "id": "ec96fe78-7382-486e-b878-7188810a7f5e",
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-ec96fe78-7382-486e-b878-7188810a7f5e"
+                },
+                {
+                  "name": "Collect Deltas Flat Datasets",
+                  "id": "ff382adc-4552-4646-b305-73d0b36e2ac5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deltas",
+                        "flat",
+                        ":particle_patient_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ec5655b6-9309-42b7-bb7a-b4a2ba9a3474",
+                          "key": "particle_patient_id",
+                          "value": "<string>",
+                          "description": "(Required) Particle Patient ID (PPID)"
+                        }
+                      ]
+                    },
+                    "description": "Returns Flat datasets changed since the supplied `_since` timestamp."
+                  },
+                  "response": [
+                    {
+                      "id": "d3196ef0-464a-4f59-9c5b-90b7aea3197c",
+                      "name": "Flat dataset bundle",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deltas",
+                            "flat",
+                            ":particle_patient_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "particle_patient_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-d3196ef0-464a-4f59-9c5b-90b7aea3197c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-ff382adc-4552-4646-b305-73d0b36e2ac5"
+                }
+              ],
+              "id": "ac2520df-78bf-4bbb-91ef-7e6fbe3f9eec",
+              "createdAt": "2026-07-28T02:32:14.000Z",
+              "updatedAt": "2026-07-28T02:32:14.000Z",
+              "uid": "35240-ac2520df-78bf-4bbb-91ef-7e6fbe3f9eec"
+            }
+          ],
+          "id": "1094f09d-abd7-4ac6-a9c7-cf27f9f27e02",
+          "createdAt": "2026-07-28T02:32:14.000Z",
+          "updatedAt": "2026-07-28T02:32:14.000Z",
+          "uid": "35240-1094f09d-abd7-4ac6-a9c7-cf27f9f27e02"
+        }
+      ],
+      "id": "13c74b59-0de8-4587-9117-95e82abc413a",
+      "createdAt": "2026-07-28T02:32:14.000Z",
+      "updatedAt": "2026-07-28T02:32:14.000Z",
+      "uid": "35240-13c74b59-0de8-4587-9117-95e82abc413a"
+    },
+    {
+      "name": "flat",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "collect-data",
+              "item": [
+                {
+                  "name": "Collect Flat Datasets",
+                  "id": "4baaf414-6d9f-490f-bf12-ae5ad4059541",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/flat/:id/collect-data",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "flat",
+                        ":id",
+                        "collect-data"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7336bc7f-2333-4f51-a48f-03055c081819",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve Flat clinical data domains (allergies, encounters, medications, labs, etc.)."
+                  },
+                  "response": [
+                    {
+                      "id": "7b0e39e6-726c-4f29-97b3-0cdb5805bfa3",
+                      "name": "Flat datasets",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/flat/:id/collect-data",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "flat",
+                            ":id",
+                            "collect-data"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-7b0e39e6-726c-4f29-97b3-0cdb5805bfa3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-4baaf414-6d9f-490f-bf12-ae5ad4059541"
+                }
+              ],
+              "id": "f45ecc74-59bd-49a8-b483-97964904eed0",
+              "createdAt": "2026-07-28T02:32:14.000Z",
+              "updatedAt": "2026-07-28T02:32:14.000Z",
+              "uid": "35240-f45ecc74-59bd-49a8-b483-97964904eed0"
+            },
+            {
+              "name": "Get Flat Patient",
+              "id": "d9ba5631-8e9c-4ffe-8c5e-380f6e62e2a9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/flat/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "flat",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3022f2a2-3e30-4a96-a65b-e39a0efa0066",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "20edf6b7-b3df-478e-be2d-9f96d2f638d9",
+                  "name": "Flat patient status",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/flat/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "flat",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-20edf6b7-b3df-478e-be2d-9f96d2f638d9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:14.000Z",
+              "updatedAt": "2026-07-28T02:32:14.000Z",
+              "uid": "35240-d9ba5631-8e9c-4ffe-8c5e-380f6e62e2a9"
+            }
+          ],
+          "id": "e5e9e595-ef08-4c68-b459-b5b74a82ce40",
+          "createdAt": "2026-07-28T02:32:14.000Z",
+          "updatedAt": "2026-07-28T02:32:14.000Z",
+          "uid": "35240-e5e9e595-ef08-4c68-b459-b5b74a82ce40"
+        },
+        {
+          "name": "{patient_id}",
+          "item": [
+            {
+              "name": "{resource_type}",
+              "item": [
+                {
+                  "name": "{resource_id}",
+                  "item": [
+                    {
+                      "name": "Get Flat Resource",
+                      "id": "018be772-1c2e-4ccb-92b8-7e9cf28126b6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/flat/:patient_id/:resource_type/:resource_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "flat",
+                            ":patient_id",
+                            ":resource_type",
+                            ":resource_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4edc65fd-64a6-4eb5-84e6-8ff5d552526f",
+                              "key": "patient_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "d16a86a5-3adb-4846-b606-e04a749f1d50",
+                              "key": "resource_type",
+                              "value": "<string>",
+                              "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                            },
+                            {
+                              "id": "e41f9b6b-3191-4ed4-a32f-fb21bb55397f",
+                              "key": "resource_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "091ce36a-de46-44a5-90b2-781901d26e58",
+                          "name": "Flat resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/flat/:patient_id/:resource_type/:resource_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "flat",
+                                ":patient_id",
+                                ":resource_type",
+                                ":resource_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "patient_id"
+                                },
+                                {
+                                  "key": "resource_type"
+                                },
+                                {
+                                  "key": "resource_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:14.000Z",
+                          "updatedAt": "2026-07-28T02:32:14.000Z",
+                          "uid": "35240-091ce36a-de46-44a5-90b2-781901d26e58"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-018be772-1c2e-4ccb-92b8-7e9cf28126b6"
+                    }
+                  ],
+                  "id": "0f8ca8f2-1df4-49b5-a67e-33199f3f8c6f",
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-0f8ca8f2-1df4-49b5-a67e-33199f3f8c6f"
+                }
+              ],
+              "id": "58ed182a-e095-453d-a7fc-d38fc15f1ee9",
+              "createdAt": "2026-07-28T02:32:14.000Z",
+              "updatedAt": "2026-07-28T02:32:14.000Z",
+              "uid": "35240-58ed182a-e095-453d-a7fc-d38fc15f1ee9"
+            }
+          ],
+          "id": "3653e248-844f-49be-975d-518f22258773",
+          "createdAt": "2026-07-28T02:32:14.000Z",
+          "updatedAt": "2026-07-28T02:32:14.000Z",
+          "uid": "35240-3653e248-844f-49be-975d-518f22258773"
+        },
+        {
+          "name": "Submit Flat Patient",
+          "id": "701e1c49-d605-4d25-aa1b-8bc440e67749",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/flat",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "flat"
+              ]
+            },
+            "description": "Initiates a Flat query for a specific patient using demographics."
+          },
+          "response": [
+            {
+              "id": "0c7d2f7c-072d-4ac7-8a87-5b174f2a7e18",
+              "name": "Flat query accepted",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/flat",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "flat"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:32:14.000Z",
+              "updatedAt": "2026-07-28T02:32:14.000Z",
+              "uid": "35240-0c7d2f7c-072d-4ac7-8a87-5b174f2a7e18"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:14.000Z",
+          "updatedAt": "2026-07-28T02:32:14.000Z",
+          "uid": "35240-701e1c49-d605-4d25-aa1b-8bc440e67749"
+        }
+      ],
+      "id": "42119a6a-7ff9-4f65-ae6c-c20a4ff67983",
+      "createdAt": "2026-07-28T02:32:14.000Z",
+      "updatedAt": "2026-07-28T02:32:14.000Z",
+      "uid": "35240-42119a6a-7ff9-4f65-ae6c-c20a4ff67983"
+    },
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "patients",
+              "item": [
+                {
+                  "name": "{particle_patient_id}",
+                  "item": [
+                    {
+                      "name": "flat",
+                      "item": [
+                        {
+                          "name": "Collect v2 Flat Datasets",
+                          "id": "c3d701db-ddae-4c0e-ad4c-237e92818178",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/flat",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "patients",
+                                ":particle_patient_id",
+                                "flat"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "914cb171-62fe-4bac-a2f2-f2dcaffa6cca",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve flat datasets filtered by domain (ALLERGIES, ENCOUNTERS, MEDICATIONS, LABS, IMMUNIZATIONS, VITAL_SIGNS, etc.) or a specific resource."
+                          },
+                          "response": [
+                            {
+                              "id": "8e4a6814-d050-49d6-bdd2-d52b683bfde8",
+                              "name": "Flat datasets",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/flat",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "flat"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:14.000Z",
+                              "updatedAt": "2026-07-28T02:32:14.000Z",
+                              "uid": "35240-8e4a6814-d050-49d6-bdd2-d52b683bfde8"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:14.000Z",
+                          "updatedAt": "2026-07-28T02:32:14.000Z",
+                          "uid": "35240-c3d701db-ddae-4c0e-ad4c-237e92818178"
+                        }
+                      ],
+                      "id": "0a5bfa10-9eb7-4df3-9609-7b0cbee7cc78",
+                      "createdAt": "2026-07-28T02:32:14.000Z",
+                      "updatedAt": "2026-07-28T02:32:14.000Z",
+                      "uid": "35240-0a5bfa10-9eb7-4df3-9609-7b0cbee7cc78"
+                    }
+                  ],
+                  "id": "46a1ebcc-07a6-4695-983b-95f7872ea302",
+                  "createdAt": "2026-07-28T02:32:14.000Z",
+                  "updatedAt": "2026-07-28T02:32:14.000Z",
+                  "uid": "35240-46a1ebcc-07a6-4695-983b-95f7872ea302"
+                }
+              ],
+              "id": "9a3e8207-bebe-4a7e-a719-e6d11e10d57a",
+              "createdAt": "2026-07-28T02:32:14.000Z",
+              "updatedAt": "2026-07-28T02:32:14.000Z",
+              "uid": "35240-9a3e8207-bebe-4a7e-a719-e6d11e10d57a"
+            }
+          ],
+          "id": "624f5a87-4de4-47d1-9a23-9ca34582d239",
+          "createdAt": "2026-07-28T02:32:14.000Z",
+          "updatedAt": "2026-07-28T02:32:14.000Z",
+          "uid": "35240-624f5a87-4de4-47d1-9a23-9ca34582d239"
+        }
+      ],
+      "id": "ba104848-8c4a-40a6-9d7c-eb052ea03f9e",
+      "createdAt": "2026-07-28T02:32:14.000Z",
+      "updatedAt": "2026-07-28T02:32:14.000Z",
+      "uid": "35240-ba104848-8c4a-40a6-9d7c-eb052ea03f9e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

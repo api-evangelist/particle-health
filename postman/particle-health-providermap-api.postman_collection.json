@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "f8e92739-57c1-4bac-93c0-ac5d5166be6c",
+    "name": "Particle Health Authentication ProviderMap API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:42.000Z",
+    "updatedAt": "2026-07-28T02:32:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f8e92739-57c1-4bac-93c0-ac5d5166be6c"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "patients",
+              "item": [
+                {
+                  "name": "{particle_patient_id}",
+                  "item": [
+                    {
+                      "name": "provider-map",
+                      "item": [
+                        {
+                          "name": "Get Patient Provider Map",
+                          "id": "8adbc80b-5720-49cd-831b-370f44c204dd",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/provider-map",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "patients",
+                                ":particle_patient_id",
+                                "provider-map"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6f2d3d1a-ac13-4235-818f-d3811ec5e27b",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Returns the set of healthcare organizations associated with the given patient across Particle's network, enriched with NPI, address, and managing organization details."
+                          },
+                          "response": [
+                            {
+                              "id": "8a2afd03-6764-4662-9b88-804f5e2821ad",
+                              "name": "Provider map",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/provider-map",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "provider-map"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:42.000Z",
+                              "updatedAt": "2026-07-28T02:32:42.000Z",
+                              "uid": "35240-8a2afd03-6764-4662-9b88-804f5e2821ad"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:42.000Z",
+                          "updatedAt": "2026-07-28T02:32:42.000Z",
+                          "uid": "35240-8adbc80b-5720-49cd-831b-370f44c204dd"
+                        }
+                      ],
+                      "id": "03d95b4a-f306-4ca5-9bf9-99b49b3c7a7e",
+                      "createdAt": "2026-07-28T02:32:42.000Z",
+                      "updatedAt": "2026-07-28T02:32:42.000Z",
+                      "uid": "35240-03d95b4a-f306-4ca5-9bf9-99b49b3c7a7e"
+                    }
+                  ],
+                  "id": "43d89b4d-2419-406d-99be-1d460a155f24",
+                  "createdAt": "2026-07-28T02:32:42.000Z",
+                  "updatedAt": "2026-07-28T02:32:42.000Z",
+                  "uid": "35240-43d89b4d-2419-406d-99be-1d460a155f24"
+                }
+              ],
+              "id": "3e99a19b-6503-4e3c-a65c-2a8b8117d6c9",
+              "createdAt": "2026-07-28T02:32:42.000Z",
+              "updatedAt": "2026-07-28T02:32:42.000Z",
+              "uid": "35240-3e99a19b-6503-4e3c-a65c-2a8b8117d6c9"
+            }
+          ],
+          "id": "4de5e43e-3a9f-4bd5-814b-c1c589b38401",
+          "createdAt": "2026-07-28T02:32:42.000Z",
+          "updatedAt": "2026-07-28T02:32:42.000Z",
+          "uid": "35240-4de5e43e-3a9f-4bd5-814b-c1c589b38401"
+        }
+      ],
+      "id": "36faf07a-61e0-4937-ab7a-800783c26a43",
+      "createdAt": "2026-07-28T02:32:42.000Z",
+      "updatedAt": "2026-07-28T02:32:42.000Z",
+      "uid": "35240-36faf07a-61e0-4937-ab7a-800783c26a43"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

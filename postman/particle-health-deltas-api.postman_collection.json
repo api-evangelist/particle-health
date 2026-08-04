@@ -1,0 +1,686 @@
+{
+  "info": {
+    "_postman_id": "355c79c4-2f7a-4701-a837-e90aa82e98df",
+    "name": "Particle Health Authentication Deltas API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:09.000Z",
+    "updatedAt": "2026-07-28T02:32:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-355c79c4-2f7a-4701-a837-e90aa82e98df"
+  },
+  "item": [
+    {
+      "name": "deltas",
+      "item": [
+        {
+          "name": "{particle_patient_id}",
+          "item": [
+            {
+              "name": "Get Deltas Query Status",
+              "id": "89076f0d-45f8-4599-b16f-318e2275867d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/deltas/:particle_patient_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deltas",
+                    ":particle_patient_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "474bf5f8-6f66-4dcf-b73a-afd01e4254cc",
+                      "key": "particle_patient_id",
+                      "value": "<string>",
+                      "description": "(Required) Particle Patient ID (PPID)"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6d5b676c-e195-4f8b-8fb0-3a64309c1958",
+                  "name": "Deltas query status",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deltas/:particle_patient_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deltas",
+                        ":particle_patient_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "particle_patient_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:32:10.000Z",
+                  "updatedAt": "2026-07-28T02:32:10.000Z",
+                  "uid": "35240-6d5b676c-e195-4f8b-8fb0-3a64309c1958"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:10.000Z",
+              "updatedAt": "2026-07-28T02:32:10.000Z",
+              "uid": "35240-89076f0d-45f8-4599-b16f-318e2275867d"
+            }
+          ],
+          "id": "36cb67e4-cd9c-4527-8bea-f178f63f326d",
+          "createdAt": "2026-07-28T02:32:10.000Z",
+          "updatedAt": "2026-07-28T02:32:10.000Z",
+          "uid": "35240-36cb67e4-cd9c-4527-8bea-f178f63f326d"
+        },
+        {
+          "name": "r4",
+          "item": [
+            {
+              "name": "Patient",
+              "item": [
+                {
+                  "name": "{particle_patient_id}",
+                  "item": [
+                    {
+                      "name": "$everything",
+                      "item": [
+                        {
+                          "name": "Collect Deltas FHIR Datasets",
+                          "id": "b965a13e-065e-4afc-947f-54bd851ca285",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/deltas/r4/Patient/:particle_patient_id/$everything",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deltas",
+                                "r4",
+                                "Patient",
+                                ":particle_patient_id",
+                                "$everything"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "cbc5964c-20b0-4863-845b-9a5c99eeda4e",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Returns a FHIR Bundle of changed resources for the patient since the last sync."
+                          },
+                          "response": [
+                            {
+                              "id": "3e25ffcd-2e7e-4a13-a037-e847d644858c",
+                              "name": "FHIR Bundle of changed resources",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/deltas/r4/Patient/:particle_patient_id/$everything",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "deltas",
+                                    "r4",
+                                    "Patient",
+                                    ":particle_patient_id",
+                                    "$everything"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:10.000Z",
+                              "updatedAt": "2026-07-28T02:32:10.000Z",
+                              "uid": "35240-3e25ffcd-2e7e-4a13-a037-e847d644858c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:10.000Z",
+                          "updatedAt": "2026-07-28T02:32:10.000Z",
+                          "uid": "35240-b965a13e-065e-4afc-947f-54bd851ca285"
+                        }
+                      ],
+                      "id": "f665b537-fb01-405d-92a7-0d9b658cbd74",
+                      "createdAt": "2026-07-28T02:32:10.000Z",
+                      "updatedAt": "2026-07-28T02:32:10.000Z",
+                      "uid": "35240-f665b537-fb01-405d-92a7-0d9b658cbd74"
+                    }
+                  ],
+                  "id": "8c468d88-ce3d-4a5a-b31f-3d4a3a3431f9",
+                  "createdAt": "2026-07-28T02:32:10.000Z",
+                  "updatedAt": "2026-07-28T02:32:10.000Z",
+                  "uid": "35240-8c468d88-ce3d-4a5a-b31f-3d4a3a3431f9"
+                }
+              ],
+              "id": "2d71950d-3dde-4ff4-b8a1-1645349b5ac2",
+              "createdAt": "2026-07-28T02:32:10.000Z",
+              "updatedAt": "2026-07-28T02:32:10.000Z",
+              "uid": "35240-2d71950d-3dde-4ff4-b8a1-1645349b5ac2"
+            },
+            {
+              "name": "{resource_type}",
+              "item": [
+                {
+                  "name": "{resource_id}",
+                  "item": [
+                    {
+                      "name": "Read Deltas FHIR Resource",
+                      "id": "84e03190-293a-4180-b681-18acde4cf7a2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/deltas/r4/:resource_type/:resource_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deltas",
+                            "r4",
+                            ":resource_type",
+                            ":resource_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "03c34a06-8c7e-4935-869f-6508d441aa34",
+                              "key": "resource_type",
+                              "value": "<string>",
+                              "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                            },
+                            {
+                              "id": "4cee701d-1375-4644-b407-a3abf8d1732c",
+                              "key": "resource_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Reads a specific changed FHIR resource."
+                      },
+                      "response": [
+                        {
+                          "id": "e09ede53-f103-4e0b-8b2f-7eb1bf7eeecb",
+                          "name": "FHIR resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deltas/r4/:resource_type/:resource_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deltas",
+                                "r4",
+                                ":resource_type",
+                                ":resource_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resource_type"
+                                },
+                                {
+                                  "key": "resource_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:10.000Z",
+                          "updatedAt": "2026-07-28T02:32:10.000Z",
+                          "uid": "35240-e09ede53-f103-4e0b-8b2f-7eb1bf7eeecb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:10.000Z",
+                      "updatedAt": "2026-07-28T02:32:10.000Z",
+                      "uid": "35240-84e03190-293a-4180-b681-18acde4cf7a2"
+                    }
+                  ],
+                  "id": "96e61f7c-c09d-4b41-beee-459f0169a040",
+                  "createdAt": "2026-07-28T02:32:10.000Z",
+                  "updatedAt": "2026-07-28T02:32:10.000Z",
+                  "uid": "35240-96e61f7c-c09d-4b41-beee-459f0169a040"
+                },
+                {
+                  "name": "Search Deltas FHIR Resources",
+                  "id": "30ae53d5-221c-4579-b544-49efc2b50759",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/deltas/r4/:resource_type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deltas",
+                        "r4",
+                        ":resource_type"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b47e57fe-4330-46d7-92c7-47cf486e5b02",
+                          "key": "resource_type",
+                          "value": "<string>",
+                          "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                        }
+                      ]
+                    },
+                    "description": "Searches deltas for a specific FHIR resource type."
+                  },
+                  "response": [
+                    {
+                      "id": "a8ba5bee-20e5-4824-952f-cc11fc17be27",
+                      "name": "FHIR Bundle of changed resources",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deltas/r4/:resource_type",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deltas",
+                            "r4",
+                            ":resource_type"
+                          ],
+                          "variable": [
+                            {
+                              "key": "resource_type"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:10.000Z",
+                      "updatedAt": "2026-07-28T02:32:10.000Z",
+                      "uid": "35240-a8ba5bee-20e5-4824-952f-cc11fc17be27"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:10.000Z",
+                  "updatedAt": "2026-07-28T02:32:10.000Z",
+                  "uid": "35240-30ae53d5-221c-4579-b544-49efc2b50759"
+                }
+              ],
+              "id": "ead2ef93-2494-467c-bfd5-d9ed36625bf1",
+              "createdAt": "2026-07-28T02:32:10.000Z",
+              "updatedAt": "2026-07-28T02:32:10.000Z",
+              "uid": "35240-ead2ef93-2494-467c-bfd5-d9ed36625bf1"
+            }
+          ],
+          "id": "004f3fbf-fcaa-4ae4-aaf7-839426408a37",
+          "createdAt": "2026-07-28T02:32:10.000Z",
+          "updatedAt": "2026-07-28T02:32:10.000Z",
+          "uid": "35240-004f3fbf-fcaa-4ae4-aaf7-839426408a37"
+        },
+        {
+          "name": "flat",
+          "item": [
+            {
+              "name": "{particle_patient_id}",
+              "item": [
+                {
+                  "name": "{resource_type}",
+                  "item": [
+                    {
+                      "name": "{resource_id}",
+                      "item": [
+                        {
+                          "name": "Get Deltas Flat Resource",
+                          "id": "9276fc9f-a1ee-453a-a43b-65114dfcd964",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id/:resource_type/:resource_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deltas",
+                                "flat",
+                                ":particle_patient_id",
+                                ":resource_type",
+                                ":resource_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7ca77e8f-9933-4dc2-8026-6d304b71c751",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                },
+                                {
+                                  "id": "bbc419b0-e32b-43e5-aa55-4d9d77cd659d",
+                                  "key": "resource_type",
+                                  "value": "<string>",
+                                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                                },
+                                {
+                                  "id": "67ecdef5-f3ca-4ca1-b41c-9c476b9b9ea4",
+                                  "key": "resource_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "42a52ff9-06ce-4276-acc5-cba9724b1594",
+                              "name": "Flat resource",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id/:resource_type/:resource_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "deltas",
+                                    "flat",
+                                    ":particle_patient_id",
+                                    ":resource_type",
+                                    ":resource_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    },
+                                    {
+                                      "key": "resource_type"
+                                    },
+                                    {
+                                      "key": "resource_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:10.000Z",
+                              "updatedAt": "2026-07-28T02:32:10.000Z",
+                              "uid": "35240-42a52ff9-06ce-4276-acc5-cba9724b1594"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:10.000Z",
+                          "updatedAt": "2026-07-28T02:32:10.000Z",
+                          "uid": "35240-9276fc9f-a1ee-453a-a43b-65114dfcd964"
+                        }
+                      ],
+                      "id": "7e3d044e-cb7a-4b7a-ab0c-5abd1bd053a4",
+                      "createdAt": "2026-07-28T02:32:10.000Z",
+                      "updatedAt": "2026-07-28T02:32:10.000Z",
+                      "uid": "35240-7e3d044e-cb7a-4b7a-ab0c-5abd1bd053a4"
+                    }
+                  ],
+                  "id": "61052637-f53e-4b48-90fc-ce31f8c9e0d2",
+                  "createdAt": "2026-07-28T02:32:10.000Z",
+                  "updatedAt": "2026-07-28T02:32:10.000Z",
+                  "uid": "35240-61052637-f53e-4b48-90fc-ce31f8c9e0d2"
+                },
+                {
+                  "name": "Collect Deltas Flat Datasets",
+                  "id": "1bc6d1a1-8802-4bdd-81c9-2042baebbec9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deltas",
+                        "flat",
+                        ":particle_patient_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "54de18de-6ecb-4b4b-ba8e-26e2bc2ba4c0",
+                          "key": "particle_patient_id",
+                          "value": "<string>",
+                          "description": "(Required) Particle Patient ID (PPID)"
+                        }
+                      ]
+                    },
+                    "description": "Returns Flat datasets changed since the supplied `_since` timestamp."
+                  },
+                  "response": [
+                    {
+                      "id": "2c0817c2-a222-43eb-a546-3b2295b2a901",
+                      "name": "Flat dataset bundle",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deltas/flat/:particle_patient_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deltas",
+                            "flat",
+                            ":particle_patient_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "particle_patient_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:10.000Z",
+                      "updatedAt": "2026-07-28T02:32:10.000Z",
+                      "uid": "35240-2c0817c2-a222-43eb-a546-3b2295b2a901"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:10.000Z",
+                  "updatedAt": "2026-07-28T02:32:10.000Z",
+                  "uid": "35240-1bc6d1a1-8802-4bdd-81c9-2042baebbec9"
+                }
+              ],
+              "id": "57922cc3-ac31-44e9-a74c-ec13afde0814",
+              "createdAt": "2026-07-28T02:32:10.000Z",
+              "updatedAt": "2026-07-28T02:32:10.000Z",
+              "uid": "35240-57922cc3-ac31-44e9-a74c-ec13afde0814"
+            }
+          ],
+          "id": "5ee0317f-13fd-4dfe-94f0-faadaecedf5c",
+          "createdAt": "2026-07-28T02:32:10.000Z",
+          "updatedAt": "2026-07-28T02:32:10.000Z",
+          "uid": "35240-5ee0317f-13fd-4dfe-94f0-faadaecedf5c"
+        },
+        {
+          "name": "Submit Deltas Query",
+          "id": "9f10630e-d4d2-4282-a4ad-5a41794944c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/deltas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deltas"
+              ]
+            },
+            "description": "Initiates an incremental query with Purpose of Use, hints, and specialty filters."
+          },
+          "response": [
+            {
+              "id": "9a70f2b6-8012-46a5-bc14-bbd694805dc4",
+              "name": "Deltas query accepted",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deltas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deltas"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:32:10.000Z",
+              "updatedAt": "2026-07-28T02:32:10.000Z",
+              "uid": "35240-9a70f2b6-8012-46a5-bc14-bbd694805dc4"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:10.000Z",
+          "updatedAt": "2026-07-28T02:32:10.000Z",
+          "uid": "35240-9f10630e-d4d2-4282-a4ad-5a41794944c4"
+        }
+      ],
+      "id": "053ada2e-b46c-4ec0-8b60-b1216cd3b855",
+      "createdAt": "2026-07-28T02:32:10.000Z",
+      "updatedAt": "2026-07-28T02:32:10.000Z",
+      "uid": "35240-053ada2e-b46c-4ec0-8b60-b1216cd3b855"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

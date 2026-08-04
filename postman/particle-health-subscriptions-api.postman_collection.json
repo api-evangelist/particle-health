@@ -1,0 +1,479 @@
+{
+  "info": {
+    "_postman_id": "892859fd-845b-488e-a5d0-2f8287b9618f",
+    "name": "Particle Health Authentication Subscriptions API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:45.000Z",
+    "updatedAt": "2026-07-28T02:32:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-892859fd-845b-488e-a5d0-2f8287b9618f"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "patients",
+              "item": [
+                {
+                  "name": "{particle_patient_id}",
+                  "item": [
+                    {
+                      "name": "subscriptions",
+                      "item": [
+                        {
+                          "name": "trigger-sandbox-workflow",
+                          "item": [
+                            {
+                              "name": "Trigger Sandbox Workflow",
+                              "id": "e9bb556f-8d08-4ed1-ab28-a801b827625c",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions/trigger-sandbox-workflow",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "subscriptions",
+                                    "trigger-sandbox-workflow"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "2534e516-e803-4e51-a54d-5b09da59abac",
+                                      "key": "particle_patient_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Particle Patient ID (PPID)"
+                                    }
+                                  ]
+                                },
+                                "description": "Triggers sandbox webhook notification events for testing."
+                              },
+                              "response": [
+                                {
+                                  "id": "a26b8274-e360-4c03-b25d-3ca79f7378c1",
+                                  "name": "Sandbox workflow triggered",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions/trigger-sandbox-workflow",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "patients",
+                                        ":particle_patient_id",
+                                        "subscriptions",
+                                        "trigger-sandbox-workflow"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "particle_patient_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Accepted",
+                                  "code": 202,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:32:45.000Z",
+                                  "updatedAt": "2026-07-28T02:32:45.000Z",
+                                  "uid": "35240-a26b8274-e360-4c03-b25d-3ca79f7378c1"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:32:45.000Z",
+                              "updatedAt": "2026-07-28T02:32:45.000Z",
+                              "uid": "35240-e9bb556f-8d08-4ed1-ab28-a801b827625c"
+                            }
+                          ],
+                          "id": "1921ea1d-e753-413c-9b5e-c739941699c2",
+                          "createdAt": "2026-07-28T02:32:45.000Z",
+                          "updatedAt": "2026-07-28T02:32:45.000Z",
+                          "uid": "35240-1921ea1d-e753-413c-9b5e-c739941699c2"
+                        },
+                        {
+                          "name": "List Patient Subscriptions",
+                          "id": "1cc76067-9a2c-4299-81ae-fa70388cb4cf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "patients",
+                                ":particle_patient_id",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ef22862d-9675-418b-9d97-b788b0cf7d6c",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Lists subscriptions for a patient with an optional type filter."
+                          },
+                          "response": [
+                            {
+                              "id": "e6cb8e06-42c4-425d-b99b-cc76d896d4e5",
+                              "name": "Subscription list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:45.000Z",
+                              "updatedAt": "2026-07-28T02:32:45.000Z",
+                              "uid": "35240-e6cb8e06-42c4-425d-b99b-cc76d896d4e5"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:45.000Z",
+                          "updatedAt": "2026-07-28T02:32:45.000Z",
+                          "uid": "35240-1cc76067-9a2c-4299-81ae-fa70388cb4cf"
+                        },
+                        {
+                          "name": "Create Patient Subscriptions",
+                          "id": "0f44aa65-2ef5-429b-a607-ade02166a0db",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "patients",
+                                ":particle_patient_id",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5e22baaf-53fc-459f-a6ba-80c3f8ee86c8",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Adds subscriptions for a single patient."
+                          },
+                          "response": [
+                            {
+                              "id": "e1aef22a-e6d9-4e34-86f3-38f784cd8a13",
+                              "name": "Subscription created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:45.000Z",
+                              "updatedAt": "2026-07-28T02:32:45.000Z",
+                              "uid": "35240-e1aef22a-e6d9-4e34-86f3-38f784cd8a13"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:45.000Z",
+                          "updatedAt": "2026-07-28T02:32:45.000Z",
+                          "uid": "35240-0f44aa65-2ef5-429b-a607-ade02166a0db"
+                        },
+                        {
+                          "name": "Delete Patient Subscriptions",
+                          "id": "afe0a775-0ba8-46a9-ab10-8f6e14ccc418",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "patients",
+                                ":particle_patient_id",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ae01e8fd-4389-45be-a35d-df24f051bd07",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "662b4847-5182-498c-afed-d26bab759237",
+                              "name": "Subscriptions deleted",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/patients/:particle_patient_id/subscriptions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "subscriptions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:45.000Z",
+                              "updatedAt": "2026-07-28T02:32:45.000Z",
+                              "uid": "35240-662b4847-5182-498c-afed-d26bab759237"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:45.000Z",
+                          "updatedAt": "2026-07-28T02:32:45.000Z",
+                          "uid": "35240-afe0a775-0ba8-46a9-ab10-8f6e14ccc418"
+                        }
+                      ],
+                      "id": "4656ce31-7aa6-4c65-bcd2-96063818c9c9",
+                      "createdAt": "2026-07-28T02:32:45.000Z",
+                      "updatedAt": "2026-07-28T02:32:45.000Z",
+                      "uid": "35240-4656ce31-7aa6-4c65-bcd2-96063818c9c9"
+                    }
+                  ],
+                  "id": "b6731d7c-9067-43dd-8cd6-14ce55ff185d",
+                  "createdAt": "2026-07-28T02:32:45.000Z",
+                  "updatedAt": "2026-07-28T02:32:45.000Z",
+                  "uid": "35240-b6731d7c-9067-43dd-8cd6-14ce55ff185d"
+                },
+                {
+                  "name": "subscriptions",
+                  "item": [
+                    {
+                      "name": "Create Subscriptions for Multiple Patients",
+                      "id": "5493c79e-9e91-42b4-ba94-32cafdb0fb88",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/patients/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "patients",
+                            "subscriptions"
+                          ]
+                        },
+                        "description": "Subscribe a batch of patients to Signal monitoring in a single API call."
+                      },
+                      "response": [
+                        {
+                          "id": "fe7783f1-168c-4401-8bfd-f709c17ff78d",
+                          "name": "Cohort subscriptions created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/patients/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "patients",
+                                "subscriptions"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:45.000Z",
+                          "updatedAt": "2026-07-28T02:32:45.000Z",
+                          "uid": "35240-fe7783f1-168c-4401-8bfd-f709c17ff78d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:45.000Z",
+                      "updatedAt": "2026-07-28T02:32:45.000Z",
+                      "uid": "35240-5493c79e-9e91-42b4-ba94-32cafdb0fb88"
+                    }
+                  ],
+                  "id": "997300b2-804c-4ec5-8976-ec3f103ce51d",
+                  "createdAt": "2026-07-28T02:32:45.000Z",
+                  "updatedAt": "2026-07-28T02:32:45.000Z",
+                  "uid": "35240-997300b2-804c-4ec5-8976-ec3f103ce51d"
+                }
+              ],
+              "id": "56a206e7-364e-41e1-b6bb-5a6f1c468c3e",
+              "createdAt": "2026-07-28T02:32:45.000Z",
+              "updatedAt": "2026-07-28T02:32:45.000Z",
+              "uid": "35240-56a206e7-364e-41e1-b6bb-5a6f1c468c3e"
+            }
+          ],
+          "id": "8da11304-8c59-4404-9f48-bf430031de51",
+          "createdAt": "2026-07-28T02:32:45.000Z",
+          "updatedAt": "2026-07-28T02:32:45.000Z",
+          "uid": "35240-8da11304-8c59-4404-9f48-bf430031de51"
+        }
+      ],
+      "id": "c2d2cf12-c274-4244-863d-26d0353f7285",
+      "createdAt": "2026-07-28T02:32:45.000Z",
+      "updatedAt": "2026-07-28T02:32:45.000Z",
+      "uid": "35240-c2d2cf12-c274-4244-863d-26d0353f7285"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

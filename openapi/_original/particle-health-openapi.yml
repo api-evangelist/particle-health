@@ -1,0 +1,750 @@
+openapi: 3.1.0
+info:
+  title: Particle Health API
+  description: >-
+    Particle Health is a healthcare data interoperability API that aggregates patient
+    medical records from US health information exchanges (Carequality, CommonWell,
+    eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API
+    surfaces patient registration, asynchronous query orchestration, batch processing,
+    document handling, network participant directory search, patient provider mapping,
+    and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA
+    documents, Flat datasets, or Deltas (incremental changes). Authentication uses
+    OAuth 2 client-credentials with JWT bearer tokens scoped to a project.
+  version: 'v1'
+  contact:
+    name: Particle Health Support
+    email: support@particlehealth.com
+    url: https://particlehealth.com/contact
+  license:
+    name: Particle Health Terms of Service
+    url: https://particlehealth.com/
+externalDocs:
+  description: Particle Health API Documentation
+  url: https://docs.particlehealth.com/
+servers:
+  - url: https://api.particlehealth.com
+    description: Particle Health Production
+tags:
+  - name: Authentication
+    description: OAuth 2 client-credentials JWT issuance.
+  - name: Patients
+    description: Patient demographic registration and lookup.
+  - name: Queries
+    description: One-time network query orchestration.
+  - name: Deltas
+    description: Incremental change retrieval since a previous query.
+  - name: FHIR
+    description: FHIR R4 resource search and read.
+  - name: Flat
+    description: Flat (normalized columnar) clinical data domains.
+  - name: CCDA
+    description: C-CDA clinical document retrieval.
+  - name: Documents
+    description: Document upload, retrieval, and deletion.
+  - name: Batches
+    description: Batch query orchestration over patient cohorts.
+  - name: HL7v2
+    description: HL7v2 ADT messages.
+  - name: Signal
+    description: Real-time encounter, transition, and ADT alerts.
+  - name: Subscriptions
+    description: Patient subscription management for Signal.
+  - name: NetworkParticipants
+    description: Directory search over connected network organizations.
+  - name: ProviderMap
+    description: Patient provider mapping across the network.
+  - name: Notifications
+    description: Project-level webhook notification configuration.
+  - name: Projects
+    description: Project and service-account management.
+  - name: Files
+    description: Query result file download.
+security:
+  - bearerAuth: []
+paths:
+  /auth:
+    get:
+      operationId: getAuthToken
+      summary: Generate a JSON Web Token
+      description: Generate a JSON Web Token (JWT) via the OAuth 2 client-credentials grant. The
+        returned token is valid for one hour and must be sent as a Bearer token on subsequent calls.
+      tags: [Authentication]
+      security: []
+      parameters:
+        - name: client_id
+          in: header
+          required: true
+          schema: { type: string }
+        - name: client_secret
+          in: header
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: JWT access token issued
+  /api/v2/patients:
+    get:
+      operationId: listPatients
+      summary: List Patients
+      description: List patients registered under the current project.
+      tags: [Patients]
+      responses:
+        '200':
+          description: Patient list
+    post:
+      operationId: submitPatient
+      summary: Submit Patient
+      description: Register a patient's demographics and obtain a unique Particle Patient ID (PPID).
+      tags: [Patients]
+      responses:
+        '201':
+          description: Patient created
+  /api/v2/patients/{id}:
+    get:
+      operationId: getPatient
+      summary: Get Patient
+      tags: [Patients]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Patient resource
+    delete:
+      operationId: deletePatient
+      summary: Delete Patient
+      tags: [Patients]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '204':
+          description: Patient deleted
+  /api/v2/patients/search:
+    post:
+      operationId: searchPatient
+      summary: Search Patient
+      description: Search for patients by demographic identifiers.
+      tags: [Patients]
+      responses:
+        '200':
+          description: Patient search results
+  /api/v2/patients/{particle_patient_id}/query:
+    get:
+      operationId: getPatientQueryStatus
+      summary: Get Query Status
+      description: Returns the current state and timestamps for the most recent query for a patient.
+      tags: [Queries]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: Query status
+    post:
+      operationId: createPatientQuery
+      summary: Create Query
+      description: Starts a one-time query for this Particle Patient ID under a Purpose of Use.
+      tags: [Queries]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '202':
+          description: Query accepted
+  /api/v1/queries:
+    get:
+      operationId: listQueries
+      summary: List Queries
+      description: Lists queries you have created.
+      tags: [Queries]
+      responses:
+        '200':
+          description: Query list
+    post:
+      operationId: createQuery
+      summary: Create Query
+      description: Starts a one-time network query using demographics.
+      tags: [Queries]
+      responses:
+        '202':
+          description: Query accepted
+  /api/v1/queries/{id}:
+    get:
+      operationId: getQuery
+      summary: Get Query
+      description: Returns status and result pointers for a query.
+      tags: [Queries]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Query status
+  /deltas:
+    post:
+      operationId: submitDeltasQuery
+      summary: Submit Deltas Query
+      description: Initiates an incremental query with Purpose of Use, hints, and specialty filters.
+      tags: [Deltas]
+      responses:
+        '202':
+          description: Deltas query accepted
+  /deltas/{particle_patient_id}:
+    get:
+      operationId: getDeltasQueryStatus
+      summary: Get Deltas Query Status
+      tags: [Deltas]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: Deltas query status
+  /deltas/r4/Patient/{particle_patient_id}/$everything:
+    get:
+      operationId: collectDeltasFhirEverything
+      summary: Collect Deltas FHIR Datasets
+      description: Returns a FHIR Bundle of changed resources for the patient since the last sync.
+      tags: [Deltas, FHIR]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: FHIR Bundle of changed resources
+  /deltas/r4/{resource_type}:
+    get:
+      operationId: searchDeltasFhirResources
+      summary: Search Deltas FHIR Resources
+      description: Searches deltas for a specific FHIR resource type.
+      tags: [Deltas, FHIR]
+      parameters:
+        - $ref: '#/components/parameters/resourceTypeParam'
+      responses:
+        '200':
+          description: FHIR Bundle of changed resources
+  /deltas/r4/{resource_type}/{resource_id}:
+    get:
+      operationId: readDeltasFhirResource
+      summary: Read Deltas FHIR Resource
+      description: Reads a specific changed FHIR resource.
+      tags: [Deltas, FHIR]
+      parameters:
+        - $ref: '#/components/parameters/resourceTypeParam'
+        - $ref: '#/components/parameters/resourceIdParam'
+      responses:
+        '200':
+          description: FHIR resource
+  /deltas/flat/{particle_patient_id}:
+    get:
+      operationId: collectDeltasFlatDatasets
+      summary: Collect Deltas Flat Datasets
+      description: Returns Flat datasets changed since the supplied `_since` timestamp.
+      tags: [Deltas, Flat]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: Flat dataset bundle
+  /deltas/flat/{particle_patient_id}/{resource_type}/{resource_id}:
+    get:
+      operationId: getDeltasFlatResource
+      summary: Get Deltas Flat Resource
+      tags: [Deltas, Flat]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+        - $ref: '#/components/parameters/resourceTypeParam'
+        - $ref: '#/components/parameters/resourceIdParam'
+      responses:
+        '200':
+          description: Flat resource
+  /r4/Patient:
+    post:
+      operationId: createFhirPatient
+      summary: Create FHIR Patient
+      description: Creates a FHIR R4 Patient resource.
+      tags: [FHIR, Patients]
+      responses:
+        '201':
+          description: FHIR Patient created
+  /r4/Patient/{patient_id}/$everything:
+    get:
+      operationId: getFhirPatientEverything
+      summary: Get Patient $everything
+      description: Returns a FHIR Bundle of all resources related to the patient with paging and date filters.
+      tags: [FHIR]
+      parameters:
+        - name: patient_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: FHIR Bundle
+  /r4/Patient/{patient_id}/query:
+    get:
+      operationId: getFhirPatientQueryStatus
+      summary: Get FHIR Patient Query Status
+      tags: [FHIR, Queries]
+      parameters:
+        - name: patient_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Query status
+    post:
+      operationId: createFhirPatientQuery
+      summary: Create FHIR Patient Query
+      tags: [FHIR, Queries]
+      parameters:
+        - name: patient_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '202':
+          description: Query accepted
+  /r4/{resource_type}:
+    get:
+      operationId: searchFhirResources
+      summary: Search FHIR Resources
+      description: Search a FHIR resource type (Patient, Encounter, Condition, etc.) scoped by patient.
+      tags: [FHIR]
+      parameters:
+        - $ref: '#/components/parameters/resourceTypeParam'
+        - name: patient
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: FHIR Bundle
+  /r4/{resource_type}/{resource_id}:
+    get:
+      operationId: readFhirResource
+      summary: Read FHIR Resource
+      tags: [FHIR]
+      parameters:
+        - $ref: '#/components/parameters/resourceTypeParam'
+        - $ref: '#/components/parameters/resourceIdParam'
+      responses:
+        '200':
+          description: FHIR resource
+  /flat:
+    post:
+      operationId: submitFlatPatient
+      summary: Submit Flat Patient
+      description: Initiates a Flat query for a specific patient using demographics.
+      tags: [Flat]
+      responses:
+        '202':
+          description: Flat query accepted
+  /flat/{id}:
+    get:
+      operationId: getFlatPatient
+      summary: Get Flat Patient
+      tags: [Flat]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Flat patient status
+  /flat/{id}/collect-data:
+    get:
+      operationId: collectFlatDatasets
+      summary: Collect Flat Datasets
+      description: Retrieve Flat clinical data domains (allergies, encounters, medications, labs, etc.).
+      tags: [Flat]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Flat datasets
+  /flat/{patient_id}/{resource_type}/{resource_id}:
+    get:
+      operationId: getFlatResource
+      summary: Get Flat Resource
+      tags: [Flat]
+      parameters:
+        - name: patient_id
+          in: path
+          required: true
+          schema: { type: string }
+        - $ref: '#/components/parameters/resourceTypeParam'
+        - $ref: '#/components/parameters/resourceIdParam'
+      responses:
+        '200':
+          description: Flat resource
+  /api/v2/patients/{particle_patient_id}/ccda:
+    get:
+      operationId: getCcdaFiles
+      summary: Get CCDA Files
+      description: Download a zip of CCDA files or a single CCDA document for a patient.
+      tags: [CCDA]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: CCDA file(s)
+  /api/v2/patients/{particle_patient_id}/fhir:
+    get:
+      operationId: getFhirDatasets
+      summary: Get FHIR Datasets
+      description: Returns a FHIR Bundle with paging and incremental sync semantics.
+      tags: [FHIR]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: FHIR Bundle
+  /api/v2/patients/{particle_patient_id}/flat:
+    get:
+      operationId: collectV2FlatDatasets
+      summary: Collect v2 Flat Datasets
+      description: Retrieve flat datasets filtered by domain (ALLERGIES, ENCOUNTERS, MEDICATIONS,
+        LABS, IMMUNIZATIONS, VITAL_SIGNS, etc.) or a specific resource.
+      tags: [Flat]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: Flat datasets
+  /api/v1/documents:
+    post:
+      operationId: submitDocument
+      summary: Submit Document
+      description: Upload a document (CCDA, discharge summary, etc.) with metadata for ingestion.
+      tags: [Documents]
+      responses:
+        '201':
+          description: Document accepted
+  /api/v1/documents/{id}:
+    get:
+      operationId: getDocument
+      summary: Get Document
+      tags: [Documents]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Document
+    delete:
+      operationId: deleteDocument
+      summary: Delete Document
+      tags: [Documents]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '204':
+          description: Document deleted
+  /api/v1/documents/patient/{id}:
+    get:
+      operationId: getPatientDocuments
+      summary: Get Patient Documents
+      tags: [Documents]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Document list
+  /api/v1/batches:
+    get:
+      operationId: listBatches
+      summary: List Batches
+      description: Lists batch jobs with state, type, and counts.
+      tags: [Batches]
+      responses:
+        '200':
+          description: Batch list
+  /api/v1/batches/{batch_type}:
+    post:
+      operationId: createBatch
+      summary: Create Batch
+      description: Starts a batch job of type CCDA, FHIR_R4, FLAT, or DELTAS over a patient cohort.
+      tags: [Batches]
+      parameters:
+        - name: batch_type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [CCDA, FHIR_R4, FLAT, DELTAS]
+      responses:
+        '202':
+          description: Batch accepted
+  /api/v1/batches/{batch_id}:
+    get:
+      operationId: getBatch
+      summary: Get Batch
+      description: Returns batch metadata, progress, and results summary.
+      tags: [Batches]
+      parameters:
+        - name: batch_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Batch status
+  /hl7v2/message/{id}:
+    get:
+      operationId: getHl7v2Message
+      summary: Get HL7v2 Message
+      description: Returns a single HL7v2 ADT message.
+      tags: [HL7v2]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: HL7v2 message
+  /hl7v2/patient/{particle_patient_id}:
+    get:
+      operationId: getHl7v2Messages
+      summary: Get HL7v2 Messages by Patient
+      tags: [HL7v2]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: HL7v2 message list
+  /api/v1/alerts/network:
+    get:
+      operationId: getNetworkAlerts
+      summary: Get Network Alerts
+      description: Retrieve network alerts generated for subscribed patients in the project.
+      tags: [Signal]
+      responses:
+        '200':
+          description: Network alerts
+  /api/v1/alerts/network/{id}:
+    get:
+      operationId: getNetworkAlert
+      summary: Get Network Alert
+      tags: [Signal]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Network alert
+  /api/v1/patients/{id}/signals:
+    get:
+      operationId: getPatientSignals
+      summary: Get Patient Signals
+      description: Retrieve the Signal alert history for a specific patient.
+      tags: [Signal]
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          description: Patient signal history
+  /api/v1/patients/signalscohort:
+    get:
+      operationId: getPatientSignalsCohort
+      summary: Get Patient Signals Cohort
+      description: Retrieve the list of patients currently enrolled in Signal monitoring.
+      tags: [Signal]
+      responses:
+        '200':
+          description: Signal cohort
+  /api/v1/patients/{particle_patient_id}/subscriptions:
+    get:
+      operationId: listPatientSubscriptions
+      summary: List Patient Subscriptions
+      description: Lists subscriptions for a patient with an optional type filter.
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: Subscription list
+    post:
+      operationId: createPatientSubscriptions
+      summary: Create Patient Subscriptions
+      description: Adds subscriptions for a single patient.
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '201':
+          description: Subscription created
+    delete:
+      operationId: deletePatientSubscriptions
+      summary: Delete Patient Subscriptions
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '204':
+          description: Subscriptions deleted
+  /api/v1/patients/subscriptions:
+    post:
+      operationId: createCohortSubscriptions
+      summary: Create Subscriptions for Multiple Patients
+      description: Subscribe a batch of patients to Signal monitoring in a single API call.
+      tags: [Subscriptions]
+      responses:
+        '201':
+          description: Cohort subscriptions created
+  /api/v1/patients/{particle_patient_id}/subscriptions/trigger-sandbox-workflow:
+    post:
+      operationId: triggerSandboxWorkflow
+      summary: Trigger Sandbox Workflow
+      description: Triggers sandbox webhook notification events for testing.
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '202':
+          description: Sandbox workflow triggered
+  /api/v1/networkparticipants:
+    get:
+      operationId: searchNetworkParticipants
+      summary: Search Network Participants
+      description: Search for healthcare organizations participating in Particle's connected networks.
+      tags: [NetworkParticipants]
+      responses:
+        '200':
+          description: Participant list
+  /api/v1/networkparticipants/state/{state}:
+    get:
+      operationId: searchNetworkParticipantsByState
+      summary: Search Network Participants by State
+      tags: [NetworkParticipants]
+      parameters:
+        - name: state
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Participant list
+  /api/v1/networkparticipants/zipcode/{zip}:
+    get:
+      operationId: searchNetworkParticipantsByZipcode
+      summary: Search Network Participants by Zipcode
+      tags: [NetworkParticipants]
+      parameters:
+        - name: zip
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Participant list
+  /api/v1/patients/{particle_patient_id}/provider-map:
+    get:
+      operationId: getPatientProviderMap
+      summary: Get Patient Provider Map
+      description: Returns the set of healthcare organizations associated with the given patient across
+        Particle's network, enriched with NPI, address, and managing organization details.
+      tags: [ProviderMap]
+      parameters:
+        - $ref: '#/components/parameters/particlePatientIdParam'
+      responses:
+        '200':
+          description: Provider map
+  /api/v1/files/{query_id}/{file_id}:
+    get:
+      operationId: downloadFile
+      summary: Download a File
+      description: Download an individual file from a query result.
+      tags: [Files]
+      parameters:
+        - name: query_id
+          in: path
+          required: true
+          schema: { type: string }
+        - name: file_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: File contents
+  /api/v1/files/{query_id}/zip:
+    get:
+      operationId: downloadQueryZip
+      summary: Download Query Zip
+      description: Download a zipped archive of all results for a query.
+      tags: [Files]
+      parameters:
+        - name: query_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Zip archive
+  /projects:
+    get:
+      operationId: searchProjects
+      summary: Search Projects
+      description: Searches projects by simple field filter.
+      tags: [Projects]
+      responses:
+        '200':
+          description: Project list
+  /projects/{project_id}/notifications:
+    get:
+      operationId: listProjectNotifications
+      summary: List Project Notifications
+      tags: [Notifications]
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Notification list
+    post:
+      operationId: createProjectNotification
+      summary: Create Project Notification
+      description: Creates a webhook notification under a specific project.
+      tags: [Notifications]
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '201':
+          description: Notification created
+  /service-accounts:
+    get:
+      operationId: searchServiceAccounts
+      summary: Search Service Accounts
+      description: Searches service accounts by simple field filter.
+      tags: [Projects]
+      responses:
+        '200':
+          description: Service account list
+components:
+  parameters:
+    idParam:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    particlePatientIdParam:
+      name: particle_patient_id
+      in: path
+      required: true
+      description: Particle Patient ID (PPID)
+      schema:
+        type: string
+    resourceTypeParam:
+      name: resource_type
+      in: path
+      required: true
+      description: FHIR resource type (Patient, Encounter, Condition, Observation, etc.)
+      schema:
+        type: string
+    resourceIdParam:
+      name: resource_id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2 client-credentials JWT issued by `/auth`. Token expires after one hour.

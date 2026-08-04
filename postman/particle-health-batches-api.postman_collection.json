@@ -1,0 +1,294 @@
+{
+  "info": {
+    "_postman_id": "17c94e06-6ccc-4a5d-a90c-ccba01b017bd",
+    "name": "Particle Health Authentication Batches API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:07.000Z",
+    "updatedAt": "2026-07-28T02:32:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-17c94e06-6ccc-4a5d-a90c-ccba01b017bd"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "batches",
+              "item": [
+                {
+                  "name": "{batch_type}",
+                  "item": [
+                    {
+                      "name": "Create Batch",
+                      "id": "ffba3c44-8aec-41bf-a02c-509aeb44bdcb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/batches/:batch_type",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "batches",
+                            ":batch_type"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3b636fb7-7d3b-450a-bb37-6f0ab19a94b7",
+                              "key": "batch_type",
+                              "value": "FHIR_R4",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Starts a batch job of type CCDA, FHIR_R4, FLAT, or DELTAS over a patient cohort."
+                      },
+                      "response": [
+                        {
+                          "id": "24e419f4-6c4f-4286-8196-b24fd11baeb5",
+                          "name": "Batch accepted",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/batches/:batch_type",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "batches",
+                                ":batch_type"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "batch_type"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:07.000Z",
+                          "updatedAt": "2026-07-28T02:32:07.000Z",
+                          "uid": "35240-24e419f4-6c4f-4286-8196-b24fd11baeb5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:07.000Z",
+                      "updatedAt": "2026-07-28T02:32:07.000Z",
+                      "uid": "35240-ffba3c44-8aec-41bf-a02c-509aeb44bdcb"
+                    }
+                  ],
+                  "id": "c5764516-74f5-4961-be3b-8ff4ab9a36e9",
+                  "createdAt": "2026-07-28T02:32:07.000Z",
+                  "updatedAt": "2026-07-28T02:32:07.000Z",
+                  "uid": "35240-c5764516-74f5-4961-be3b-8ff4ab9a36e9"
+                },
+                {
+                  "name": "{batch_id}",
+                  "item": [
+                    {
+                      "name": "Get Batch",
+                      "id": "7630fc66-f91d-40ce-8ea8-352b07556cc2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/batches/:batch_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "batches",
+                            ":batch_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "af6c4959-5c92-449b-bf67-d276ee78a4a0",
+                              "key": "batch_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns batch metadata, progress, and results summary."
+                      },
+                      "response": [
+                        {
+                          "id": "53535c66-b6ea-4c81-83e7-d5af1d39b9ea",
+                          "name": "Batch status",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/batches/:batch_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "batches",
+                                ":batch_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "batch_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:07.000Z",
+                          "updatedAt": "2026-07-28T02:32:07.000Z",
+                          "uid": "35240-53535c66-b6ea-4c81-83e7-d5af1d39b9ea"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:07.000Z",
+                      "updatedAt": "2026-07-28T02:32:07.000Z",
+                      "uid": "35240-7630fc66-f91d-40ce-8ea8-352b07556cc2"
+                    }
+                  ],
+                  "id": "582a65e0-2755-41c7-99a1-40bd79df65a3",
+                  "createdAt": "2026-07-28T02:32:07.000Z",
+                  "updatedAt": "2026-07-28T02:32:07.000Z",
+                  "uid": "35240-582a65e0-2755-41c7-99a1-40bd79df65a3"
+                },
+                {
+                  "name": "List Batches",
+                  "id": "f18f35a9-0ff4-4331-baf7-f7996b6b7bfc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/batches",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "batches"
+                      ]
+                    },
+                    "description": "Lists batch jobs with state, type, and counts."
+                  },
+                  "response": [
+                    {
+                      "id": "778cadfc-da8f-47d8-862e-d7eb4886c9e9",
+                      "name": "Batch list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/batches",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "batches"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:07.000Z",
+                      "updatedAt": "2026-07-28T02:32:07.000Z",
+                      "uid": "35240-778cadfc-da8f-47d8-862e-d7eb4886c9e9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:07.000Z",
+                  "updatedAt": "2026-07-28T02:32:07.000Z",
+                  "uid": "35240-f18f35a9-0ff4-4331-baf7-f7996b6b7bfc"
+                }
+              ],
+              "id": "811b00a3-18e7-4d5a-b024-a8ef2643583a",
+              "createdAt": "2026-07-28T02:32:07.000Z",
+              "updatedAt": "2026-07-28T02:32:07.000Z",
+              "uid": "35240-811b00a3-18e7-4d5a-b024-a8ef2643583a"
+            }
+          ],
+          "id": "fc08b177-5c5e-406b-b6fd-ab5dcdef1d38",
+          "createdAt": "2026-07-28T02:32:07.000Z",
+          "updatedAt": "2026-07-28T02:32:07.000Z",
+          "uid": "35240-fc08b177-5c5e-406b-b6fd-ab5dcdef1d38"
+        }
+      ],
+      "id": "ca7f30b5-e4b9-464b-994f-233ba85d8c34",
+      "createdAt": "2026-07-28T02:32:07.000Z",
+      "updatedAt": "2026-07-28T02:32:07.000Z",
+      "uid": "35240-ca7f30b5-e4b9-464b-994f-233ba85d8c34"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

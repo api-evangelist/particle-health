@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "48ffacf9-a676-40d9-b9ea-32d41fb25050",
+    "name": "Particle Health Authentication CCDA API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:08.000Z",
+    "updatedAt": "2026-07-28T02:32:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-48ffacf9-a676-40d9-b9ea-32d41fb25050"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "patients",
+              "item": [
+                {
+                  "name": "{particle_patient_id}",
+                  "item": [
+                    {
+                      "name": "ccda",
+                      "item": [
+                        {
+                          "name": "Get CCDA Files",
+                          "id": "0b31bc21-6933-4e89-b21c-dadb22e3d63a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/ccda",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "patients",
+                                ":particle_patient_id",
+                                "ccda"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c4c9d2fb-d5d3-4a95-a66a-811e0249dbed",
+                                  "key": "particle_patient_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Particle Patient ID (PPID)"
+                                }
+                              ]
+                            },
+                            "description": "Download a zip of CCDA files or a single CCDA document for a patient."
+                          },
+                          "response": [
+                            {
+                              "id": "6696a729-fb22-4791-b228-45539b8606af",
+                              "name": "CCDA file(s)",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/patients/:particle_patient_id/ccda",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "patients",
+                                    ":particle_patient_id",
+                                    "ccda"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "particle_patient_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:08.000Z",
+                              "updatedAt": "2026-07-28T02:32:08.000Z",
+                              "uid": "35240-6696a729-fb22-4791-b228-45539b8606af"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:08.000Z",
+                          "updatedAt": "2026-07-28T02:32:08.000Z",
+                          "uid": "35240-0b31bc21-6933-4e89-b21c-dadb22e3d63a"
+                        }
+                      ],
+                      "id": "634e60e2-9ce7-4944-aa79-5c087be8c8ec",
+                      "createdAt": "2026-07-28T02:32:08.000Z",
+                      "updatedAt": "2026-07-28T02:32:08.000Z",
+                      "uid": "35240-634e60e2-9ce7-4944-aa79-5c087be8c8ec"
+                    }
+                  ],
+                  "id": "1560c4c4-2966-42bd-a541-9523030014c2",
+                  "createdAt": "2026-07-28T02:32:08.000Z",
+                  "updatedAt": "2026-07-28T02:32:08.000Z",
+                  "uid": "35240-1560c4c4-2966-42bd-a541-9523030014c2"
+                }
+              ],
+              "id": "f4c46604-31c2-4956-b5b9-b5f5b9e1078f",
+              "createdAt": "2026-07-28T02:32:08.000Z",
+              "updatedAt": "2026-07-28T02:32:08.000Z",
+              "uid": "35240-f4c46604-31c2-4956-b5b9-b5f5b9e1078f"
+            }
+          ],
+          "id": "9bea8e2e-a534-4383-a65b-76af0d5db45c",
+          "createdAt": "2026-07-28T02:32:08.000Z",
+          "updatedAt": "2026-07-28T02:32:08.000Z",
+          "uid": "35240-9bea8e2e-a534-4383-a65b-76af0d5db45c"
+        }
+      ],
+      "id": "d734d073-82a6-4ef3-8abd-d03c7bb29c51",
+      "createdAt": "2026-07-28T02:32:08.000Z",
+      "updatedAt": "2026-07-28T02:32:08.000Z",
+      "uid": "35240-d734d073-82a6-4ef3-8abd-d03c7bb29c51"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

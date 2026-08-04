@@ -1,0 +1,400 @@
+{
+  "info": {
+    "_postman_id": "69b54da1-7e38-4cd6-95cc-bb480df36258",
+    "name": "Particle Health Authentication Signal API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:44.000Z",
+    "updatedAt": "2026-07-28T02:32:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-69b54da1-7e38-4cd6-95cc-bb480df36258"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "alerts",
+              "item": [
+                {
+                  "name": "network",
+                  "item": [
+                    {
+                      "name": "{id}",
+                      "item": [
+                        {
+                          "name": "Get Network Alert",
+                          "id": "51be3ff5-4a15-4594-8161-504e363775b4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/alerts/network/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "alerts",
+                                "network",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6a3abcdd-8dbf-4459-b827-35032e80774c",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "23defd91-9440-4392-bc76-3e8448270f1c",
+                              "name": "Network alert",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/alerts/network/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "alerts",
+                                    "network",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:44.000Z",
+                              "updatedAt": "2026-07-28T02:32:44.000Z",
+                              "uid": "35240-23defd91-9440-4392-bc76-3e8448270f1c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:44.000Z",
+                          "updatedAt": "2026-07-28T02:32:44.000Z",
+                          "uid": "35240-51be3ff5-4a15-4594-8161-504e363775b4"
+                        }
+                      ],
+                      "id": "a5de27ea-f7ff-4514-8bc9-c8f1292dcc5a",
+                      "createdAt": "2026-07-28T02:32:44.000Z",
+                      "updatedAt": "2026-07-28T02:32:44.000Z",
+                      "uid": "35240-a5de27ea-f7ff-4514-8bc9-c8f1292dcc5a"
+                    },
+                    {
+                      "name": "Get Network Alerts",
+                      "id": "209464f5-c8d4-4e41-990c-850e631c648b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/alerts/network",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "alerts",
+                            "network"
+                          ]
+                        },
+                        "description": "Retrieve network alerts generated for subscribed patients in the project."
+                      },
+                      "response": [
+                        {
+                          "id": "5f71fc03-8e11-40ae-8946-e2fe1e0ec7d3",
+                          "name": "Network alerts",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/alerts/network",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "alerts",
+                                "network"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:44.000Z",
+                          "updatedAt": "2026-07-28T02:32:44.000Z",
+                          "uid": "35240-5f71fc03-8e11-40ae-8946-e2fe1e0ec7d3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:44.000Z",
+                      "updatedAt": "2026-07-28T02:32:44.000Z",
+                      "uid": "35240-209464f5-c8d4-4e41-990c-850e631c648b"
+                    }
+                  ],
+                  "id": "2334ed73-f728-4229-8d0b-c87cb64498db",
+                  "createdAt": "2026-07-28T02:32:44.000Z",
+                  "updatedAt": "2026-07-28T02:32:44.000Z",
+                  "uid": "35240-2334ed73-f728-4229-8d0b-c87cb64498db"
+                }
+              ],
+              "id": "982f5516-3db0-4d35-9b09-203ff276e161",
+              "createdAt": "2026-07-28T02:32:44.000Z",
+              "updatedAt": "2026-07-28T02:32:44.000Z",
+              "uid": "35240-982f5516-3db0-4d35-9b09-203ff276e161"
+            },
+            {
+              "name": "patients",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "signals",
+                      "item": [
+                        {
+                          "name": "Get Patient Signals",
+                          "id": "236a797f-0838-4b81-adeb-6b18a8164877",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/patients/:id/signals",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "patients",
+                                ":id",
+                                "signals"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "42618d59-d48a-4afa-b1c6-2d0f708bbe8b",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieve the Signal alert history for a specific patient."
+                          },
+                          "response": [
+                            {
+                              "id": "b180ccd8-b166-45be-bd8c-f5458e4a01c7",
+                              "name": "Patient signal history",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/patients/:id/signals",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "patients",
+                                    ":id",
+                                    "signals"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:44.000Z",
+                              "updatedAt": "2026-07-28T02:32:44.000Z",
+                              "uid": "35240-b180ccd8-b166-45be-bd8c-f5458e4a01c7"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:44.000Z",
+                          "updatedAt": "2026-07-28T02:32:44.000Z",
+                          "uid": "35240-236a797f-0838-4b81-adeb-6b18a8164877"
+                        }
+                      ],
+                      "id": "d7c4ee91-fbd2-4e40-b5e0-65bdfd1ae055",
+                      "createdAt": "2026-07-28T02:32:44.000Z",
+                      "updatedAt": "2026-07-28T02:32:44.000Z",
+                      "uid": "35240-d7c4ee91-fbd2-4e40-b5e0-65bdfd1ae055"
+                    }
+                  ],
+                  "id": "0360a70b-a001-42fc-a271-142650db26d5",
+                  "createdAt": "2026-07-28T02:32:44.000Z",
+                  "updatedAt": "2026-07-28T02:32:44.000Z",
+                  "uid": "35240-0360a70b-a001-42fc-a271-142650db26d5"
+                },
+                {
+                  "name": "signalscohort",
+                  "item": [
+                    {
+                      "name": "Get Patient Signals Cohort",
+                      "id": "f73f7178-6753-421e-a8c5-ce36ddf3edf0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/patients/signalscohort",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "patients",
+                            "signalscohort"
+                          ]
+                        },
+                        "description": "Retrieve the list of patients currently enrolled in Signal monitoring."
+                      },
+                      "response": [
+                        {
+                          "id": "134e6e54-c515-41f5-aa7a-8916bed3c4e4",
+                          "name": "Signal cohort",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/patients/signalscohort",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "patients",
+                                "signalscohort"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:44.000Z",
+                          "updatedAt": "2026-07-28T02:32:44.000Z",
+                          "uid": "35240-134e6e54-c515-41f5-aa7a-8916bed3c4e4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:44.000Z",
+                      "updatedAt": "2026-07-28T02:32:44.000Z",
+                      "uid": "35240-f73f7178-6753-421e-a8c5-ce36ddf3edf0"
+                    }
+                  ],
+                  "id": "655877b1-ffb2-481f-a3cb-5f4e2fe5d90f",
+                  "createdAt": "2026-07-28T02:32:44.000Z",
+                  "updatedAt": "2026-07-28T02:32:44.000Z",
+                  "uid": "35240-655877b1-ffb2-481f-a3cb-5f4e2fe5d90f"
+                }
+              ],
+              "id": "be28e74f-ae4f-4030-be52-204f63f64d1a",
+              "createdAt": "2026-07-28T02:32:44.000Z",
+              "updatedAt": "2026-07-28T02:32:44.000Z",
+              "uid": "35240-be28e74f-ae4f-4030-be52-204f63f64d1a"
+            }
+          ],
+          "id": "06607f54-fbeb-490e-9592-43ff4b2f2c0f",
+          "createdAt": "2026-07-28T02:32:44.000Z",
+          "updatedAt": "2026-07-28T02:32:44.000Z",
+          "uid": "35240-06607f54-fbeb-490e-9592-43ff4b2f2c0f"
+        }
+      ],
+      "id": "cbdc8b55-35fa-4be7-8c87-8d70b25bb583",
+      "createdAt": "2026-07-28T02:32:44.000Z",
+      "updatedAt": "2026-07-28T02:32:44.000Z",
+      "uid": "35240-cbdc8b55-35fa-4be7-8c87-8d70b25bb583"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

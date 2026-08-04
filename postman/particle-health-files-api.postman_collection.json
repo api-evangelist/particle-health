@@ -1,0 +1,253 @@
+{
+  "info": {
+    "_postman_id": "ff6cd75f-2623-4e32-aa50-296ce44b04de",
+    "name": "Particle Health Authentication Files API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:13.000Z",
+    "updatedAt": "2026-07-28T02:32:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ff6cd75f-2623-4e32-aa50-296ce44b04de"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "files",
+              "item": [
+                {
+                  "name": "{query_id}",
+                  "item": [
+                    {
+                      "name": "{file_id}",
+                      "item": [
+                        {
+                          "name": "Download a File",
+                          "id": "a413bc7b-d2f9-48e3-8f4f-135f3affcb82",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/files/:query_id/:file_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "files",
+                                ":query_id",
+                                ":file_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "782dd003-488d-44f3-ba93-63e8eb1c4dee",
+                                  "key": "query_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "f87a42c3-036a-4c72-a393-9bf0161980b0",
+                                  "key": "file_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Download an individual file from a query result."
+                          },
+                          "response": [
+                            {
+                              "id": "90bff728-9e31-4191-bce1-fed844ce3043",
+                              "name": "File contents",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/files/:query_id/:file_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "files",
+                                    ":query_id",
+                                    ":file_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "query_id"
+                                    },
+                                    {
+                                      "key": "file_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:13.000Z",
+                              "updatedAt": "2026-07-28T02:32:13.000Z",
+                              "uid": "35240-90bff728-9e31-4191-bce1-fed844ce3043"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:13.000Z",
+                          "updatedAt": "2026-07-28T02:32:13.000Z",
+                          "uid": "35240-a413bc7b-d2f9-48e3-8f4f-135f3affcb82"
+                        }
+                      ],
+                      "id": "b74eeb9b-bcd5-444b-a01a-505ed628736a",
+                      "createdAt": "2026-07-28T02:32:13.000Z",
+                      "updatedAt": "2026-07-28T02:32:13.000Z",
+                      "uid": "35240-b74eeb9b-bcd5-444b-a01a-505ed628736a"
+                    },
+                    {
+                      "name": "zip",
+                      "item": [
+                        {
+                          "name": "Download Query Zip",
+                          "id": "96553556-b4d7-4b55-a90d-3563bdc983ab",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/files/:query_id/zip",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "files",
+                                ":query_id",
+                                "zip"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d04f70d2-4172-4b79-8b0b-c38e84a8d618",
+                                  "key": "query_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Download a zipped archive of all results for a query."
+                          },
+                          "response": [
+                            {
+                              "id": "a594326f-e149-4aaa-8a79-0dc16fd1b840",
+                              "name": "Zip archive",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/files/:query_id/zip",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "files",
+                                    ":query_id",
+                                    "zip"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "query_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:13.000Z",
+                              "updatedAt": "2026-07-28T02:32:13.000Z",
+                              "uid": "35240-a594326f-e149-4aaa-8a79-0dc16fd1b840"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:13.000Z",
+                          "updatedAt": "2026-07-28T02:32:13.000Z",
+                          "uid": "35240-96553556-b4d7-4b55-a90d-3563bdc983ab"
+                        }
+                      ],
+                      "id": "e9f45b18-d417-46d9-aa08-ba352a730112",
+                      "createdAt": "2026-07-28T02:32:13.000Z",
+                      "updatedAt": "2026-07-28T02:32:13.000Z",
+                      "uid": "35240-e9f45b18-d417-46d9-aa08-ba352a730112"
+                    }
+                  ],
+                  "id": "d9d65ff3-76f4-4c84-be15-41e755653610",
+                  "createdAt": "2026-07-28T02:32:13.000Z",
+                  "updatedAt": "2026-07-28T02:32:13.000Z",
+                  "uid": "35240-d9d65ff3-76f4-4c84-be15-41e755653610"
+                }
+              ],
+              "id": "919e1a16-a39d-4cb5-8afc-bdb6be37ceb9",
+              "createdAt": "2026-07-28T02:32:13.000Z",
+              "updatedAt": "2026-07-28T02:32:13.000Z",
+              "uid": "35240-919e1a16-a39d-4cb5-8afc-bdb6be37ceb9"
+            }
+          ],
+          "id": "26acda83-65f4-4911-8cab-1620c5c561fc",
+          "createdAt": "2026-07-28T02:32:13.000Z",
+          "updatedAt": "2026-07-28T02:32:13.000Z",
+          "uid": "35240-26acda83-65f4-4911-8cab-1620c5c561fc"
+        }
+      ],
+      "id": "b9b4986d-0754-4e1e-b921-a420b8f5bdd8",
+      "createdAt": "2026-07-28T02:32:13.000Z",
+      "updatedAt": "2026-07-28T02:32:13.000Z",
+      "uid": "35240-b9b4986d-0754-4e1e-b921-a420b8f5bdd8"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

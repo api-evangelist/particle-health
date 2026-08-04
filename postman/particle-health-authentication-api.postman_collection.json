@@ -1,0 +1,119 @@
+{
+  "info": {
+    "_postman_id": "2709a51e-fb76-44b1-943a-a7fd82064150",
+    "name": "Particle Health Authentication API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:01.000Z",
+    "updatedAt": "2026-07-28T02:32:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2709a51e-fb76-44b1-943a-a7fd82064150"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "Generate a JSON Web Token",
+          "id": "6e9f2b64-d68c-43b4-a803-fa1ac8ab26cc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "client_id",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) ",
+                "key": "client_secret",
+                "value": "<string>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            },
+            "description": "Generate a JSON Web Token (JWT) via the OAuth 2 client-credentials grant. The returned token is valid for one hour and must be sent as a Bearer token on subsequent calls."
+          },
+          "response": [
+            {
+              "id": "42364c26-17be-4841-8808-e9348c18405a",
+              "name": "JWT access token issued",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "client_id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) ",
+                    "key": "client_secret",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/auth",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:32:02.000Z",
+              "updatedAt": "2026-07-28T02:32:02.000Z",
+              "uid": "35240-42364c26-17be-4841-8808-e9348c18405a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:32:02.000Z",
+          "updatedAt": "2026-07-28T02:32:02.000Z",
+          "uid": "35240-6e9f2b64-d68c-43b4-a803-fa1ac8ab26cc"
+        }
+      ],
+      "id": "0045a3cf-0ecb-4948-b7d3-ff6a18dd993e",
+      "createdAt": "2026-07-28T02:32:02.000Z",
+      "updatedAt": "2026-07-28T02:32:02.000Z",
+      "uid": "35240-0045a3cf-0ecb-4948-b7d3-ff6a18dd993e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}

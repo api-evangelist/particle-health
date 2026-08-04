@@ -1,0 +1,314 @@
+{
+  "info": {
+    "_postman_id": "2584c6e1-9445-41ba-87a8-3444682307d7",
+    "name": "Particle Health Authentication NetworkParticipants API",
+    "description": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:32:32.000Z",
+    "updatedAt": "2026-07-28T02:32:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2584c6e1-9445-41ba-87a8-3444682307d7"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "networkparticipants",
+              "item": [
+                {
+                  "name": "state",
+                  "item": [
+                    {
+                      "name": "{state}",
+                      "item": [
+                        {
+                          "name": "Search Network Participants by State",
+                          "id": "a2c49db6-7511-4b59-93c7-597abdba723c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/networkparticipants/state/:state",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "networkparticipants",
+                                "state",
+                                ":state"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1bf8ba96-e07a-483c-848f-16d2081cc1fc",
+                                  "key": "state",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "11de3144-7ea0-4bff-8447-64ef1c7c0c09",
+                              "name": "Participant list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/networkparticipants/state/:state",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "networkparticipants",
+                                    "state",
+                                    ":state"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "state"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:32.000Z",
+                              "updatedAt": "2026-07-28T02:32:32.000Z",
+                              "uid": "35240-11de3144-7ea0-4bff-8447-64ef1c7c0c09"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:32.000Z",
+                          "updatedAt": "2026-07-28T02:32:32.000Z",
+                          "uid": "35240-a2c49db6-7511-4b59-93c7-597abdba723c"
+                        }
+                      ],
+                      "id": "b1403c07-2a36-4fcc-a131-7c1d21512868",
+                      "createdAt": "2026-07-28T02:32:32.000Z",
+                      "updatedAt": "2026-07-28T02:32:32.000Z",
+                      "uid": "35240-b1403c07-2a36-4fcc-a131-7c1d21512868"
+                    }
+                  ],
+                  "id": "61eb2a7c-0d31-4a9c-bd08-a5836d562766",
+                  "createdAt": "2026-07-28T02:32:32.000Z",
+                  "updatedAt": "2026-07-28T02:32:32.000Z",
+                  "uid": "35240-61eb2a7c-0d31-4a9c-bd08-a5836d562766"
+                },
+                {
+                  "name": "zipcode",
+                  "item": [
+                    {
+                      "name": "{zip}",
+                      "item": [
+                        {
+                          "name": "Search Network Participants by Zipcode",
+                          "id": "48e75b8d-892e-48a0-be7a-6b11f4ad0149",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/networkparticipants/zipcode/:zip",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "networkparticipants",
+                                "zipcode",
+                                ":zip"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b713764d-f299-4561-94a8-fd57d91b28ff",
+                                  "key": "zip",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "56d9bee2-ff90-4f6c-af1e-b9d372c61ae9",
+                              "name": "Participant list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/networkparticipants/zipcode/:zip",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "networkparticipants",
+                                    "zipcode",
+                                    ":zip"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "zip"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:32:32.000Z",
+                              "updatedAt": "2026-07-28T02:32:32.000Z",
+                              "uid": "35240-56d9bee2-ff90-4f6c-af1e-b9d372c61ae9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:32:32.000Z",
+                          "updatedAt": "2026-07-28T02:32:32.000Z",
+                          "uid": "35240-48e75b8d-892e-48a0-be7a-6b11f4ad0149"
+                        }
+                      ],
+                      "id": "009be665-d18c-4f68-b815-b93d2ce71bdd",
+                      "createdAt": "2026-07-28T02:32:32.000Z",
+                      "updatedAt": "2026-07-28T02:32:32.000Z",
+                      "uid": "35240-009be665-d18c-4f68-b815-b93d2ce71bdd"
+                    }
+                  ],
+                  "id": "e066229a-d613-46a3-bbb1-6940e3daec17",
+                  "createdAt": "2026-07-28T02:32:32.000Z",
+                  "updatedAt": "2026-07-28T02:32:32.000Z",
+                  "uid": "35240-e066229a-d613-46a3-bbb1-6940e3daec17"
+                },
+                {
+                  "name": "Search Network Participants",
+                  "id": "fabce4f2-9b2b-4ae5-b68b-b9372f22e060",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/networkparticipants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "networkparticipants"
+                      ]
+                    },
+                    "description": "Search for healthcare organizations participating in Particle's connected networks."
+                  },
+                  "response": [
+                    {
+                      "id": "cbaacb5c-8766-4ffa-81eb-28678891a959",
+                      "name": "Participant list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/networkparticipants",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "networkparticipants"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:32:32.000Z",
+                      "updatedAt": "2026-07-28T02:32:32.000Z",
+                      "uid": "35240-cbaacb5c-8766-4ffa-81eb-28678891a959"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:32.000Z",
+                  "updatedAt": "2026-07-28T02:32:32.000Z",
+                  "uid": "35240-fabce4f2-9b2b-4ae5-b68b-b9372f22e060"
+                }
+              ],
+              "id": "4240ea0d-3b25-499a-9765-e3164aa24f70",
+              "createdAt": "2026-07-28T02:32:32.000Z",
+              "updatedAt": "2026-07-28T02:32:32.000Z",
+              "uid": "35240-4240ea0d-3b25-499a-9765-e3164aa24f70"
+            }
+          ],
+          "id": "9b218365-e864-4ad6-8e54-4098ccdb7689",
+          "createdAt": "2026-07-28T02:32:32.000Z",
+          "updatedAt": "2026-07-28T02:32:32.000Z",
+          "uid": "35240-9b218365-e864-4ad6-8e54-4098ccdb7689"
+        }
+      ],
+      "id": "74067577-06cf-462e-a43f-6990b1aa8d49",
+      "createdAt": "2026-07-28T02:32:32.000Z",
+      "updatedAt": "2026-07-28T02:32:32.000Z",
+      "uid": "35240-74067577-06cf-462e-a43f-6990b1aa8d49"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.particlehealth.com"
+    }
+  ]
+}
