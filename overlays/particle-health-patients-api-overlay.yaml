@@ -1,0 +1,102 @@
+# generated: '2026-08-14'
+# method: generated
+# source: openapi/particle-health-patients-api-openapi.yml, agentic-access/particle-health-agentic-access.yml
+# description: Non-mutating OpenAPI Overlay 1.0.0 layering x-agentic-access execution
+#   classification and rate-limit scope metadata onto each operation. Never edits the
+#   underlying openapi/ file.
+overlay: 1.0.0
+info:
+  title: "Particle Health Authentication Patients API \u2014 API Evangelist enhancement overlay"
+  version: 1.0.0
+extends: ../openapi/particle-health-patients-api-openapi.yml
+actions:
+- target: $.paths['/api/v2/patients']['get']
+  description: Annotate listPatients with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/api/v2/patients']['post']
+  description: Annotate submitPatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/api/v2/patients/{id}']['get']
+  description: Annotate getPatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/api/v2/patients/{id}']['delete']
+  description: Annotate deletePatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/api/v2/patients/search']['post']
+  description: Annotate searchPatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/r4/Patient']['post']
+  description: Annotate createFhirPatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required

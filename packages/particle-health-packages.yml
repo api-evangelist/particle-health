@@ -1,0 +1,63 @@
+generated: '2026-08-14'
+method: searched
+source:
+  - https://registry.npmjs.org/particle-health (404)
+  - https://registry.npmjs.org/particlehealth (404)
+  - https://registry.npmjs.org/@particlehealth/sdk (404)
+  - https://pypi.org/pypi/particle-health/json (404)
+  - https://pypi.org/pypi/particlehealth/json (404)
+  - https://pypi.org/pypi/particle-starter/json (404)
+  - https://api.github.com/orgs/ParticleHealth/repos
+description: >-
+  No first-party client library is published to npm, PyPI, RubyGems, crates.io, Maven Central,
+  NuGet, or pkg.go.dev under Particle Health's name (all guessed registry names 404). Particle instead
+  publishes a public GitHub quickstart monorepo (github.com/ParticleHealth/particle-connect) containing
+  an installable-from-source Python package plus a management-UI reference app; neither is distributed
+  through a package registry.
+packages:
+  - name: particle-starter
+    ecosystem: python-source
+    official: true
+    registry: none
+    install: "pip install -e ."
+    repo: https://github.com/ParticleHealth/particle-connect/tree/main/particle-api-quickstarts
+    version: '0.1.0'
+    published: null
+    note: >-
+      Version read from pyproject.toml in the public ParticleHealth/particle-connect GitHub repo.
+      Not published to PyPI (confirmed 404 for particle-starter, particle-health, particlehealth) —
+      installed only via editable/source install (pip install -e ".[dev]") from a cloned checkout.
+      README/AGENTS.md describe it as a quickstart intended "for local development and learning —
+      not production use," not a production SDK. Provides a typed client (httpx + pydantic) covering
+      patient registration, query submission/polling, document, and Signal/subscription flows against
+      the Particle Query Flow API.
+    scope: Python SDK + workflows for Query Flow API (patients, queries, documents, Signal/ADT
+      subscriptions).
+  - name: particle-connect (management-ui)
+    ecosystem: source-only
+    official: true
+    registry: none
+    install: "docker compose up --build (or manual venv/npm install, per repo README)"
+    repo: https://github.com/ParticleHealth/particle-connect/tree/main/management-ui
+    version: null
+    published: null
+    note: >-
+      React + FastAPI reference admin UI for the Management API (organizations/projects/service
+      accounts). No version tag found in the repo; not distributed as an installable package —
+      source checkout only.
+    scope: Reference implementation for Management API administration.
+  - name: particle-analytics-quickstarts
+    ecosystem: python-source
+    official: true
+    registry: none
+    install: "pip install -e ."
+    repo: https://github.com/ParticleHealth/particle-connect/tree/main/particle-analytics-quickstarts
+    version: null
+    published: null
+    note: >-
+      DuckDB/BigQuery pipeline quickstart for loading Flat data domains; ships a `particle-pipeline`
+      CLI entry point. Source-only, no registry publication found.
+    scope: Analytics pipeline for Flat data.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

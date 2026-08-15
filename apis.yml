@@ -28,32 +28,32 @@ type: Index
 access: 3rd-Party
 position: Consumer
 tags:
-  - ADT
-  - C-CDA
-  - Care Coordination
-  - Carequality
-  - Clinical Data
-  - CommonWell
-  - Deltas
-  - eHealth Exchange
-  - EHR
-  - FHIR
-  - Health Data
-  - Health Information Exchange
-  - Healthcare
-  - HIE
-  - HL7
-  - HL7v2
-  - Interoperability
-  - Medical Records
-  - Patients
-  - Pharmacy
-  - QHIN
-  - Surescripts
-  - TEFCA
-  - USCDI
+- ADT
+- C-CDA
+- Care Coordination
+- Carequality
+- Clinical Data
+- CommonWell
+- Deltas
+- eHealth Exchange
+- EHR
+- FHIR
+- Health Data
+- Health Information Exchange
+- Healthcare
+- HIE
+- HL7
+- HL7v2
+- Interoperability
+- Medical Records
+- Patients
+- Pharmacy
+- QHIN
+- Surescripts
+- TEFCA
+- USCDI
 created: '2026-05-24'
-modified: '2026-05-24'
+modified: '2026-08-14'
 specificationVersion: '0.20'
 apis:
 - aid: particle-health:particle-health-authentication-api
@@ -100,6 +100,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-authentication-api-overlay.yaml
 - aid: particle-health:particle-health-batches-api
   name: Particle Health Batches API
   description: Batch query orchestration over patient cohorts.
@@ -144,6 +146,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-batches-api-overlay.yaml
 - aid: particle-health:particle-health-ccda-api
   name: Particle Health CCDA API
   description: C-CDA clinical document retrieval.
@@ -188,6 +192,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-ccda-api-overlay.yaml
 - aid: particle-health:particle-health-deltas-api
   name: Particle Health Deltas API
   description: Incremental change retrieval since a previous query.
@@ -232,6 +238,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-deltas-api-overlay.yaml
 - aid: particle-health:particle-health-documents-api
   name: Particle Health Documents API
   description: Document upload, retrieval, and deletion.
@@ -276,6 +284,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-documents-api-overlay.yaml
 - aid: particle-health:particle-health-fhir-api
   name: Particle Health FHIR API
   description: FHIR R4 resource search and read.
@@ -320,6 +330,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-fhir-api-overlay.yaml
 - aid: particle-health:particle-health-files-api
   name: Particle Health Files API
   description: Query result file download.
@@ -364,6 +376,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-files-api-overlay.yaml
 - aid: particle-health:particle-health-flat-api
   name: Particle Health Flat API
   description: Flat (normalized columnar) clinical data domains.
@@ -408,6 +422,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-flat-api-overlay.yaml
 - aid: particle-health:particle-health-hl7v2-api
   name: Particle Health HL7v2 API
   description: HL7v2 ADT messages.
@@ -452,6 +468,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-hl7v2-api-overlay.yaml
 - aid: particle-health:particle-health-networkparticipants-api
   name: Particle Health NetworkParticipants API
   description: Directory search over connected network organizations.
@@ -496,6 +514,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-networkparticipants-api-overlay.yaml
 - aid: particle-health:particle-health-notifications-api
   name: Particle Health Notifications API
   description: Project-level webhook notification configuration.
@@ -540,6 +560,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-notifications-api-overlay.yaml
 - aid: particle-health:particle-health-patients-api
   name: Particle Health Patients API
   description: Patient demographic registration and lookup.
@@ -584,6 +606,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-patients-api-overlay.yaml
 - aid: particle-health:particle-health-projects-api
   name: Particle Health Projects API
   description: Project and service-account management.
@@ -628,6 +652,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-projects-api-overlay.yaml
 - aid: particle-health:particle-health-providermap-api
   name: Particle Health ProviderMap API
   description: Patient provider mapping across the network.
@@ -672,6 +698,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-providermap-api-overlay.yaml
 - aid: particle-health:particle-health-queries-api
   name: Particle Health Queries API
   description: One-time network query orchestration.
@@ -716,6 +744,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-queries-api-overlay.yaml
 - aid: particle-health:particle-health-signal-api
   name: Particle Health Signal API
   description: Real-time encounter, transition, and ADT alerts.
@@ -760,6 +790,8 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-signal-api-overlay.yaml
 - aid: particle-health:particle-health-subscriptions-api
   name: Particle Health Subscriptions API
   description: Patient subscription management for Signal.
@@ -804,129 +836,172 @@ apis:
     url: https://docs.particlehealth.com/docs/delegation-of-authority
   - type: Spectral
     url: spectral/particle-health-spectral.yml
+  - type: Overlay
+    url: overlays/particle-health-subscriptions-api-overlay.yaml
 solutions:
-  - Value-Based Care Patient Data Aggregation
-  - Readmission Reduction with ADT Alerts
-  - Care Gap Closure
-  - Referral Management and Continuity of Care
-  - Patient Risk Stratification
-  - Treatment Eligibility Determination
-  - Medication Management and Reconciliation
-  - Pre-Visit Chart Preparation
-  - Onboarding and Initial Patient Visit Workflows
-  - Centers of Excellence Specialty Record Retrieval
-  - AI-Powered Clinical Summarization
+- Value-Based Care Patient Data Aggregation
+- Readmission Reduction with ADT Alerts
+- Care Gap Closure
+- Referral Management and Continuity of Care
+- Patient Risk Stratification
+- Treatment Eligibility Determination
+- Medication Management and Reconciliation
+- Pre-Visit Chart Preparation
+- Onboarding and Initial Patient Visit Workflows
+- Centers of Excellence Specialty Record Retrieval
+- AI-Powered Clinical Summarization
 useCases:
-  - Pull a longitudinal patient record from 320M+ patients across 160K+ healthcare organizations
-  - Receive real-time admission, discharge, and transfer alerts for a subscribed patient cohort
-  - Run a batch query over a patient panel and download FHIR R4, C-CDA, Flat, or Deltas results
-  - Subscribe a patient cohort to Signal monitoring for ongoing encounter and transition alerts
-  - Generate AI-driven clinical Snapshot summaries from raw aggregated medical records
-  - Locate Centers of Excellence and specialty providers via Network Participant search
-  - Map the set of healthcare organizations a patient has been seen at via Patient Provider Map
-  - Retrieve medication prescription and fill data from pharmacies and PBMs via Surescripts
-  - Submit and route Delegation of Authority (DAuth) notices for Carequality compliance
-  - Test integrations against the privacy-safe Sandbox before production cutover
+- Pull a longitudinal patient record from 320M+ patients across 160K+ healthcare organizations
+- Receive real-time admission, discharge, and transfer alerts for a subscribed patient cohort
+- Run a batch query over a patient panel and download FHIR R4, C-CDA, Flat, or Deltas results
+- Subscribe a patient cohort to Signal monitoring for ongoing encounter and transition alerts
+- Generate AI-driven clinical Snapshot summaries from raw aggregated medical records
+- Locate Centers of Excellence and specialty providers via Network Participant search
+- Map the set of healthcare organizations a patient has been seen at via Patient Provider Map
+- Retrieve medication prescription and fill data from pharmacies and PBMs via Surescripts
+- Submit and route Delegation of Authority (DAuth) notices for Carequality compliance
+- Test integrations against the privacy-safe Sandbox before production cutover
 integrations:
-  - Carequality
-  - CommonWell Health Alliance
-  - eHealth Exchange
-  - TEFCA Trusted Exchange Framework
-  - Healthix (NY HIE)
-  - Manifest MedEx (CA HIE)
-  - Surescripts
-  - Epic
-  - Postman
-  - HL7 FHIR R4
-  - C-CDA
-  - HL7v2
-  - USCDI v2
+- Carequality
+- CommonWell Health Alliance
+- eHealth Exchange
+- TEFCA Trusted Exchange Framework
+- Healthix (NY HIE)
+- Manifest MedEx (CA HIE)
+- Surescripts
+- Epic
+- Postman
+- HL7 FHIR R4
+- C-CDA
+- HL7v2
+- USCDI v2
 common:
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/particle-health/overview
-  - type: AgenticAccess
-    url: agentic-access/particle-health-agentic-access.yml
-  - type: TrustCenter
-    url: security/particle-health-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/particle-health-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/particle-health-domain-security.yml
-  - type: Authentication
-    url: authentication/particle-health-authentication.yml
-  - type: GitHubOrganization
-    url: https://github.com/ParticleHealth
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/particle-health
-  - type: Twitter
-    url: https://twitter.com/particle_health
-  - type: YouTube
-    url: https://www.youtube.com/channel/UCMT35sx6GKvA1mzMP6qyVkw
-  - type: Website
-    url: https://particlehealth.com/
-  - type: Documentation
-    url: https://docs.particlehealth.com/
-  - type: APIReference
-    url: https://docs.particlehealth.com/reference/getting-started
-  - type: Developer
-    url: https://docs.particlehealth.com/docs/getting-started-for-developers
-  - type: Sandbox
-    url: https://docs.particlehealth.com/docs/test-patient-sandbox
-  - type: StatusPage
-    url: https://status.particlehealth.com/
-  - type: ChangeLog
-    url: https://docs.particlehealth.com/docs/
-  - type: Glossary
-    url: https://docs.particlehealth.com/docs/glossary
-  - type: Blog
-    url: https://particlehealth.com/blog
-  - type: Resources
-    url: https://particlehealth.com/resources
-  - type: Contact
-    url: https://particlehealth.com/contact
-  - type: Support
-    email: support@particlehealth.com
-  - type: ComplianceContact
-    email: compliance@particlehealth.com
-  - type: MediaContact
-    email: media@particlehealth.com
-  - type: PressReleases
-    url: https://particlehealth.com/blog
-  - type: Postman
-    url: https://www.postman.com/particlehealth/particle-health-api
-  - type: LLMs
-    url: https://docs.particlehealth.com/llms.txt
-  - type: JSONLD
-    url: json-ld/particle-health-context.jsonld
-  - type: JSONSchema
-    url: json-schema/particle-health-patient-schema.json
-  - type: JSONSchema
-    url: json-schema/particle-health-query-schema.json
-  - type: Plans
-    url: plans/particle-health-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/particle-health-rate-limits.yml
-  - type: FinOps
-    url: finops/particle-health-finops.yml
-  - type: Vocabulary
-    url: vocabulary/particle-health-vocabulary.yml
-  - type: ArazzoWorkflows
-    workflows:
-    - url: arazzo/particle-health-adt-subscription-workflow.yml
-      name: Particle Health ADT Event Subscription
-      summary: "Register a patient, subscribe to encounter (ADT) notifications, trigger a sandbox event, and retrieve the resulting HL7 v2 messages."
-    - url: arazzo/particle-health-clinical-document-exchange-workflow.yml
-      name: Particle Health Clinical Document Exchange
-      summary: "Submit a clinical document to the network, then retrieve it and list all documents on file for the patient."
-    - url: arazzo/particle-health-fhir-r4-resource-query-workflow.yml
-      name: Particle Health FHIR R4 Resource Query
-      summary: "Create a FHIR Patient, run a FHIR-native network query, poll for completion, then search and read individual US Core resources."
-    - url: arazzo/particle-health-network-provider-discovery-workflow.yml
-      name: Particle Health Network Provider Discovery
-      summary: "Register a patient, run a network query, then discover which providers and organizations hold records for that patient."
-    - url: arazzo/particle-health-patient-record-retrieval-workflow.yml
-      name: Particle Health National Patient Record Retrieval
-      summary: "Authenticate, register a patient demographic, run a national query across the health information networks, poll until the query completes, then collect the aggregated clinical record."
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/particle-health/overview
+- type: AgenticAccess
+  url: agentic-access/particle-health-agentic-access.yml
+- type: TrustCenter
+  url: security/particle-health-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/particle-health-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/particle-health-domain-security.yml
+- type: Authentication
+  url: authentication/particle-health-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/ParticleHealth
+- type: LinkedIn
+  url: https://www.linkedin.com/company/particle-health
+- type: Twitter
+  url: https://twitter.com/particle_health
+- type: YouTube
+  url: https://www.youtube.com/channel/UCMT35sx6GKvA1mzMP6qyVkw
+- type: Website
+  url: https://particlehealth.com/
+- type: Documentation
+  url: https://docs.particlehealth.com/
+- type: APIReference
+  url: https://docs.particlehealth.com/reference/getting-started
+- type: Developer
+  url: https://docs.particlehealth.com/docs/getting-started-for-developers
+- type: Sandbox
+  url: https://docs.particlehealth.com/docs/test-patient-sandbox
+- type: StatusPage
+  url: https://status.particlehealth.com/
+- type: ChangeLog
+  url: https://docs.particlehealth.com/docs/
+- type: Glossary
+  url: https://docs.particlehealth.com/docs/glossary
+- type: Blog
+  url: https://particlehealth.com/blog
+- type: Resources
+  url: https://particlehealth.com/resources
+- type: Contact
+  url: https://particlehealth.com/contact
+- type: Support
+  email: support@particlehealth.com
+- type: ComplianceContact
+  email: compliance@particlehealth.com
+- type: MediaContact
+  email: media@particlehealth.com
+- type: PressReleases
+  url: https://particlehealth.com/blog
+- type: Postman
+  url: https://www.postman.com/particlehealth/particle-health-api
+- type: LLMs
+  url: https://docs.particlehealth.com/llms.txt
+- type: JSONLD
+  url: json-ld/particle-health-context.jsonld
+- type: JSONSchema
+  url: json-schema/particle-health-patient-schema.json
+- type: JSONSchema
+  url: json-schema/particle-health-query-schema.json
+- type: Plans
+  url: plans/particle-health-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/particle-health-rate-limits.yml
+- type: FinOps
+  url: finops/particle-health-finops.yml
+- type: Vocabulary
+  url: vocabulary/particle-health-vocabulary.yml
+- type: ArazzoWorkflows
+  workflows:
+  - url: arazzo/particle-health-adt-subscription-workflow.yml
+    name: Particle Health ADT Event Subscription
+    summary: "Register a patient, subscribe to encounter (ADT) notifications, trigger a sandbox event, and retrieve the resulting HL7 v2 messages."
+  - url: arazzo/particle-health-clinical-document-exchange-workflow.yml
+    name: Particle Health Clinical Document Exchange
+    summary: "Submit a clinical document to the network, then retrieve it and list all documents on file for the patient."
+  - url: arazzo/particle-health-fhir-r4-resource-query-workflow.yml
+    name: Particle Health FHIR R4 Resource Query
+    summary: "Create a FHIR Patient, run a FHIR-native network query, poll for completion, then search and read individual US Core resources."
+  - url: arazzo/particle-health-network-provider-discovery-workflow.yml
+    name: Particle Health Network Provider Discovery
+    summary: "Register a patient, run a network query, then discover which providers and organizations hold records for that patient."
+  - url: arazzo/particle-health-patient-record-retrieval-workflow.yml
+    name: Particle Health National Patient Record Retrieval
+    summary: "Authenticate, register a patient demographic, run a national query across the health information networks, poll until the query completes, then collect the aggregated clinical record."
+- type: Packages
+  url: packages/particle-health-packages.yml
+- type: SDKs
+  url: packages/particle-health-packages.yml
+- type: MCPServer
+  url: mcp/particle-health-mcp.yml
+- type: Webhooks
+  url: asyncapi/particle-health-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Conformance
+  url: conformance/particle-health-conformance.yml
+- type: Compliance
+  url: security/particle-health-trust-center.yml
+- type: ErrorCatalog
+  url: errors/particle-health-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/particle-health-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/particle-health-lifecycle.yml
+- type: Security
+  url: security/particle-health-vulnerability-disclosure.yml
+- type: Sandbox
+  url: sandbox/particle-health-sandbox.yml
+- type: Conventions
+  url: conventions/particle-health-conventions.yml
+- type: DataModel
+  url: data-model/particle-health-data-model.yml
+- type: LLMsTxt
+  url: llms/particle-health-llms.txt
+- type: TermsOfService
+  url: https://particlehealth.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://particlehealth.com/privacy-policy
+- type: DeveloperPortal
+  url: https://particlehealth.com/developers
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 35
+  pass: local-v1

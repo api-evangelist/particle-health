@@ -1,0 +1,35 @@
+generated: '2026-08-14'
+method: derived
+source:
+  - openapi/particle-health-authentication-api-openapi.yml (and the other 16 refined OpenAPI files)
+  - https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - https://docs.particlehealth.com/llms.txt (guide index — no error/problem-types page listed)
+format: undocumented
+description: >-
+  None of the 17 refined OpenAPI files declare a single 4xx or 5xx response (every operation lists
+  only its success code: 200/201/202/204). docs.particlehealth.com's full page index (llms.txt) does
+  not list a dedicated error-code or problem-types reference page. This catalog therefore records only
+  the error behavior actually documented in prose, rather than fabricating a status-code table the
+  provider has not published.
+known_status_codes:
+  - code: 429
+    meaning: Too Many Requests
+    source: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+    remediation: Back off and retry; limits track per-project requests/minute, so retry after
+      roughly 60 seconds. Particle recommends contacting customer success to request a limit
+      increase if 429s are hit in error.
+    envelope: not documented (no example error body shown on the rate-limiting page)
+  - code: 403
+    meaning: Feature not enabled for project (e.g. Patient Provider Map)
+    source: https://docs.particlehealth.com/llms.txt (Patient Provider Map reference entry)
+    remediation: Contact your Particle Health representative to enable the feature for your project.
+    envelope: not documented
+gaps:
+  - "No documented error envelope shape (no problem+json, no {error: {code, message}} example found)."
+  - No documented catalog of validation/business-logic error codes for patient registration, query
+    submission, or document ingestion.
+  - No RFC 9457 (application/problem+json) content type anywhere in the specs — see
+    conformance/particle-health-conformance.yml (id rfc9457, conforms false).
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

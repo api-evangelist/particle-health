@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "f18a2cda-bdca-4999-90e6-d532094cb8d1",
+      "name": "Files",
+      "description": {
+        "content": "Query result file download.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "03118f1c-905e-4e22-ae56-285164821a97",
+          "name": "Download a File",
+          "request": {
+            "name": "Download a File",
+            "description": {
+              "content": "Download an individual file from a query result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "files",
+                ":query_id",
+                ":file_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb4cf549-ee6d-449c-84dd-8c30ba45d7dc",
+              "name": "File contents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "files",
+                    ":query_id",
+                    ":file_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8030a40-de10-4e1d-b24e-4bf4a02e478b",
+          "name": "Download Query Zip",
+          "request": {
+            "name": "Download Query Zip",
+            "description": {
+              "content": "Download a zipped archive of all results for a query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "files",
+                ":query_id",
+                "zip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38f6a42f-2cc3-4541-989c-378360f3255a",
+              "name": "Zip archive",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "files",
+                    ":query_id",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.particlehealth.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d33dc61-049e-49db-b038-ec0393480d64",
+    "name": "Particle Health Authentication Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+      "type": "text/plain"
+    }
+  }
+}

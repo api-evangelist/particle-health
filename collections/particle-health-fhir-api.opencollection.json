@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication FHIR API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "FHIR",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collect Deltas FHIR Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/Patient/:particle_patient_id/$everything",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns a FHIR Bundle of changed resources for the patient since the last sync."
+        },
+        {
+          "info": {
+            "name": "Search Deltas FHIR Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/:resource_type",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              }
+            ]
+          },
+          "docs": "Searches deltas for a specific FHIR resource type."
+        },
+        {
+          "info": {
+            "name": "Read Deltas FHIR Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reads a specific changed FHIR resource."
+        },
+        {
+          "info": {
+            "name": "Create FHIR Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/r4/Patient"
+          },
+          "docs": "Creates a FHIR R4 Patient resource."
+        },
+        {
+          "info": {
+            "name": "Get Patient $everything",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/$everything",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a FHIR Bundle of all resources related to the patient with paging and date filters."
+        },
+        {
+          "info": {
+            "name": "Get FHIR Patient Query Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/query",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get FHIR Patient Query Status"
+        },
+        {
+          "info": {
+            "name": "Create FHIR Patient Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/query",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create FHIR Patient Query"
+        },
+        {
+          "info": {
+            "name": "Search FHIR Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/:resource_type",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search a FHIR resource type (Patient, Encounter, Condition, etc.) scoped by patient."
+        },
+        {
+          "info": {
+            "name": "Read FHIR Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read FHIR Resource"
+        },
+        {
+          "info": {
+            "name": "Get FHIR Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/fhir",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns a FHIR Bundle with paging and incremental sync semantics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

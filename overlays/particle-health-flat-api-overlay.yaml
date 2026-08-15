@@ -1,0 +1,95 @@
+# generated: '2026-08-14'
+# method: generated
+# source: openapi/particle-health-flat-api-openapi.yml, agentic-access/particle-health-agentic-access.yml
+# description: Non-mutating OpenAPI Overlay 1.0.0 layering x-agentic-access execution
+#   classification and rate-limit scope metadata onto each operation. Never edits the
+#   underlying openapi/ file.
+overlay: 1.0.0
+info:
+  title: "Particle Health Authentication Flat API \u2014 API Evangelist enhancement overlay"
+  version: 1.0.0
+extends: ../openapi/particle-health-flat-api-openapi.yml
+actions:
+- target: $.paths['/deltas/flat/{particle_patient_id}']['get']
+  description: Annotate collectDeltasFlatDatasets with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/deltas/flat/{particle_patient_id}/{resource_type}/{resource_id}']['get']
+  description: Annotate getDeltasFlatResource with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/flat']['post']
+  description: Annotate submitFlatPatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/flat/{id}']['get']
+  description: Annotate getFlatPatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/flat/{id}/collect-data']['get']
+  description: Annotate collectFlatDatasets with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/flat/{patient_id}/{resource_type}/{resource_id}']['get']
+  description: Annotate getFlatResource with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/api/v2/patients/{particle_patient_id}/flat']['get']
+  description: Annotate collectV2FlatDatasets with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none

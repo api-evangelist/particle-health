@@ -1,0 +1,133 @@
+{
+  "item": [
+    {
+      "id": "43c6fd59-0a7b-4362-b6df-1fda7f88af00",
+      "name": "ProviderMap",
+      "description": {
+        "content": "Patient provider mapping across the network.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a6ef2c1-3042-4d01-9695-8e65501f6376",
+          "name": "Get Patient Provider Map",
+          "request": {
+            "name": "Get Patient Provider Map",
+            "description": {
+              "content": "Returns the set of healthcare organizations associated with the given patient across Particle's network, enriched with NPI, address, and managing organization details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "patients",
+                ":particle_patient_id",
+                "provider-map"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "particle_patient_id",
+                  "description": "(Required) Particle Patient ID (PPID)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64d57287-2a8c-4fb1-b6b9-144c916cc51f",
+              "name": "Provider map",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "patients",
+                    ":particle_patient_id",
+                    "provider-map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "particle_patient_id",
+                      "description": "(Required) Particle Patient ID (PPID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.particlehealth.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b30a9656-112a-4668-ab57-35a0b9ba0562",
+    "name": "Particle Health Authentication ProviderMap API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+      "type": "text/plain"
+    }
+  }
+}

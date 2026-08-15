@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication HL7v2 API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HL7v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get HL7v2 Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/hl7v2/message/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single HL7v2 ADT message."
+        },
+        {
+          "info": {
+            "name": "Get HL7v2 Messages by Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/hl7v2/patient/:particle_patient_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Get HL7v2 Messages by Patient"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

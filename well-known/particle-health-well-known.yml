@@ -1,0 +1,77 @@
+generated: '2026-08-14'
+method: probed
+hosts:
+  - api.particlehealth.com
+  - docs.particlehealth.com
+  - particlehealth.com
+probes:
+  - path: /.well-known/security.txt
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+  - path: /.well-known/openid-configuration
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+  - path: /.well-known/oauth-authorization-server
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+  - path: /.well-known/oauth-protected-resource
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+  - path: /.well-known/api-catalog
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+  - path: /.well-known/ai-plugin.json
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+  - path: /.well-known/agent-card.json
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+  - path: /.well-known/agent.json
+    results:
+      - host: api.particlehealth.com
+        status: 404
+      - host: docs.particlehealth.com
+        status: 404
+      - host: particlehealth.com
+        status: 404
+note: >-
+  Every well-known path 404s on all three hosts. api.particlehealth.com and particlehealth.com return
+  a real 404 body (JSON error / static 404 page); docs.particlehealth.com's 404 is a Mintlify/ReadMe
+  SPA shell (77KB HTML) served for any unknown path, not a document — treated as a miss per the
+  no-fabrication rule for SPA catch-alls. No WellKnown or SecurityTxt common[] pointer is emitted:
+  this is a recorded absence, not a presence.

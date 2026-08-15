@@ -1,0 +1,137 @@
+# Particle Health Documentation
+
+> Fuel next-generation healthcare solutions with clean, actionable data from 270 million+ patient medical records through our Particle Insights Data Platform. Try our platform for free or contact us to learn more.
+
+## Guides
+- [Introduction to Particle Health](https://docs.particlehealth.com/docs/introduction-to-particle-health.md): Particle's mission statement and an overview of its supported data sources, modalities, platform, solutions and use cases.
+- [Getting Started for Developers](https://docs.particlehealth.com/docs/getting-started-for-developers.md): Developer focused guide for how to integrate with Particle and leverage retrieved data.
+- [Auth & Keys](https://docs.particlehealth.com/docs/auth-and-keys.md): Authentication and API key management for Particle Health APIs
+- [Test Patient Sandbox](https://docs.particlehealth.com/docs/test-patient-sandbox.md): Connect to Particle's Sandbox, designed to provide developers with realistic, privacy-compliant datasets for testing, prototyping, and building of robust applications.
+- [Life of a Query](https://docs.particlehealth.com/docs/life-of-a-query.md): Understand the complete lifecycle of querying a patient's clinical data.
+- [Rate Limiting & Quotas](https://docs.particlehealth.com/docs/rate-limiting-and-quotas.md)
+- [Working With Coding Systems](https://docs.particlehealth.com/docs/working-with-coding-systems.md)
+- [C-CDA vs. FHIR®](https://docs.particlehealth.com/docs/ccda-vs-fhir.md)
+- [Networks and HIEs (Health Information Exchanges)](https://docs.particlehealth.com/docs/networks.md): Particle is connected to all three nationwide networks, including some state health information exchanges.
+- [Healthix (NY HIE)](https://docs.particlehealth.com/docs/healthix-ny-hie.md): Particle connects to Healthix, a public health information exchange for New York.
+- [Manifest MedEx (CA HIE)](https://docs.particlehealth.com/docs/manifest-medex.md): Particle connects to Manifest MedEx a state information exchange for California.
+- [Network Variability](https://docs.particlehealth.com/docs/network-variability.md): Overview of variability in received data across the health information exchange networks.
+- [Surescripts](https://docs.particlehealth.com/docs/surescripts.md): Particle retrieves medication prescription and fill data from pharmacies and pharmacy benefit managers (PBMs) via its connection to Surescripts.
+- [Record Validator](https://docs.particlehealth.com/docs/record-validator.md)
+- [Data Normalization](https://docs.particlehealth.com/docs/data-normalization.md)
+- [Data Deduplication](https://docs.particlehealth.com/docs/data-deduplication.md)
+- [Data Provenance](https://docs.particlehealth.com/docs/data-provenance.md)
+- [Patient Data APIs](https://docs.particlehealth.com/docs/patient-data-apis.md)
+- [Patients API](https://docs.particlehealth.com/docs/patients-api.md)
+- [Query & Query Status APIs](https://docs.particlehealth.com/docs/query-and-query-status-apis.md)
+- [Data Retrieval APIs](https://docs.particlehealth.com/docs/data-retrieval-apis.md)
+- [Patient Provider Map](https://docs.particlehealth.com/docs/patient-provider-map.md)
+- [Webhook Event Notifications](https://docs.particlehealth.com/docs/webhook-event-notifications.md)
+- [Bi-Directional Sharing of Data](https://docs.particlehealth.com/docs/bi-directional-sharing-of-data.md)
+- [Documents API](https://docs.particlehealth.com/docs/documents-api.md)
+- [Bi-Directionality FAQs](https://docs.particlehealth.com/docs/bi-directionality-faqs.md)
+- [Management APIs](https://docs.particlehealth.com/docs/management-apis.md)
+- [Batch Query APIs](https://docs.particlehealth.com/docs/batch-query-api.md)
+- [Legacy API Implementation](https://docs.particlehealth.com/docs/legacy-api-implementation.md)
+- [Deltas API Implementation](https://docs.particlehealth.com/docs/deltas-api-implementation.md): Deltas API is Particle's recommended query flow for customers!
+- [CCDA API Implementation](https://docs.particlehealth.com/docs/ccda-api-implementation.md)
+- [FHIR® API Implementation](https://docs.particlehealth.com/docs/legacy-fhir-api-implementation.md): This query flow is part of Particle's supported legacy workflows for existing customers.
+- [FHIR® Resource Relationship Map](https://docs.particlehealth.com/docs/resource-relationship-map.md)
+- [FHIR® Resource Search Methodologies](https://docs.particlehealth.com/docs/resource-search-methodologies.md)
+- [Supported FHIR® Resources](https://docs.particlehealth.com/docs/supported-fhir-resources.md)
+- [Supported Flat Data Domains](https://docs.particlehealth.com/docs/supported-flat-data-domains.md)
+- [Particle Workbench](https://docs.particlehealth.com/docs/particle-workbench.md): Designed to cater to analytics-focused and builder-oriented customers.
+- [Particle Signal](https://docs.particlehealth.com/docs/particle-signal.md)
+- [Setting Up Signal](https://docs.particlehealth.com/docs/setting-up-signal.md)
+- [Transition Alerts](https://docs.particlehealth.com/docs/transition-alerts.md)
+- [New Encounter Alerts](https://docs.particlehealth.com/docs/new-encounter-alerts.md)
+- [Testing Signal in Sandbox](https://docs.particlehealth.com/docs/testing-signal-in-sandbox.md): Leverage our Sandbox environment to develop & test Signal workflows!
+- [Discharge Summary Alerts](https://docs.particlehealth.com/docs/discharge-summaries.md)
+- [Subscriptions API](https://docs.particlehealth.com/docs/subscribe-patients-api.md): Subscribe cohort(s) of patients to Signal for ongoing monitoring.
+- [Signal FAQ](https://docs.particlehealth.com/docs/general-signal-faq.md)
+- [Particle Snapshot](https://docs.particlehealth.com/docs/particle-snapshot.md): Access comprehensive patient clinical histories and AI-generated summaries to accelerate clinical decision-making.
+- [Accessing Snapshot via API](https://docs.particlehealth.com/docs/accessing-snapshot-via-api.md)
+- [Particle Navigator](https://docs.particlehealth.com/docs/particle-navigator.md)
+- [Getting Started for Data Experts](https://docs.particlehealth.com/docs/getting-started-for-data-experts.md)
+- [Data Quality: Data Retrieval Process](https://docs.particlehealth.com/docs/data-quality-data-retrieval.md): How we process data when retrieving it from Health Information Exchanges
+- [Data Quality: Data Processing](https://docs.particlehealth.com/docs/data-quality-data-processing.md)
+- [Flat Data for Clinical Workflows](https://docs.particlehealth.com/docs/flat-data-clinical.md)
+- [Getting Started for Clinicians](https://docs.particlehealth.com/docs/getting-started-for-clinicians.md): This section is tailored to clinicians. It introduces you to the types of information shared, where it comes from, when it is refreshed, and more. A key goal of this guide is for you to understand how, when and where to apply Particle's insights in some common workflows.
+- [What is a Query?](https://docs.particlehealth.com/docs/what-is-a-query.md)
+- [Breadth & Depth: Data Sources](https://docs.particlehealth.com/docs/depth-and-breadth-data-sources.md): Read on to learn more about the data you can expect to see, and where it is coming from.
+- [Insights in Action: Case Review](https://docs.particlehealth.com/docs/insights-in-action.md)
+- [Readmission Reduction](https://docs.particlehealth.com/docs/readmission-reduction.md)
+- [Referral Management / Continuity of Care](https://docs.particlehealth.com/docs/closed-loop-referral-management.md)
+- [Medication Management](https://docs.particlehealth.com/docs/medication-management.md)
+- [Onboarding & Initial Patient Visit](https://docs.particlehealth.com/docs/onboarding-and-initial-patient-visit.md)
+- [More Sandbox Cases](https://docs.particlehealth.com/docs/more-sandbox-cases.md)
+- [Glossary](https://docs.particlehealth.com/docs/glossary.md)
+- [Purposes of Use](https://docs.particlehealth.com/docs/purposes-of-use.md): Overview of the supported use cases for which data may be exchanged between different systems.
+- [Delegation of Authority (DAuth)](https://docs.particlehealth.com/docs/delegation-of-authority.md): This is an overview of our Delegation of Authority Policy, outlining its purpose, definitions, and source documents.
+- [Completing DAuth Notices](https://docs.particlehealth.com/docs/delegation-of-authority-notices.md): This page contains guidance on how to complete & route Delegation of Authority Notices.
+- [DAuth Technical Implementation](https://docs.particlehealth.com/docs/delegation-of-authority-technical-implementation-on-the-network.md): This document outlines the key technical requirements for properly implementing Delegation of Authority (DAuth) on the Carequality network.
+- [Bi-Directionality Policy](https://docs.particlehealth.com/docs/bi-directionality-policy.md)
+
+## API Reference
+- [Getting Started](https://docs.particlehealth.com/reference/getting-started.md)
+- [Generate a JSON Web Token (JWT)](https://docs.particlehealth.com/reference/get_auth-1.md): Generate a JSON Web Token (JWT)
+- [Submit Patient](https://docs.particlehealth.com/reference/post_api-v2-patients.md): Registers a patient's demographics in Particle's system and generates a unique Particle Patient ID (PPID) for use in subsequent API operations.
+- [Get Patient](https://docs.particlehealth.com/reference/get_api-v2-patients-id.md)
+- [Search Patient](https://docs.particlehealth.com/reference/post_api-v2-patients-search.md)
+- [Delete Patient](https://docs.particlehealth.com/reference/delete_api-v2-patients-id.md)
+- [List Patients](https://docs.particlehealth.com/reference/get_api-v2-patients.md)
+- [Create Query](https://docs.particlehealth.com/reference/post_api-v2-patients-particle-patient-id-query.md): Starts a one‑time query for this Particle Patient ID.
+- [Get Query Status](https://docs.particlehealth.com/reference/get_api-v2-patients-particle-patient-id-query.md): Returns the current state and timestamps for the most recent (or specified) query for a patient.
+- [Get FHIR® Datasets](https://docs.particlehealth.com/reference/get_api-v2-patients-particle-patient-id-fhir.md): Returns a FHIR® Bundle with paging and incremental sync.
+- [Get FHIR® Resources By Type](https://docs.particlehealth.com/reference/get_api-v2-patients-particle-patient-id-fhir-type.md): Returns a paged FHIR® Bundle for a specific resource type.
+- [Get FHIR® Resource By ID](https://docs.particlehealth.com/reference/get_api-v2-patients-particle-patient-id-fhir-type-id.md): Returns a single FHIR® resource by type and ID.
+- [Collect Flat Datasets](https://docs.particlehealth.com/reference/get_api-v2-patients-particle-patient-id-flat.md): **Filter Options:**  **By Domain:** Add the domain name directly as a query parameter (no value needed). You can combine multiple domains. For example: - `?ALLERGIES` - Filter for allergies only - `?ENCOUNTERS&MEDICATIONS` - Filter for encounters and medications Available domains: `AI_CITATIONS`, `AI_OUTPUTS`, `ALLERGIES`, `COMPOSITIONS`, `COVERAGES`, `DOCUMENT_REFERENCES`, `ENCOUNTERS`, `FAMILY_MEMBER_HISTORIES`, `IMMUNIZATIONS`, `LABS`, `LOCATIONS`, `MED_FILLS`, `MEDICATIONS`, `ORGANIZATIONS`, `PATIENTS`, `PRACTITIONERS`, `PROBLEMS`, `PROCEDURES`, `RECORD_SOURCES`, `SOCIAL_HISTORIES`, `SOURCES`, `TRANSITIONS`, `VITAL_SIGNS`  **By Specific Resource:** Use the `resource_type` and `resource_id` query parameters together to retrieve a single resource by ID (documented below).
+- [Get CCDA files](https://docs.particlehealth.com/reference/get_api-v2-patients-particle-patient-id-ccda.md): Download a zip file as application/octet-stream or single file with content type set to the file's content type
+- [Create Patient Subscriptions](https://docs.particlehealth.com/reference/post_api-v1-patients-particle-patient-id-subscriptions-1.md): Adds subscriptions for a single patient.
+- [Create Subscriptions for multiple Patients](https://docs.particlehealth.com/reference/post_api-v1-patients-subscriptions-1.md): Subscribe a batch of patients to Signal monitoring in a single API call.
+- [List Patient Subscriptions ( optional by given type )](https://docs.particlehealth.com/reference/get_api-v1-patients-particle-patient-id-subscriptions-1.md): Lists subscriptions; optional type filter.
+- [Delete Patient Subscriptions](https://docs.particlehealth.com/reference/delete_api-v1-patients-particle-patient-id-subscriptions-1.md): Deletes subscriptions of a given type for the patient.
+- [Trigger Sandbox Workflow](https://docs.particlehealth.com/reference/post_api-v1-patients-particle-patient-id-subscriptions-trigger-sandbox-workflow-1.md): Triggers sandbox webhook notification events for testing.
+- [Patient Provider Map](https://docs.particlehealth.com/reference/patient-provider-map.md): Returns the set of healthcare organizations associated with given patient across Particle's network. Each entry represents an endpoint organization enriched with directory information (NPI, address, managing organization). Returns an empty `providers` array if no records are found.This endpoint requires the Patient Provider Map feature to be enabled for your project. Reach out to your Particle Health representative to get set up.
+- [Submit Document](https://docs.particlehealth.com/reference/post_api-v1-documents-1.md): Uploads a document (e.g., CCDA, discharge summary) with metadata for ingestion and linkage.
+- [Get Patient Documents](https://docs.particlehealth.com/reference/get_api-v1-documents-patient-id-1.md): Lists documents associated with a patient (internal or Particle Patient ID).
+- [Get Document](https://docs.particlehealth.com/reference/get_api-v1-documents-id-1.md): Retrieves a single document and its metadata.
+- [Delete Document](https://docs.particlehealth.com/reference/delete_api-v1-documents-id-1.md): Removes a document.
+- [List Project Notifications](https://docs.particlehealth.com/reference/notifications_listnotifications2.md): Lists Notifications for a specific Project.
+- [Create Project Notification](https://docs.particlehealth.com/reference/notifications_createnotification2.md): Creates a Notification under a specific Project.
+- [Search Projects](https://docs.particlehealth.com/reference/projects_searchprojects.md): Searches Projects by simple field filter
+- [Search Service Accounts](https://docs.particlehealth.com/reference/serviceaccounts_searchserviceaccounts.md): Searches Service Accounts by simple field filter
+- [List Batches](https://docs.particlehealth.com/reference/get_api-v1-batches.md): Lists batch jobs with state, type, and counts.
+- [Get Batch](https://docs.particlehealth.com/reference/get_api-v1-batches-batch-id.md): Returns batch metadata, progress, and results summary.
+- [Create Batch](https://docs.particlehealth.com/reference/post_api-v1-batches-batch-type.md): Starts a batch job of type CCDA, FHIR®_R4, FLAT, or DELTAS with demographics or Particle IDs.
+- [Get HL7v2 Message](https://docs.particlehealth.com/reference/get_hl7v2-message-id-1.md): Returns a single HL7v2 message
+- [Get HL7v2 Messages by Patient](https://docs.particlehealth.com/reference/get_hl7v2-patient-particle-patient-id-1.md): Returns HL7v2 messages tied to the patient.
+- [Alternative and Legacy Query Flows](https://docs.particlehealth.com/reference/legacy-query-flows.md)
+- [Submit Flat Patient](https://docs.particlehealth.com/reference/post_flat-1.md): Initiates a Flat query for a specific patient using demographics
+- [Get Flat Patient](https://docs.particlehealth.com/reference/get_flat-id-1.md): Retrieve the status of a flat query
+- [Collect Flat Datasets](https://docs.particlehealth.com/reference/get_flat-id-collect-data-1.md): Query parameter filtering is not included by default. If you require access, please contact support@particlehealth.com.
+- [Get Flat Resource](https://docs.particlehealth.com/reference/get_flat-patient-id-resource-type-resource-id-1.md): Returns a specific Flat resource
+- [Create Patient](https://docs.particlehealth.com/reference/post_r4-patient-1.md): Creates a FHIR® R4 Patient resource.
+- [Query Patient](https://docs.particlehealth.com/reference/post_r4-patient-patient-id-query-1.md): Starts a FHIR® query against the patient.
+- [Retrieve all resources related to a patient.](https://docs.particlehealth.com/reference/get_r4-patient-patient-id-everything-1.md): Returns a FHIR® Bundle of all resources related to the patient with paging and date filters.
+- [Retrieve the status of the most recent query run on a Patient.](https://docs.particlehealth.com/reference/get_r4-patient-patient-id-query-1.md): Returns status of the most recent query for this FHIR® patient.
+- [Search for FHIR® resources.](https://docs.particlehealth.com/reference/get_r4-resource-type-1.md): Searches a resource type (Patient, Encounter, etc.) scoped by patient.
+- [Read a specified FHIR® resource.](https://docs.particlehealth.com/reference/get_r4-resource-type-resource-id-1.md): This endpoint is not included by default. If you require access, please contact support@particlehealth.com.
+- [Submit Deltas Query](https://docs.particlehealth.com/reference/post_deltas-1.md): Initiates a query with purpose of use, hints, specialties, etc.
+- [Get Deltas Query Status](https://docs.particlehealth.com/reference/get_deltas-particle-patient-id-1.md)
+- [Get Deltas Flat Resource](https://docs.particlehealth.com/reference/get_deltas-flat-particle-patient-id-resource-type-resource-id-1.md)
+- [Collect Deltas FHIR® Datasets](https://docs.particlehealth.com/reference/get_deltas-r4-patient-particle-patient-id-everything-1.md): Returns a FHIR® Bundle of changed resources for the patient.
+- [Search for FHIR® resources.](https://docs.particlehealth.com/reference/get_deltas-r4-resource-type-1.md): Searches deltas for a specific resource type
+- [Read a specified FHIR® resource.](https://docs.particlehealth.com/reference/get_deltas-r4-resource-type-resource-id-1.md): Reads a specific changed resource.
+- [Collect Deltas Flat Datasets](https://docs.particlehealth.com/reference/get_deltas-flat-particle-patient-id-1.md): Returns Flat datasets changed since `_since`.
+- [List Queries](https://docs.particlehealth.com/reference/get_api-v1-queries-1.md): Lists queries you’ve created.
+- [Get Query](https://docs.particlehealth.com/reference/get_api-v1-queries-id-1.md): Returns status and result pointers for a query.
+- [Download a zipped file of all results of query](https://docs.particlehealth.com/reference/get_api-v1-files-query-id-zip-1.md): Download a zip file
+- [Create Query](https://docs.particlehealth.com/reference/post_api-v1-queries-1.md): Starts a one‑time network query using demographics.
+- [Download a file](https://docs.particlehealth.com/reference/get_api-v1-files-query-id-file-id-1.md): Download a file
+- [Get Network Alerts](https://docs.particlehealth.com/reference/get_api-v1-alerts-network.md): Retrieve network alerts generated for subscribed patients in your project.
+- [Get Network Alert](https://docs.particlehealth.com/reference/get_api-v1-alerts-network-id.md)
+- [Search Network Participants](https://docs.particlehealth.com/reference/get_api-v1-networkparticipants.md): Search for healthcare organizations participating in Particle's connected networks.
+- [Search Network Participants](https://docs.particlehealth.com/reference/get_api-v1-networkparticipants-state-state.md)
+- [Search Network Participants](https://docs.particlehealth.com/reference/get_api-v1-networkparticipants-zipcode-zip.md)
+- [Get Patient Signals Cohort](https://docs.particlehealth.com/reference/get_api-v1-patients-signalscohort.md): Retrieve the list of patients currently enrolled in Signal monitoring for your project.
+- [Get Patient Signals](https://docs.particlehealth.com/reference/get_api-v1-patients-id-signals.md): Retrieve the Signal alert history for a specific patient.

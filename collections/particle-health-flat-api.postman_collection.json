@@ -1,0 +1,692 @@
+{
+  "item": [
+    {
+      "id": "7268bf98-c8a6-437c-92c6-e5a51fd7ab03",
+      "name": "Flat",
+      "description": {
+        "content": "Flat (normalized columnar) clinical data domains.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66db556f-1a80-487c-82c5-72cb329fc929",
+          "name": "Collect Deltas Flat Datasets",
+          "request": {
+            "name": "Collect Deltas Flat Datasets",
+            "description": {
+              "content": "Returns Flat datasets changed since the supplied `_since` timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deltas",
+                "flat",
+                ":particle_patient_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "particle_patient_id",
+                  "description": "(Required) Particle Patient ID (PPID)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07c7afd0-57a6-45b0-8cb0-1517bc08c953",
+              "name": "Flat dataset bundle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deltas",
+                    "flat",
+                    ":particle_patient_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "particle_patient_id",
+                      "description": "(Required) Particle Patient ID (PPID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72c5e0ae-711f-410b-9348-6bfc9badfa84",
+          "name": "Get Deltas Flat Resource",
+          "request": {
+            "name": "Get Deltas Flat Resource",
+            "description": {},
+            "url": {
+              "path": [
+                "deltas",
+                "flat",
+                ":particle_patient_id",
+                ":resource_type",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "particle_patient_id",
+                  "description": "(Required) Particle Patient ID (PPID)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80bde17c-d782-47fd-ba84-d42a95a2377b",
+              "name": "Flat resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deltas",
+                    "flat",
+                    ":particle_patient_id",
+                    ":resource_type",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "particle_patient_id",
+                      "description": "(Required) Particle Patient ID (PPID)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f777567-a2af-4e3c-8ca5-21383e877bc1",
+          "name": "Submit Flat Patient",
+          "request": {
+            "name": "Submit Flat Patient",
+            "description": {
+              "content": "Initiates a Flat query for a specific patient using demographics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "flat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1210988a-214c-4001-9dd6-1b6c8f8670cc",
+              "name": "Flat query accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "flat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51c6e681-28fd-48e5-bced-e406b1d07812",
+          "name": "Get Flat Patient",
+          "request": {
+            "name": "Get Flat Patient",
+            "description": {},
+            "url": {
+              "path": [
+                "flat",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "860c53a5-e91a-47da-80fd-ae76c6dcf55b",
+              "name": "Flat patient status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "flat",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "657fa5cf-a3f5-482d-9e5a-b661911ec6af",
+          "name": "Collect Flat Datasets",
+          "request": {
+            "name": "Collect Flat Datasets",
+            "description": {
+              "content": "Retrieve Flat clinical data domains (allergies, encounters, medications, labs, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "flat",
+                ":id",
+                "collect-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bbc26e1-19d6-442e-910c-5b17902c1420",
+              "name": "Flat datasets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "flat",
+                    ":id",
+                    "collect-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef9fa6c7-8f65-4ff6-b994-e61a477111a8",
+          "name": "Get Flat Resource",
+          "request": {
+            "name": "Get Flat Resource",
+            "description": {},
+            "url": {
+              "path": [
+                "flat",
+                ":patient_id",
+                ":resource_type",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07d6d31e-e3d1-4a3e-9ac3-fc679ba6b358",
+              "name": "Flat resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "flat",
+                    ":patient_id",
+                    ":resource_type",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80472b5f-b7a3-4381-89c2-579aaeffdfbd",
+          "name": "Collect v2 Flat Datasets",
+          "request": {
+            "name": "Collect v2 Flat Datasets",
+            "description": {
+              "content": "Retrieve flat datasets filtered by domain (ALLERGIES, ENCOUNTERS, MEDICATIONS, LABS, IMMUNIZATIONS, VITAL_SIGNS, etc.) or a specific resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "patients",
+                ":particle_patient_id",
+                "flat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "particle_patient_id",
+                  "description": "(Required) Particle Patient ID (PPID)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a04f805-45e5-421a-90ba-0ec778a6b2ef",
+              "name": "Flat datasets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "patients",
+                    ":particle_patient_id",
+                    "flat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "particle_patient_id",
+                      "description": "(Required) Particle Patient ID (PPID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.particlehealth.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8246c387-0fdb-416f-b22a-27cc3ef41f0c",
+    "name": "Particle Health Authentication Flat API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+      "type": "text/plain"
+    }
+  }
+}

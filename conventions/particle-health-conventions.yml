@@ -1,0 +1,62 @@
+generated: '2026-08-14'
+method: searched
+source:
+  - https://docs.particlehealth.com/docs/auth-and-keys
+  - https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+  - https://docs.particlehealth.com/docs/life-of-a-query
+  - openapi/*.yml (17 files)
+  - authentication/particle-health-authentication.yml
+  - errors/particle-health-problem-types.yml
+  - lifecycle/particle-health-lifecycle.yml
+  - rate-limits/particle-health-rate-limits.yml
+auth_style:
+  scheme: Custom bearer-JWT client-credentials (labeled "OAuth 2 Client-Credentials" by the provider,
+    but not RFC 6749-conformant — see conformance/particle-health-conformance.yml)
+  token_endpoint: "GET /auth with client-id, client-secret, scope as request headers -> plain-text
+    JWT (1hr TTL)"
+  cross_link: authentication/particle-health-authentication.yml
+idempotency:
+  supported: false
+  mechanism: none documented
+  note: No Idempotency-Key header or equivalent found; the closest analog is that patient
+    registration returns a stable Particle Patient ID (PPID) keyed off Particle's Master Patient
+    Index, so re-submitting the same demographics is expected to resolve rather than duplicate — but
+    this pipeline could not confirm that behavior live, and it is not the same guarantee as a
+    client-supplied idempotency key on a write.
+  cross_link: conformance/particle-health-conformance.yml (idempotency check)
+pagination:
+  style: FHIR Bundle-native (Bundle.link[] "next" relation) for FHIR/Deltas retrieval; no query-param
+    (page/cursor/limit/offset) scheme declared in any OpenAPI operation.
+  cross_link: conformance/particle-health-conformance.yml (pagination check)
+field_expansion:
+  supported: false
+  note: "No sparse-fieldset or ?fields= style parameter found; Flat retrieval instead uses named
+    DOMAIN query flags (e.g. ?ALLERGIES&ENCOUNTERS) to select which data domains to return —
+    a domain filter, not a field-level sparse-fieldset mechanism."
+metadata:
+  patient_identifiers:
+    particle_patient_id: Particle-assigned UUID, primary key for all downstream calls
+    external_patient_id: customer-supplied identifier, echoed back on webhook payloads
+  project_scoping: "All credentials and rate limits are scoped to a project (scope =
+    projects/<project_id>); multi-project customers get separate limit buckets per project."
+request_id_tracing:
+  supported: undocumented
+  note: No X-Request-Id / trace-id header found in OpenAPI or docs.
+versioning:
+  cross_link: lifecycle/particle-health-lifecycle.yml
+error_envelope:
+  shape: undocumented
+  cross_link: errors/particle-health-problem-types.yml
+rate_limit_signaling:
+  headers_returned: "Retry-After only (per docs); no X-RateLimit-* / RateLimit-* response headers
+    documented — the provider explicitly states retry timing (\"~60 seconds\") in prose rather than
+    a machine-readable header value."
+  status_on_exhaustion: 429
+  cross_link: rate-limits/particle-health-rate-limits.yml
+webhooks:
+  envelope: CloudEvents 1.0
+  signature_header: X-Ph-Signature-256 (HMAC-SHA256 over "{timestamp}.{raw_json_body}")
+  cross_link: asyncapi/particle-health-webhooks.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Files API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download a File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/files/:query_id/:file_id",
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download an individual file from a query result."
+        },
+        {
+          "info": {
+            "name": "Download Query Zip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/files/:query_id/zip",
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a zipped archive of all results for a query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

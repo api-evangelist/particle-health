@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a JSON Web Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/auth",
+            "headers": [
+              {
+                "name": "client_id",
+                "value": ""
+              },
+              {
+                "name": "client_secret",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Generate a JSON Web Token (JWT) via the OAuth 2 client-credentials grant. The returned token is valid for one hour and must be sent as a Bearer token on subsequent calls."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

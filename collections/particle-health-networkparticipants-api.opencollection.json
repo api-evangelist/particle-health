@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication NetworkParticipants API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NetworkParticipants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Network Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/networkparticipants"
+          },
+          "docs": "Search for healthcare organizations participating in Particle's connected networks."
+        },
+        {
+          "info": {
+            "name": "Search Network Participants by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/networkparticipants/state/:state",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Search Network Participants by State"
+        },
+        {
+          "info": {
+            "name": "Search Network Participants by Zipcode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/networkparticipants/zipcode/:zip",
+            "params": [
+              {
+                "name": "zip",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Search Network Participants by Zipcode"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

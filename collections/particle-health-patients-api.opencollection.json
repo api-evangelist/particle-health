@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Patients API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients"
+          },
+          "docs": "List patients registered under the current project."
+        },
+        {
+          "info": {
+            "name": "Submit Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v2/patients"
+          },
+          "docs": "Register a patient's demographics and obtain a unique Particle Patient ID (PPID)."
+        },
+        {
+          "info": {
+            "name": "Get Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patient"
+        },
+        {
+          "info": {
+            "name": "Delete Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.particlehealth.com/api/v2/patients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Patient"
+        },
+        {
+          "info": {
+            "name": "Search Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v2/patients/search"
+          },
+          "docs": "Search for patients by demographic identifiers."
+        },
+        {
+          "info": {
+            "name": "Create FHIR Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/r4/Patient"
+          },
+          "docs": "Creates a FHIR R4 Patient resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

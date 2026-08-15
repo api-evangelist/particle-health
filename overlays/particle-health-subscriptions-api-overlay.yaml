@@ -1,0 +1,91 @@
+# generated: '2026-08-14'
+# method: generated
+# source: openapi/particle-health-subscriptions-api-openapi.yml, agentic-access/particle-health-agentic-access.yml
+# description: Non-mutating OpenAPI Overlay 1.0.0 layering x-agentic-access execution
+#   classification and rate-limit scope metadata onto each operation. Never edits the
+#   underlying openapi/ file.
+overlay: 1.0.0
+info:
+  title: "Particle Health Authentication Subscriptions API \u2014 API Evangelist enhancement overlay"
+  version: 1.0.0
+extends: ../openapi/particle-health-subscriptions-api-openapi.yml
+actions:
+- target: $.paths['/api/v1/patients/{particle_patient_id}/subscriptions']['get']
+  description: Annotate listPatientSubscriptions with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/api/v1/patients/{particle_patient_id}/subscriptions']['post']
+  description: Annotate createPatientSubscriptions with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/api/v1/patients/{particle_patient_id}/subscriptions']['delete']
+  description: Annotate deletePatientSubscriptions with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/api/v1/patients/subscriptions']['post']
+  description: Annotate createCohortSubscriptions with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/api/v1/patients/{particle_patient_id}/subscriptions/trigger-sandbox-workflow']['post']
+  description: Annotate triggerSandboxWorkflow with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required

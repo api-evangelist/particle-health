@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Queries API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Query Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/query",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns the current state and timestamps for the most recent query for a patient."
+        },
+        {
+          "info": {
+            "name": "Create Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/query",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Starts a one-time query for this Particle Patient ID under a Purpose of Use."
+        },
+        {
+          "info": {
+            "name": "List Queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/queries"
+          },
+          "docs": "Lists queries you have created."
+        },
+        {
+          "info": {
+            "name": "Create Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/queries"
+          },
+          "docs": "Starts a one-time network query using demographics."
+        },
+        {
+          "info": {
+            "name": "Get Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/queries/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns status and result pointers for a query."
+        },
+        {
+          "info": {
+            "name": "Get FHIR Patient Query Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/query",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get FHIR Patient Query Status"
+        },
+        {
+          "info": {
+            "name": "Create FHIR Patient Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/r4/Patient/:patient_id/query",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create FHIR Patient Query"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Signal API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Signal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/alerts/network"
+          },
+          "docs": "Retrieve network alerts generated for subscribed patients in the project."
+        },
+        {
+          "info": {
+            "name": "Get Network Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/alerts/network/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Network Alert"
+        },
+        {
+          "info": {
+            "name": "Get Patient Signals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/patients/:id/signals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the Signal alert history for a specific patient."
+        },
+        {
+          "info": {
+            "name": "Get Patient Signals Cohort",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/patients/signalscohort"
+          },
+          "docs": "Retrieve the list of patients currently enrolled in Signal monitoring."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,947 @@
+{
+  "item": [
+    {
+      "id": "f9b5880b-ed20-448b-b9c6-239fba8bd5eb",
+      "name": "FHIR",
+      "description": {
+        "content": "FHIR R4 resource search and read.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab1892eb-3628-42a6-8724-3caab662c7e9",
+          "name": "Collect Deltas FHIR Datasets",
+          "request": {
+            "name": "Collect Deltas FHIR Datasets",
+            "description": {
+              "content": "Returns a FHIR Bundle of changed resources for the patient since the last sync.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deltas",
+                "r4",
+                "Patient",
+                ":particle_patient_id",
+                "$everything"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "particle_patient_id",
+                  "description": "(Required) Particle Patient ID (PPID)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5abdb97f-9462-4cb2-b679-e0d0a70313d1",
+              "name": "FHIR Bundle of changed resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deltas",
+                    "r4",
+                    "Patient",
+                    ":particle_patient_id",
+                    "$everything"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "particle_patient_id",
+                      "description": "(Required) Particle Patient ID (PPID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41986a18-9eff-4187-9933-768cc4204a90",
+          "name": "Search Deltas FHIR Resources",
+          "request": {
+            "name": "Search Deltas FHIR Resources",
+            "description": {
+              "content": "Searches deltas for a specific FHIR resource type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deltas",
+                "r4",
+                ":resource_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a90125ec-a48b-4025-854b-99589fabc093",
+              "name": "FHIR Bundle of changed resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deltas",
+                    "r4",
+                    ":resource_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4163c1a8-52e6-4276-8669-0a5c58e1e9d2",
+          "name": "Read Deltas FHIR Resource",
+          "request": {
+            "name": "Read Deltas FHIR Resource",
+            "description": {
+              "content": "Reads a specific changed FHIR resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deltas",
+                "r4",
+                ":resource_type",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "181fcf0d-d2f9-450f-b00d-dad81f076a5d",
+              "name": "FHIR resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deltas",
+                    "r4",
+                    ":resource_type",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be7b4df0-7d03-4fec-ab2f-2a198f8fcb26",
+          "name": "Create FHIR Patient",
+          "request": {
+            "name": "Create FHIR Patient",
+            "description": {
+              "content": "Creates a FHIR R4 Patient resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r4",
+                "Patient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eabce1cf-da1a-42f8-8e6f-9a0310056f1f",
+              "name": "FHIR Patient created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r4",
+                    "Patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edb2152c-2435-4b77-911e-bb7433bb677d",
+          "name": "Get Patient $everything",
+          "request": {
+            "name": "Get Patient $everything",
+            "description": {
+              "content": "Returns a FHIR Bundle of all resources related to the patient with paging and date filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r4",
+                "Patient",
+                ":patient_id",
+                "$everything"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "853b906e-9882-4753-95e6-a8fede2763d9",
+              "name": "FHIR Bundle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r4",
+                    "Patient",
+                    ":patient_id",
+                    "$everything"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78ae67c2-b811-4471-b789-435c74255eb0",
+          "name": "Get FHIR Patient Query Status",
+          "request": {
+            "name": "Get FHIR Patient Query Status",
+            "description": {},
+            "url": {
+              "path": [
+                "r4",
+                "Patient",
+                ":patient_id",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f8a76ae-ef09-43fe-a662-df3cb8ede9b1",
+              "name": "Query status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r4",
+                    "Patient",
+                    ":patient_id",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0650119a-a69c-43bc-94fa-39b247b4bbd2",
+          "name": "Create FHIR Patient Query",
+          "request": {
+            "name": "Create FHIR Patient Query",
+            "description": {},
+            "url": {
+              "path": [
+                "r4",
+                "Patient",
+                ":patient_id",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2fc899ec-bcd4-4d82-b441-d23bf73e1b94",
+              "name": "Query accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r4",
+                    "Patient",
+                    ":patient_id",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5f7c88c-3de5-410e-8604-f3a349f9b0d0",
+          "name": "Search FHIR Resources",
+          "request": {
+            "name": "Search FHIR Resources",
+            "description": {
+              "content": "Search a FHIR resource type (Patient, Encounter, Condition, etc.) scoped by patient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "r4",
+                ":resource_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2743c29e-14ca-4c69-b82f-59fe3703572e",
+              "name": "FHIR Bundle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r4",
+                    ":resource_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f27e47a2-2db1-44e1-af11-2ee16185ea80",
+          "name": "Read FHIR Resource",
+          "request": {
+            "name": "Read FHIR Resource",
+            "description": {},
+            "url": {
+              "path": [
+                "r4",
+                ":resource_type",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "076eea33-863d-4cad-a5b5-b8a9dabdb25d",
+              "name": "FHIR resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "r4",
+                    ":resource_type",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a19c0a3c-367e-4de3-883f-2092eac2e18a",
+          "name": "Get FHIR Datasets",
+          "request": {
+            "name": "Get FHIR Datasets",
+            "description": {
+              "content": "Returns a FHIR Bundle with paging and incremental sync semantics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "patients",
+                ":particle_patient_id",
+                "fhir"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "particle_patient_id",
+                  "description": "(Required) Particle Patient ID (PPID)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84a7cdcd-161a-4b17-896c-63caca07527f",
+              "name": "FHIR Bundle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "patients",
+                    ":particle_patient_id",
+                    "fhir"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "particle_patient_id",
+                      "description": "(Required) Particle Patient ID (PPID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.particlehealth.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7d105e82-49d9-4d4e-960a-9b841a6ad2af",
+    "name": "Particle Health Authentication FHIR API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Particle Health is a healthcare data interoperability API that aggregates patient medical records from US health information exchanges (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs, and Surescripts. The API surfaces patient registration, asynchronous query orchestration, batch processing, document handling, network participant directory search, patient provider mapping, and real-time Signal alerting. Clinical data is returned in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental changes). Authentication uses OAuth 2 client-credentials with JWT bearer tokens scoped to a project.\n\nContact Support:\n Name: Particle Health Support\n Email: support@particlehealth.com",
+      "type": "text/plain"
+    }
+  }
+}

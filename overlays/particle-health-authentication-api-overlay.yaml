@@ -1,0 +1,23 @@
+# generated: '2026-08-14'
+# method: generated
+# source: openapi/particle-health-authentication-api-openapi.yml, agentic-access/particle-health-agentic-access.yml
+# description: Non-mutating OpenAPI Overlay 1.0.0 layering x-agentic-access execution
+#   classification and rate-limit scope metadata onto each operation. Never edits the
+#   underlying openapi/ file.
+overlay: 1.0.0
+info:
+  title: "Particle Health Authentication API \u2014 API Evangelist enhancement overlay"
+  version: 1.0.0
+extends: ../openapi/particle-health-authentication-api-openapi.yml
+actions:
+- target: $.paths['/auth']['get']
+  description: Annotate getAuthToken with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none

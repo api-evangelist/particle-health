@@ -1,0 +1,90 @@
+generated: '2026-08-14'
+method: derived
+source:
+  - openapi/particle-health-fhir-api-openapi.yml
+  - openapi/particle-health-deltas-api-openapi.yml
+  - openapi/particle-health-ccda-api-openapi.yml
+  - openapi/particle-health-hl7v2-api-openapi.yml
+  - asyncapi/particle-health-webhooks.yml
+  - https://docs.particlehealth.com/docs/supported-fhir-resources
+  - https://docs.particlehealth.com/docs/ccda-vs-fhir
+  - https://docs.particlehealth.com/docs/auth-and-keys
+checks:
+  - id: fhir
+    name: HL7 FHIR R4
+    conforms: true
+    evidence: >-
+      Dedicated FHIR API surface (openapi/particle-health-fhir-api-openapi.yml) with R4 resource
+      search/read (/r4/{resource_type}, $everything), a documented Supported FHIR Resources page
+      (US Core-aligned), and FHIR Bundle response shape. Apis.yml declares FHIR/USCDIv2 tags
+      throughout.
+  - id: ccda
+    name: HL7 C-CDA
+    conforms: true
+    evidence: Dedicated C-CDA retrieval API (openapi/particle-health-ccda-api-openapi.yml) plus a
+      documented CCDA vs. FHIR comparison page and a public synthetic C-CDA sample repo
+      (github.com/ParticleHealth/synthetic-patients-ccdas).
+  - id: hl7v2
+    name: HL7v2 (ADT messaging)
+    conforms: true
+    evidence: Dedicated HL7v2 API (openapi/particle-health-hl7v2-api-openapi.yml) surfacing raw ADT
+      messages by ID and by patient.
+  - id: cloudevents
+    name: CloudEvents 1.0
+    conforms: true
+    evidence: Webhook notification envelope explicitly declares specversion "1.0" and follows the
+      CloudEvents structure (id/source/type/subject/time/datacontenttype/data) — see
+      asyncapi/particle-health-webhooks.yml, sourced from Particle Health's own notification data
+      contract documentation.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: >-
+      Docs describe the flow as "OAuth 2 Client-Credentials," but the actual mechanics deviate from
+      RFC 6749: the token endpoint is a GET (not POST), credentials travel as custom request headers
+      (client-id/client-secret/scope) rather than a client_credentials grant body, and the response is
+      a bare JWT string (not a JSON access_token envelope). No token endpoint metadata, no
+      /.well-known/oauth-authorization-server (probed, 404 on every host). Recorded as non-conformant
+      to the OAuth 2.0 wire protocol despite the provider's own "OAuth 2" label, per
+      authentication/particle-health-authentication.yml.
+  - id: rfc9457
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence: >-
+      No application/problem+json content type found in any OpenAPI response, and no 4xx/5xx
+      responses are declared in any of the 17 refined OpenAPI files at all (only success codes
+      200/201/202/204). No dedicated error-reference doc page exists (checked
+      docs.particlehealth.com/llms.txt guide list — no error/problem-types page listed). See
+      errors/particle-health-problem-types.yml.
+  - id: idempotency
+    name: Idempotency-Key support
+    conforms: false
+    evidence: No Idempotency-Key (or equivalent) header documented anywhere in the OpenAPI specs or
+      docs.particlehealth.com/llms.txt guide index; not searched for "idempoten*" hits in either.
+  - id: pagination
+    name: Cursor/paged responses
+    conforms: partial
+    evidence: >-
+      FHIR/Deltas/Flat retrieval endpoints are documented as returning "paging and incremental sync"
+      (e.g. getFhirDatasets), which for a FHIR Bundle means the standard FHIR Bundle.link[] with a
+      "next" relation — inherited from FHIR conformance, not a Particle-specific query-param scheme.
+      No OpenAPI parameter for page/cursor/limit/offset is declared on any operation (checked all 17
+      refined specs) — pagination exists in practice but is not modeled in the machine-readable
+      contract.
+  - id: hipaa
+    name: HIPAA
+    conforms: true
+    evidence: Trust center names HIPAA explicitly (security/particle-health-trust-center.yml,
+      sourced from particlehealth.com/security).
+  - id: soc2
+    name: SOC 2
+    conforms: true
+    evidence: Trust center names SOC 2 explicitly (security/particle-health-trust-center.yml).
+  - id: tefca
+    name: TEFCA / QHIN
+    conforms: true
+    evidence: Provider is a listed TEFCA/QHIN participant per docs.particlehealth.com/docs/networks
+      and apis.yml integrations[].
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,43 @@
+generated: '2026-08-14'
+method: searched
+source:
+  - https://docs.particlehealth.com/docs/legacy-api-implementation
+  - https://docs.particlehealth.com/docs/legacy-fhir-api-implementation
+  - https://docs.particlehealth.com/docs/deltas-api-implementation
+  - https://status.particlehealth.com/
+versioning:
+  scheme: "path-versioned per resource family (v1/v2 mixed across endpoints, e.g. /api/v2/patients,
+    /api/v1/queries), not a single provider-wide version number"
+  spec_info_version: v1 (declared in every OpenAPI info.version — a document label, not a live API
+    version negotiated at request time)
+status_page:
+  url: https://status.particlehealth.com/
+  already_wired: common[] StatusPage pointer (pre-existing)
+deprecation_policy:
+  documented: true
+  scope: query flow selection, not endpoint sunset
+  detail: >-
+    Particle documents its legacy FHIR® and Flat query-flow implementations as "active and available
+    to existing customers" while steering all new customers onto the Deltas API (or CCDA) flow
+    instead: "These query flows remain active and available to existing customers. Existing customers
+    are encouraged to opt-in and upgrade to our recommended query flow, the Deltas API Implementation.
+    New customers will be implemented using either the Deltas API or CCDA API flows." — this is a
+    soft migration steer with no published hard sunset date, no Sunset/Deprecation HTTP headers
+    (RFC 8594) found on any operation, and no deprecated: true flags set on any OpenAPI operation.
+  source: https://docs.particlehealth.com/docs/legacy-api-implementation
+  affected_flows:
+    - FHIR® API Implementation (legacy) -> superseded-by Deltas API Implementation
+    - Flat API Implementation (legacy, same category per the legacy-api-implementation index page)
+      -> superseded-by Deltas API Implementation
+  recommended_flow: Deltas API (openapi/particle-health-deltas-api-openapi.yml) — "Deltas API is
+    Particle's recommended query flow for customers!"
+sla:
+  documented: false
+  note: No public SLA/uptime commitment page found; enterprise SLAs are referenced only as a
+    negotiated contract item in plans/particle-health-plans-pricing.yml (Enterprise tier).
+deprecated_operations_from_openapi:
+  count: 0
+  note: No operation in any of the 17 refined OpenAPI files carries deprecated true.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

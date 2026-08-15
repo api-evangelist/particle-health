@@ -1,0 +1,83 @@
+generated: '2026-08-14'
+method: searched
+source:
+  - https://docs.particlehealth.com/docs/webhook-event-notifications
+  - https://raw.githubusercontent.com/ParticleHealth/particle-connect/main/agent-documentation/12-notification-data-contract.md
+description: >-
+  Particle Health does not publish a machine-readable AsyncAPI document (no asyncapi.yaml found on
+  docs/API hosts or the ParticleHealth GitHub org). It does document a full webhook/notification
+  catalog, and that catalog conforms to CloudEvents 1.0 — captured here as a structured Webhooks
+  catalog rather than a fabricated AsyncAPI spec.
+envelope:
+  spec: CloudEvents 1.0
+  transport: HTTP POST to a customer-configured callback URL
+  content_type: application/cloudevents+json
+  fields:
+    specversion: "1.0 (constant)"
+    id: UUID, unique per notification
+    source: "api/notifications (constant)"
+    type: notification type identifier, see events[] below
+    subject: human-readable event description, varies by type
+    time: ISO 8601 timestamp
+    datacontenttype: application/json (constant)
+    data: notification-specific payload object
+  headers:
+    Content-Type: application/cloudevents+json
+    Accept: "*/*"
+    X-Ph-Signature-256: "t={unix_timestamp},{hmac_sha256_signature} — HMAC over `{timestamp}.{raw_json_body}`"
+  signature_verification:
+    algorithm: HMAC-SHA256
+    steps:
+      - Extract timestamp and signature from X-Ph-Signature-256
+      - "Construct the signed payload: {timestamp}.{raw_json_body}"
+      - Generate HMAC SHA-256 using the customer's signature key
+      - Compare generated signature to the received signature
+  contract_version: '1.0 (2026-02-05, per provider doc)'
+identifier_fields:
+  particle_patient_id: Particle's internal patient identifier (UUID)
+  external_patient_id: Customer's own patient identifier, as sent at registration
+  person_id: Legacy identifier, query notifications only
+  patient_id: May match person_id or particle_patient_id depending on context
+events:
+  - type: com.particlehealth.api.v2.transitionalerts
+    name: Transition Alert
+    subjects: [Admit Alert, Discharge Alert, Discharge Summary Available, Transfer Alert, Death Alert]
+    fires_when: Patient care transition detected (admission/discharge/transfer/death)
+    data_fields: [network_organization, particle_patient_id, external_patient_id, event_type,
+      event_sequence, is_final_event, resources]
+    gotchas: >-
+      Payload does NOT include facility type (SNF/Hospital/ED) — must be looked up separately via the
+      transition ID in resources[].resource_ids. file_id may be empty (esp. for admissions);
+      non-empty only when a discharge summary is available.
+  - type: com.particlehealth.api.v2.hl7v2
+    name: HL7 ADT Alert
+    subject: "HL7v2 {code} Message for {id}"
+    fires_when: Raw HL7v2 ADT message received
+  - type: com.particlehealth.api.v2.query
+    name: Query Complete
+    subject: "{format} Query Complete"
+    fires_when: Patient data query finishes (alternative to polling getPatientQueryStatus)
+  - type: com.particlehealth.api.v2.encounteralerts
+    name: New Encounter Alert
+    subject: New Encounter
+    fires_when: New encounter data available
+  - type: com.particlehealth.api.v2.aioutputs
+    name: AI Outputs Complete
+    subject: "AI Outputs completed ({n} completed, {m} failed)"
+    fires_when: AI-generated outputs (Particle Snapshot) ready
+  - type: com.particlehealth.api.v2.consent
+    name: Patient Consent Updated
+    subject: Patient Consent Updated
+    fires_when: Patient consent status changes
+  - type: com.particlehealth.api.v2.medicationfills
+    name: Medication Fills Data Available
+    subject: Medication Fills Data Available
+    fires_when: New medication fill data ready (Surescripts)
+sandbox_testing:
+  trigger_endpoint: /api/v1/patients/{particle_patient_id}/subscriptions/trigger-sandbox-workflow
+    (operationId triggerSandboxWorkflow, particle-health-subscriptions-api-openapi.yml)
+  note: Synthetically fires a webhook notification for testing a receiver end-to-end without waiting
+    on a real network event.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

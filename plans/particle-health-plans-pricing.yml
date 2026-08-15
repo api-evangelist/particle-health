@@ -4,7 +4,22 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Particle Health
 providerId: particle-health
 created: '2026-05-24'
-modified: '2026-05-24'
+modified: '2026-08-14'
+method: derived
+plan_count: 3
+source: openapi/*.yml + docs.particlehealth.com (no numeric limits published) + probes below
+probed:
+  - url: https://particlehealth.com/pricing
+    status: 404
+  - url: https://particlehealth.com/plans
+    status: 404
+methodNote: >-
+  No public pricing/plans page exists (both probed 404 on 2026-08-14). Particle is sales-led with
+  custom commercial agreements. Tier structure (Sandbox/Production/Enterprise) and named features are
+  derived from the OpenAPI surface, apis.yml, and docs.particlehealth.com prose. The Sandbox's 500
+  queries/org/day figure is real and documented (see sandbox/particle-health-sandbox.yml); the
+  per-project numeric quotas below beyond that are scaffold placeholders, not provider-published
+  numbers, pending Particle publishing a rate card.
 tags:
   - Carequality
   - CommonWell
@@ -27,15 +42,18 @@ plans:
       Health workflows using synthetic patient data. No production network queries.
     entries:
       - label: Sandbox Queries
-        description: Synthetic patient query quota in the sandbox environment
+        description: >-
+          Synthetic patient query quota in the sandbox environment. Corrected 2026-08-14: documented
+          cap is 500 queries per ORGANIZATION per DAY (not uncapped) — see
+          docs.particlehealth.com/docs/test-patient-sandbox and sandbox/particle-health-sandbox.yml.
         name: sandbox_queries
         type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
+        metric: requests_per_day
+        limit: 500
+        timeFrame: day
         geo: global
         domains:
-          - https://api.particlehealth.com
+          - https://sandbox.particlehealth.com
         unit: 1
         price: '0.00'
         userMultiplied: false
@@ -48,7 +66,7 @@ plans:
         timeFrame: minute
         geo: global
         domains:
-          - https://api.particlehealth.com
+          - https://sandbox.particlehealth.com
         unit: 1
         price: '0.00'
         userMultiplied: false

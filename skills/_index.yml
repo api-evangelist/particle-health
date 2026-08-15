@@ -1,0 +1,29 @@
+generated: '2026-08-14'
+skills:
+  - file: particle-health-AGENTS.md
+    method: searched
+    source: https://raw.githubusercontent.com/ParticleHealth/particle-connect/main/agent-documentation/AGENTS.md
+    note: >-
+      Provider-published AGENTS.md, saved verbatim from Particle Health's own public GitHub repo
+      (ParticleHealth/particle-connect/agent-documentation/AGENTS.md). Written for AI coding agents
+      working in that quickstart monorepo (build/test commands for the Python SDK, analytics
+      pipeline, and management UI), not for agents calling the production API directly — that
+      distinction is preserved rather than reframed.
+  - file: particle-health-adt-event-subscription.md
+    method: generated
+    grounded_in: arazzo/particle-health-adt-subscription-workflow.yml
+  - file: particle-health-clinical-document-exchange.md
+    method: generated
+    grounded_in: arazzo/particle-health-clinical-document-exchange-workflow.yml
+  - file: particle-health-fhir-r4-resource-query.md
+    method: generated
+    grounded_in: arazzo/particle-health-fhir-r4-resource-query-workflow.yml
+  - file: particle-health-network-provider-discovery.md
+    method: generated
+    grounded_in: arazzo/particle-health-network-provider-discovery-workflow.yml
+  - file: particle-health-national-patient-record-retrieval.md
+    method: generated
+    grounded_in: arazzo/particle-health-patient-record-retrieval-workflow.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

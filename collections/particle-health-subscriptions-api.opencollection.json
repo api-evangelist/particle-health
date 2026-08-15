@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Subscriptions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Patient Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Lists subscriptions for a patient with an optional type filter."
+        },
+        {
+          "info": {
+            "name": "Create Patient Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Adds subscriptions for a single patient."
+        },
+        {
+          "info": {
+            "name": "Delete Patient Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Delete Patient Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Create Subscriptions for Multiple Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/patients/subscriptions"
+          },
+          "docs": "Subscribe a batch of patients to Signal monitoring in a single API call."
+        },
+        {
+          "info": {
+            "name": "Trigger Sandbox Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/patients/:particle_patient_id/subscriptions/trigger-sandbox-workflow",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Triggers sandbox webhook notification events for testing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

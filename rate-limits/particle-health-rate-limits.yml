@@ -4,7 +4,17 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Particle Health
 providerId: particle-health
 created: '2026-05-24'
-modified: '2026-05-24'
+modified: '2026-08-14'
+method: searched
+docs: https://docs.particlehealth.com/docs/rate-limiting-and-quotas
+methodNote: >-
+  Verified 2026-08-14 against the live docs page. The 429 status, 60-second retry guidance, and
+  per-project scoping are stated directly. The "50 queries/minute" figure is presented in the docs as
+  an ILLUSTRATIVE EXAMPLE ("if you have 50 queries/minute, and have 3 projects...") rather than an
+  explicitly confirmed universal default — kept here as the best available estimate, corrected from
+  the prior wording that overstated it as a documented baseline. No X-RateLimit-*/RateLimit-* response
+  headers are documented; only Retry-After-style guidance in prose (no header name given either) — see
+  conventions/particle-health-conventions.yml.
 tags:
   - Carequality
   - CommonWell
@@ -39,6 +49,18 @@ limits:
     applies:
       - Particle Health API
     notes: Sandbox environment limit; aligns with the documented per-project default.
+  - tier: sandbox
+    name: Sandbox Daily Organization Cap
+    scope: organization
+    metric: requests_per_day
+    limit: 500
+    timeFrame: day
+    applies:
+      - Particle Health API
+    notes: >-
+      Documented, confirmed cap (not an example): "we limit the number of queries within our Sandbox
+      environment to 500 queries per organization per day" — https://sandbox.particlehealth.com,
+      per docs.particlehealth.com/docs/test-patient-sandbox.
   - tier: production
     name: Production Default Per-Project Rate Limit
     scope: project

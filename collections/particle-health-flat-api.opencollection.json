@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Flat API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collect Deltas Flat Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/flat/:particle_patient_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns Flat datasets changed since the supplied `_since` timestamp."
+        },
+        {
+          "info": {
+            "name": "Get Deltas Flat Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/flat/:particle_patient_id/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Deltas Flat Resource"
+        },
+        {
+          "info": {
+            "name": "Submit Flat Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/flat"
+          },
+          "docs": "Initiates a Flat query for a specific patient using demographics."
+        },
+        {
+          "info": {
+            "name": "Get Flat Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/flat/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flat Patient"
+        },
+        {
+          "info": {
+            "name": "Collect Flat Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/flat/:id/collect-data",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Flat clinical data domains (allergies, encounters, medications, labs, etc.)."
+        },
+        {
+          "info": {
+            "name": "Get Flat Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/flat/:patient_id/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flat Resource"
+        },
+        {
+          "info": {
+            "name": "Collect v2 Flat Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v2/patients/:particle_patient_id/flat",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Retrieve flat datasets filtered by domain (ALLERGIES, ENCOUNTERS, MEDICATIONS, LABS, IMMUNIZATIONS, VITAL_SIGNS, etc.) or a specific resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

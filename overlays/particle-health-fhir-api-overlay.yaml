@@ -1,0 +1,134 @@
+# generated: '2026-08-14'
+# method: generated
+# source: openapi/particle-health-fhir-api-openapi.yml, agentic-access/particle-health-agentic-access.yml
+# description: Non-mutating OpenAPI Overlay 1.0.0 layering x-agentic-access execution
+#   classification and rate-limit scope metadata onto each operation. Never edits the
+#   underlying openapi/ file.
+overlay: 1.0.0
+info:
+  title: "Particle Health Authentication FHIR API \u2014 API Evangelist enhancement overlay"
+  version: 1.0.0
+extends: ../openapi/particle-health-fhir-api-openapi.yml
+actions:
+- target: $.paths['/deltas/r4/Patient/{particle_patient_id}/$everything']['get']
+  description: Annotate collectDeltasFhirEverything with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/deltas/r4/{resource_type}']['get']
+  description: Annotate searchDeltasFhirResources with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/deltas/r4/{resource_type}/{resource_id}']['get']
+  description: Annotate readDeltasFhirResource with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/r4/Patient']['post']
+  description: Annotate createFhirPatient with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/r4/Patient/{patient_id}/$everything']['get']
+  description: Annotate getFhirPatientEverything with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/r4/Patient/{patient_id}/query']['get']
+  description: Annotate getFhirPatientQueryStatus with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/r4/Patient/{patient_id}/query']['post']
+  description: Annotate createFhirPatientQuery with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: acting
+      consequence: write
+      subject: required
+      audience: null
+      token:
+        max-ttl: 900
+      escalation:
+        human-in-the-loop: conditional
+        triggers:
+        - abnormal
+        - high-value
+      audit: required
+- target: $.paths['/r4/{resource_type}']['get']
+  description: Annotate searchFhirResources with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/r4/{resource_type}/{resource_id}']['get']
+  description: Annotate readFhirResource with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none
+- target: $.paths['/api/v2/patients/{particle_patient_id}/fhir']['get']
+  description: Annotate getFhirDatasets with agentic-access + rate-limit scoping metadata.
+  update:
+    x-rate-limit-scope: project
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      subject: optional
+      token:
+        max-ttl: 3600
+      audit: none

@@ -1,0 +1,48 @@
+generated: '2026-08-14'
+method: probed
+status: gated
+deployment:
+  mode: remote
+  endpoint: https://docs.particlehealth.com/mcp
+  auth: unknown
+  verified: probed
+x-evidence:
+  - url: https://docs.particlehealth.com/mcp
+    method: GET
+    http_status: 200
+    body: "This URL can only be accessed with a MCP client."
+  - url: https://docs.particlehealth.com/mcp
+    method: POST
+    payload: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+    body: '{"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization required"},"id":null}'
+  - url: https://docs.particlehealth.com/mcp
+    method: POST
+    payload: '{"jsonrpc":"2.0","id":1,"method":"initialize", ...}'
+    http_status: 401
+    body: '{"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization required"},"id":null}'
+    response_headers_of_note:
+      - "set-cookie carries x-readme-* cookie attributes (x-readme-conversation-id, x-readme-user-id,
+         x-readme-project-id) — the endpoint is served by ReadMe (readme.com), Particle Health's docs
+         platform vendor, not custom-built by Particle Health."
+notes: >-
+  docs.particlehealth.com/mcp is real and responds to the MCP JSON-RPC 2.0 transport (a POST with no
+  Authorization header gets a well-formed JSON-RPC auth-error envelope rather than a generic 401 page),
+  so this is a genuine agent-reachable MCP surface on a host Particle Health controls. It could not be
+  confirmed whether it exposes patient-data operations or is scoped to documentation/reference search —
+  every probed method (initialize, tools/list) returned the same "Authorization required" JSON-RPC
+  error, so no tool list or inputSchema was ever visible. This is ReadMe's platform-level MCP feature
+  (surfaced automatically for docs sites hosted on ReadMe), not something Particle Health built
+  bespoke — recorded here because it is still a real, reachable, first-party-hosted MCP endpoint.
+  No hosted MCP server exposing the Particle Query Flow / Management API operations as tools was found
+  anywhere else (api.particlehealth.com/mcp, sandbox.particlehealth.com/mcp: 404; no MCP mentioned in
+  docs.particlehealth.com/llms.txt or the ParticleHealth GitHub org).
+tool_crosswalk: >-
+  NOT emitted. A ToolCrosswalk requires binding real MCP tool names to OpenAPI operationIds; since
+  every tools/list probe returned an auth-gated JSON-RPC error with no tool list, there are zero tool
+  names to bind. Fabricating a name-based mapping against an OpenAPI spec on the assumption the MCP
+  server mirrors it would not be a derivation — it would be a guess presented as a crosswalk, which
+  this pipeline's no-fabrication rule forbids.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

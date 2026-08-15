@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Deltas API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deltas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Deltas Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/deltas"
+          },
+          "docs": "Initiates an incremental query with Purpose of Use, hints, and specialty filters."
+        },
+        {
+          "info": {
+            "name": "Get Deltas Query Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/:particle_patient_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Get Deltas Query Status"
+        },
+        {
+          "info": {
+            "name": "Collect Deltas FHIR Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/Patient/:particle_patient_id/$everything",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns a FHIR Bundle of changed resources for the patient since the last sync."
+        },
+        {
+          "info": {
+            "name": "Search Deltas FHIR Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/:resource_type",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              }
+            ]
+          },
+          "docs": "Searches deltas for a specific FHIR resource type."
+        },
+        {
+          "info": {
+            "name": "Read Deltas FHIR Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/r4/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reads a specific changed FHIR resource."
+        },
+        {
+          "info": {
+            "name": "Collect Deltas Flat Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/flat/:particle_patient_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              }
+            ]
+          },
+          "docs": "Returns Flat datasets changed since the supplied `_since` timestamp."
+        },
+        {
+          "info": {
+            "name": "Get Deltas Flat Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/deltas/flat/:particle_patient_id/:resource_type/:resource_id",
+            "params": [
+              {
+                "name": "particle_patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Particle Patient ID (PPID)"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "FHIR resource type (Patient, Encounter, Condition, Observation, etc.)"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Deltas Flat Resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

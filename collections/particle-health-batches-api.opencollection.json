@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Particle Health Authentication Batches API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Batches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Batches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/batches"
+          },
+          "docs": "Lists batch jobs with state, type, and counts."
+        },
+        {
+          "info": {
+            "name": "Create Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.particlehealth.com/api/v1/batches/:batch_type",
+            "params": [
+              {
+                "name": "batch_type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Starts a batch job of type CCDA, FHIR_R4, FLAT, or DELTAS over a patient cohort."
+        },
+        {
+          "info": {
+            "name": "Get Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.particlehealth.com/api/v1/batches/:batch_id",
+            "params": [
+              {
+                "name": "batch_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns batch metadata, progress, and results summary."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,85 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/*.yml (17 refined files, path-parameter + resource-nesting analysis)
+enrichment_source:
+  - https://docs.particlehealth.com/docs/resource-relationship-map
+  - https://docs.particlehealth.com/docs/supported-fhir-resources
+description: >-
+  Entity-relationship graph derived from path structure across Particle Health's 17 refined OpenAPI
+  files (no $ref-linked component schemas exist to derive from — every response is a bare description,
+  no structured schema; see errors/particle-health-problem-types.yml for the same observation on the
+  request/response side). Relationships below are inferred from URL path nesting and shared path-
+  parameter names (particle_patient_id is the dominant join key across almost every API).
+entities:
+  - name: Patient
+    id_field: particle_patient_id
+    aka: PPID
+    created_by: submitPatient (POST /api/v2/patients)
+    note: Root entity. Nearly every other resource in the platform is looked up by, or nested under,
+      a particle_patient_id path segment.
+  - name: Query
+    id_field: id (query id) / implicit per-patient
+    note: >-
+      Multiple parallel query surfaces exist for the same underlying action: /api/v1/queries/{id}
+      (Queries API), /api/v2/patients/{particle_patient_id}/query (Queries API, patient-scoped),
+      /r4/Patient/{patient_id}/query (FHIR-native), /deltas (Deltas API). Treated as one conceptual
+      Query entity with format-specific launch/poll endpoints.
+  - name: Batch
+    id_field: batch_id
+    note: Orchestrates queries across a cohort; POST /api/v1/batches/{batch_type} starts one, GET
+      /api/v1/batches/{batch_id} polls it.
+  - name: Document
+    id_field: id (document id)
+    note: Uploaded via POST /api/v1/documents; listed per-patient via
+      /api/v1/documents/patient/{id}.
+  - name: File
+    id_field: file_id (scoped under query_id)
+    note: Query result artifacts — /api/v1/files/{query_id}/{file_id} and
+      /api/v1/files/{query_id}/zip.
+  - name: HL7v2Message
+    id_field: id (message id)
+    note: Retrievable standalone (/hl7v2/message/{id}) or per-patient
+      (/hl7v2/patient/{particle_patient_id}).
+  - name: Subscription
+    id_field: implicit, scoped to particle_patient_id
+    note: Signal monitoring enrollment — CRUD at
+      /api/v1/patients/{particle_patient_id}/subscriptions.
+  - name: NetworkAlert
+    id_field: id (alert id)
+    note: Signal output — /api/v1/alerts/network/{id}, and per-patient list at
+      /api/v1/patients/{id}/signals.
+  - name: NetworkParticipant
+    id_field: implicit (search-only resource, no single-item GET declared)
+    note: Directory of connected organizations, searchable by state or zip code — not joined to a
+      specific patient.
+  - name: ProviderMap
+    id_field: n/a (derived view)
+    note: Read-only aggregate view scoped to a patient —
+      /api/v1/patients/{particle_patient_id}/provider-map.
+  - name: Project
+    id_field: project_id
+    note: Tenant/scoping boundary. Notifications are configured per project
+      (/projects/{project_id}/notifications); credentials are scoped
+      `projects/<project_id>` (see authentication/particle-health-authentication.yml).
+  - name: FHIRResource
+    id_field: resource_id (typed by resource_type)
+    note: Generic FHIR R4 resource surface, /r4/{resource_type}/{resource_id}, patient-scoped via a
+      `patient` query parameter rather than a path segment.
+relationships:
+  - { from: Patient, to: Query, type: has_many, via: particle_patient_id }
+  - { from: Patient, to: Document, type: has_many, via: patient (id) path segment }
+  - { from: Patient, to: HL7v2Message, type: has_many, via: particle_patient_id }
+  - { from: Patient, to: Subscription, type: has_many, via: particle_patient_id }
+  - { from: Patient, to: NetworkAlert, type: has_many, via: id (signals) }
+  - { from: Patient, to: ProviderMap, type: has_one, via: particle_patient_id }
+  - { from: Patient, to: FHIRResource, type: has_many, via: patient query parameter }
+  - { from: Query, to: File, type: has_many, via: query_id }
+  - { from: Batch, to: Query, type: has_many, via: batch orchestrates per-patient queries (implicit,
+      not path-modeled) }
+  - { from: Project, to: Notification, type: has_many, via: project_id }
+  - { from: Project, to: Patient, type: has_many, via: scope=projects/<project_id> credential
+      (authentication-level, not a path relationship) }
+render: no subway/ diagram exists in this repo yet; this file is the source graph if one is built later.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
