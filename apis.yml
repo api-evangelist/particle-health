@@ -54,7 +54,7 @@ tags:
 - USCDI
 created: '2026-05-24'
 modified: '2026-08-14'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: particle-health:particle-health-authentication-api
   name: Particle Health Authentication API
