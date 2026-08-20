@@ -154,6 +154,8 @@ apis:
   humanURL: https://docs.particlehealth.com/
   baseURL: https://api.particlehealth.com
   tags:
+  - C-CDA
+  tags_raw:
   - CCDA
   properties:
   - type: OpenAPI
@@ -338,6 +340,8 @@ apis:
   humanURL: https://docs.particlehealth.com/
   baseURL: https://api.particlehealth.com
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -522,6 +526,8 @@ apis:
   humanURL: https://docs.particlehealth.com/
   baseURL: https://api.particlehealth.com
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -614,6 +620,8 @@ apis:
   humanURL: https://docs.particlehealth.com/
   baseURL: https://api.particlehealth.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -706,6 +714,8 @@ apis:
   humanURL: https://docs.particlehealth.com/
   baseURL: https://api.particlehealth.com
   tags:
+  - Query
+  tags_raw:
   - Queries
   properties:
   - type: OpenAPI
@@ -798,6 +808,8 @@ apis:
   humanURL: https://docs.particlehealth.com/
   baseURL: https://api.particlehealth.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
