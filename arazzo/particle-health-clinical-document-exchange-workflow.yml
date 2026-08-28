@@ -10,8 +10,11 @@ info:
     patient is listed. Each step inlines its request so the flow is self-contained.
   version: 1.0.0
 sourceDescriptions:
-- name: particleApi
-  url: ../openapi/particle-health-openapi.yml
+- name: authenticationApi
+  url: ../openapi/particle-health-authentication-api-openapi.yml
+  type: openapi
+- name: documentsApi
+  url: ../openapi/particle-health-documents-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: clinical-document-exchange

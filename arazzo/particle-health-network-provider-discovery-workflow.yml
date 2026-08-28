@@ -12,8 +12,20 @@ info:
     self-contained.
   version: 1.0.0
 sourceDescriptions:
-- name: particleApi
-  url: ../openapi/particle-health-openapi.yml
+- name: authenticationApi
+  url: ../openapi/particle-health-authentication-api-openapi.yml
+  type: openapi
+- name: networkparticipantsApi
+  url: ../openapi/particle-health-networkparticipants-api-openapi.yml
+  type: openapi
+- name: patientsApi
+  url: ../openapi/particle-health-patients-api-openapi.yml
+  type: openapi
+- name: providermapApi
+  url: ../openapi/particle-health-providermap-api-openapi.yml
+  type: openapi
+- name: queriesApi
+  url: ../openapi/particle-health-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: network-provider-discovery

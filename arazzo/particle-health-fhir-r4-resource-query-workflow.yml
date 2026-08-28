@@ -12,8 +12,11 @@ info:
     flow is self-contained.
   version: 1.0.0
 sourceDescriptions:
-- name: particleApi
-  url: ../openapi/particle-health-openapi.yml
+- name: authenticationApi
+  url: ../openapi/particle-health-authentication-api-openapi.yml
+  type: openapi
+- name: fhirApi
+  url: ../openapi/particle-health-fhir-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: fhir-r4-resource-query

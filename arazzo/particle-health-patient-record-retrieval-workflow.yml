@@ -13,8 +13,20 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: particleApi
-  url: ../openapi/particle-health-openapi.yml
+- name: authenticationApi
+  url: ../openapi/particle-health-authentication-api-openapi.yml
+  type: openapi
+- name: ccdaApi
+  url: ../openapi/particle-health-ccda-api-openapi.yml
+  type: openapi
+- name: fhirApi
+  url: ../openapi/particle-health-fhir-api-openapi.yml
+  type: openapi
+- name: patientsApi
+  url: ../openapi/particle-health-patients-api-openapi.yml
+  type: openapi
+- name: queriesApi
+  url: ../openapi/particle-health-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: national-patient-record-retrieval

@@ -11,8 +11,17 @@ info:
     follow-up. Each step inlines its request so the flow is self-contained.
   version: 1.0.0
 sourceDescriptions:
-- name: particleApi
-  url: ../openapi/particle-health-openapi.yml
+- name: authenticationApi
+  url: ../openapi/particle-health-authentication-api-openapi.yml
+  type: openapi
+- name: hl7v2Api
+  url: ../openapi/particle-health-hl7v2-api-openapi.yml
+  type: openapi
+- name: patientsApi
+  url: ../openapi/particle-health-patients-api-openapi.yml
+  type: openapi
+- name: subscriptionsApi
+  url: ../openapi/particle-health-subscriptions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: adt-event-subscription
