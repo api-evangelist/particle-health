@@ -900,6 +900,9 @@ integrations:
 - HL7v2
 - USCDI v2
 common:
+- type: CapabilityMap
+  url: capabilities/particle-health-capability-edges.yml
+  name: Particle Health Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/particle-health/overview
 - type: AgenticAccess

@@ -1,0 +1,108 @@
+slug: particle-health
+provider: Particle Health
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: FHIR
+  spec_file: particle-health-fhir-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.9
+  evidence: POST /r4/Patient/{patient_id}/query  createFhirPatientQuery; GET /r4/Patient/{patient_id}/$everything  Get
+    Patient $everything
+  reason: FHIR R4 endpoints querying national health information exchange networks for patient records
+    map directly to healthcare interoperability operations (FHIR endpoints, HIE connections).
+- tag: CCDA
+  spec_file: particle-health-ccda-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.85
+  evidence: GET /api/v2/patients/{particle_patient_id}/ccda  getCcdaFiles  Get CCDA Files — 'Clinical
+    data is returned in ... C-CDA documents'
+  reason: Retrieval of C-CDA clinical documents aggregated from Carequality/CommonWell/eHealth Exchange
+    is health information exchange operation, i.e. healthcare interoperability operations.
+- tag: Deltas
+  spec_file: particle-health-deltas-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.85
+  evidence: POST /deltas  submitDeltasQuery; GET /deltas/r4/Patient/{particle_patient_id}/$everything  Collect
+    Deltas FHIR Datasets
+  reason: Query and collection of incremental clinical record changes over FHIR R4 endpoints sourced from
+    HIE networks — operation of health information exchange connections and FHIR endpoints.
+- tag: HL7v2
+  spec_file: particle-health-hl7v2-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.85
+  evidence: GET /hl7v2/patient/{particle_patient_id}  getHl7v2Messages  Get HL7v2 Messages by Patient
+  reason: Retrieval of HL7v2 interchange messages for a patient is health information exchange / interoperability
+    messaging operation.
+- tag: Queries
+  spec_file: particle-health-queries-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.85
+  evidence: POST /api/v2/patients/{particle_patient_id}/query  createPatientQuery  Create Query; POST
+    /r4/Patient/{patient_id}/query  createFhirPatientQuery — "Clinical data is returned in FHIR R4 Bundles,
+    C-CDA documents"
+  reason: Operations orchestrate record-retrieval queries against nationwide health information exchange
+    networks and return FHIR/C-CDA payloads. That is squarely the operation of HIE connections and FHIR
+    endpoints described by Healthcare Interoperability Operations, not clinical documentation or care
+    delivery.
+- tag: Flat
+  spec_file: particle-health-flat-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.8
+  evidence: POST /flat  submitFlatPatient; GET /flat/{id}/collect-data  Collect Flat Datasets
+  reason: Submission of a patient and collection of the aggregated clinical dataset in the vendor's Flat
+    format is a record-exchange retrieval path over HIE networks.
+- tag: Documents
+  spec_file: particle-health-documents-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.75
+  evidence: POST /api/v1/documents  submitDocument; GET /api/v1/documents/patient/{id}  getPatientDocuments
+  reason: Submission and retrieval of patient clinical documents through the interoperability platform;
+    the vendor describes 'document handling' as part of exchange orchestration rather than internal record
+    retention.
+- tag: NetworkParticipants
+  spec_file: particle-health-networkparticipants-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.7
+  evidence: GET /api/v1/networkparticipants  searchNetworkParticipants — 'network participant directory
+    search'
+  reason: Directory search over HIE network participants supports operation of health information exchange
+    connections; it is directory tooling for interoperability rather than any clinical or provider-credentialing
+    capability.
+- tag: Patients
+  spec_file: particle-health-patients-api-openapi.yml
+  capability_id: BC-2900
+  capability_id_l1: BC-2900
+  capability_name: Health Information Management
+  confidence: 0.7
+  evidence: POST /api/v2/patients  submitPatient; POST /api/v2/patients/search  searchPatient — 'The API
+    surfaces patient registration'
+  reason: Patient demographic submission and matching used to identify a patient across exchange networks
+    sits in health information management; unclear whether this is best read as MPI stewardship or interoperability
+    operations, so only the L1 is asserted.
