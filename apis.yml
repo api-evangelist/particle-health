@@ -9,6 +9,18 @@ description: >-
   normalization, AI summarization (Particle Snapshot), real-time encounter and transition alerts (Particle Signal), and
   longitudinal patient journey tracking (Particle Navigator). Customer segments include value-based care organizations,
   payers, health systems, primary and specialty providers, and digital health developers.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
