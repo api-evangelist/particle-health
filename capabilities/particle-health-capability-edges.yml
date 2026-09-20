@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 8
+edge_count: 9
 edges:
 - tag: FHIR
   spec_file: particle-health-fhir-api-openapi.yml
@@ -93,3 +93,15 @@ edges:
   reason: Submission, retrieval and deletion of patient clinical documents within an interoperability
     platform — clearly health information management, but the surface is thin as to whether this is exchange
     operations (BC-2900.60) or record lifecycle (BC-2900.40), so only the L1 is asserted.
+- tag: Patients
+  spec_file: particle-health-patients-api-openapi.yml
+  capability_id: BC-2900
+  capability_id_l1: BC-2900
+  capability_name: Health Information Management
+  confidence: 0.7
+  evidence: POST /api/v2/patients  submitPatient; POST /api/v2/patients/search  searchPatient — 'The API
+    surfaces patient registration'
+  reason: Patient demographic submission and matching used to identify a patient across exchange networks
+    sits in health information management; unclear whether this is best read as MPI stewardship or interoperability
+    operations, so only the L1 is asserted.
+  recovered_from: healthcare-vertical-edges.json
