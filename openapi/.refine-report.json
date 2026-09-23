@@ -1,23 +1,7 @@
 {
   "provider": "particle-health",
   "sources": [
-    "particle-health-authentication-api-openapi.yml",
-    "particle-health-batches-api-openapi.yml",
-    "particle-health-ccda-api-openapi.yml",
-    "particle-health-deltas-api-openapi.yml",
-    "particle-health-documents-api-openapi.yml",
-    "particle-health-fhir-api-openapi.yml",
-    "particle-health-files-api-openapi.yml",
-    "particle-health-flat-api-openapi.yml",
-    "particle-health-hl7v2-api-openapi.yml",
-    "particle-health-networkparticipants-api-openapi.yml",
-    "particle-health-notifications-api-openapi.yml",
-    "particle-health-patients-api-openapi.yml",
-    "particle-health-projects-api-openapi.yml",
-    "particle-health-providermap-api-openapi.yml",
-    "particle-health-queries-api-openapi.yml",
-    "particle-health-signal-api-openapi.yml",
-    "particle-health-subscriptions-api-openapi.yml"
+    "_original/particle-health-openapi.yml"
   ],
   "outputs": [
     "particle-health-authentication-api-openapi.yml",
@@ -41,6 +25,28 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "particle-health-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "particle-health-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-batches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-ccda-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-deltas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-fhir-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-flat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-hl7v2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-networkparticipants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-notifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-patients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-providermap-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-signal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "particle-health-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
