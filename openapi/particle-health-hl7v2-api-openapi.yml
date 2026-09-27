@@ -44,17 +44,17 @@ paths:
           description: HL7v2 message list
 components:
   parameters:
-    idParam:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
     particlePatientIdParam:
       name: particle_patient_id
       in: path
       required: true
       description: Particle Patient ID (PPID)
+      schema:
+        type: string
+    idParam:
+      name: id
+      in: path
+      required: true
       schema:
         type: string
   securitySchemes:
