@@ -153,17 +153,17 @@ paths:
           description: FHIR Bundle
 components:
   parameters:
+    resourceIdParam:
+      name: resource_id
+      in: path
+      required: true
+      schema:
+        type: string
     particlePatientIdParam:
       name: particle_patient_id
       in: path
       required: true
       description: Particle Patient ID (PPID)
-      schema:
-        type: string
-    resourceIdParam:
-      name: resource_id
-      in: path
-      required: true
       schema:
         type: string
     resourceTypeParam:

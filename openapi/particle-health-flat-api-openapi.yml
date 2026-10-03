@@ -108,19 +108,6 @@ paths:
           description: Flat datasets
 components:
   parameters:
-    idParam:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    particlePatientIdParam:
-      name: particle_patient_id
-      in: path
-      required: true
-      description: Particle Patient ID (PPID)
-      schema:
-        type: string
     resourceIdParam:
       name: resource_id
       in: path
@@ -132,6 +119,19 @@ components:
       in: path
       required: true
       description: FHIR resource type (Patient, Encounter, Condition, Observation, etc.)
+      schema:
+        type: string
+    particlePatientIdParam:
+      name: particle_patient_id
+      in: path
+      required: true
+      description: Particle Patient ID (PPID)
+      schema:
+        type: string
+    idParam:
+      name: id
+      in: path
+      required: true
       schema:
         type: string
   securitySchemes:
