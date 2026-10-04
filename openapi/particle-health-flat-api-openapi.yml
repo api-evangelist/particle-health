@@ -114,13 +114,6 @@ components:
       required: true
       schema:
         type: string
-    resourceTypeParam:
-      name: resource_type
-      in: path
-      required: true
-      description: FHIR resource type (Patient, Encounter, Condition, Observation, etc.)
-      schema:
-        type: string
     particlePatientIdParam:
       name: particle_patient_id
       in: path
@@ -132,6 +125,13 @@ components:
       name: id
       in: path
       required: true
+      schema:
+        type: string
+    resourceTypeParam:
+      name: resource_type
+      in: path
+      required: true
+      description: FHIR resource type (Patient, Encounter, Condition, Observation, etc.)
       schema:
         type: string
   securitySchemes:
