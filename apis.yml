@@ -51,6 +51,31 @@ tags:
 - CommonWell
 - Deltas
 - eHealth Exchange
+- Electronic Health Records
+- FHIR
+- Health Data
+- Health Information Exchange
+- Healthcare
+- HIE
+- HL7
+- HL7v2
+- Interoperability
+- Medical Records
+- Patients
+- Pharmacy
+- QHIN
+- Surescripts
+- TEFCA
+- USCDI
+tags_raw:
+- ADT
+- C-CDA
+- Care Coordination
+- Carequality
+- Clinical Data
+- CommonWell
+- Deltas
+- eHealth Exchange
 - EHR
 - FHIR
 - Health Data
