@@ -1,4 +1,4 @@
-# Particle Health (particle-health)
+# Particle Health
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,128 +66,234 @@
 
 Particle Health is a healthcare data interoperability platform that aggregates patient medical records from across the US healthcare system into a single RESTful API. Particle is connected to all three nationwide health information exchange networks (Carequality, CommonWell, eHealth Exchange), TEFCA / QHIN partners, state HIEs (Healthix in New York, Manifest MedEx in California), and Surescripts for pharmacy data. The platform exposes patient demographics, clinical resources, and document retrieval via FHIR R4, C-CDA, Flat, and Deltas formats, layered with deduplication, normalization, AI summarization (Particle Snapshot), real-time encounter and transition alerts (Particle Signal), and longitudinal patient journey tracking (Particle Navigator). Customer segments include value-based care organizations, payers, health systems, primary and specialty providers, and digital health developers.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/particle-health/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/particle-health/refs/heads/main/apis.yml)
+**Areas:** ADT · C-CDA · Care Coordination · Carequality · Clinical Data · CommonWell · Deltas · eHealth Exchange · Electronic Health Records · FHIR · Health Data · Health Information Exchange
 
-## Scope
+## Particle Health on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Particle Health is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/particle-health/](https://apis.io/providers/particle-health/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (17)
 
-- ADT
-- C-CDA
-- Care Coordination
-- Carequality
-- Clinical Data
-- CommonWell
-- Deltas
-- eHealth Exchange
-- EHR
-- FHIR
-- Health Data
-- Health Information Exchange
-- Healthcare
-- HIE
-- HL7
-- HL7v2
-- Interoperability
-- Medical Records
-- Patients
-- Pharmacy
-- QHIN
-- Surescripts
-- TEFCA
-- USCDI
+- [Particle Health Authentication API](https://apis.io/apis/particle-health/particle-health-authentication-api/) — OAuth 2 client-credentials JWT issuance.
+- [Particle Health Batches API](https://apis.io/apis/particle-health/particle-health-batches-api/) — Batch query orchestration over patient cohorts.
+- [Particle Health CCDA API](https://apis.io/apis/particle-health/particle-health-ccda-api/) — C-CDA clinical document retrieval.
+- [Particle Health Deltas API](https://apis.io/apis/particle-health/particle-health-deltas-api/) — Incremental change retrieval since a previous query.
+- [Particle Health Documents API](https://apis.io/apis/particle-health/particle-health-documents-api/) — Document upload, retrieval, and deletion.
+- [Particle Health FHIR API](https://apis.io/apis/particle-health/particle-health-fhir-api/) — FHIR R4 resource search and read.
+- [Particle Health Files API](https://apis.io/apis/particle-health/particle-health-files-api/) — Query result file download.
+- [Particle Health Flat API](https://apis.io/apis/particle-health/particle-health-flat-api/) — Flat (normalized columnar) clinical data domains.
+- [Particle Health HL7v2 API](https://apis.io/apis/particle-health/particle-health-hl7v2-api/) — HL7v2 ADT messages.
+- [Particle Health NetworkParticipants API](https://apis.io/apis/particle-health/particle-health-networkparticipants-api/) — Directory search over connected network organizations.
+- [Particle Health Notifications API](https://apis.io/apis/particle-health/particle-health-notifications-api/) — Project-level webhook notification configuration.
+- [Particle Health Patients API](https://apis.io/apis/particle-health/particle-health-patients-api/) — Patient demographic registration and lookup.
+- [Particle Health Projects API](https://apis.io/apis/particle-health/particle-health-projects-api/) — Project and service-account management.
+- [Particle Health ProviderMap API](https://apis.io/apis/particle-health/particle-health-providermap-api/) — Patient provider mapping across the network.
+- [Particle Health Queries API](https://apis.io/apis/particle-health/particle-health-queries-api/) — One-time network query orchestration.
+- [Particle Health Signal API](https://apis.io/apis/particle-health/particle-health-signal-api/) — Real-time encounter, transition, and ADT alerts.
+- [Particle Health Subscriptions API](https://apis.io/apis/particle-health/particle-health-subscriptions-api/) — Patient subscription management for Signal.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-24
-- **Modified:** 2026-05-24
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (5)
 
-### Particle Health API
+Multi-step workflows that chain operations into a business task.
 
-The Particle Health API is a RESTful interface for patient demographic registration, clinical data querying, and document retrieval across all major US health information networks. Developers register a patient via demographics, submit a query under a defined Purpose of Use, and asynchronously receive normalized clinical data in FHIR R4 Bundles, C-CDA documents, Flat datasets, or Deltas (incremental change sets). The API also exposes batch query, network participant search, patient provider mapping, and webhook event notifications for query completion, ADT, transitions, encounters, and AI output. Authentication uses OAuth 2 Client-Credentials grant with JWT access tokens scoped to a project.
+- [Particle Health ADT Event Subscription](https://apis.io/arazzos/particle-health/particle-health-adt-subscription-workflow/)
+- [Particle Health Clinical Document Exchange](https://apis.io/arazzos/particle-health/particle-health-clinical-document-exchange-workflow/)
+- [Particle Health FHIR R4 Resource Query](https://apis.io/arazzos/particle-health/particle-health-fhir-r4-resource-query-workflow/)
+- [Particle Health Network Provider Discovery](https://apis.io/arazzos/particle-health/particle-health-network-provider-discovery-workflow/)
+- [Particle Health National Patient Record Retrieval](https://apis.io/arazzos/particle-health/particle-health-patient-record-retrieval-workflow/)
 
-- **Human URL:** [https://docs.particlehealth.com/](https://docs.particlehealth.com/)
-- **Base URL:** `https://api.particlehealth.com`
+#### AsyncAPI (1)
 
-#### Tags
+Event-driven and webhook contracts.
 
-- C-CDA
-- Carequality
-- CommonWell
-- Deltas
-- eHealth Exchange
-- FHIR
-- Health Data
-- HIE
-- HL7
-- HL7v2
-- Interoperability
-- Patients
-- QHIN
-- TEFCA
-- USCDI
+- [Particle Health Webhooks](https://apis.io/asyncapis/particle-health/particle-health-webhooks/)
 
-#### Properties
+#### MCP servers (1)
 
-- [Documentation](https://docs.particlehealth.com/)
-- [API Reference](https://docs.particlehealth.com/reference/getting-started)
-- [Authentication](https://docs.particlehealth.com/docs/auth-and-keys)
-- [Getting Started](https://docs.particlehealth.com/docs/getting-started-for-developers)
-- [Sandbox](https://docs.particlehealth.com/docs/test-patient-sandbox)
-- [Postman](https://www.postman.com/particlehealth/particle-health-api) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [L L Ms](https://docs.particlehealth.com/llms.txt)
-- [Webhooks](https://docs.particlehealth.com/docs/webhook-event-notifications)
-- [Rate Limits](https://docs.particlehealth.com/docs/rate-limiting-and-quotas)
-- [Supported F H I R Resources](https://docs.particlehealth.com/docs/supported-fhir-resources)
-- [Networks](https://docs.particlehealth.com/docs/networks)
-- [Data Normalization](https://docs.particlehealth.com/docs/data-normalization)
-- [Data Deduplication](https://docs.particlehealth.com/docs/data-deduplication)
-- [Data Provenance](https://docs.particlehealth.com/docs/data-provenance)
-- [Purposes Of Use](https://docs.particlehealth.com/docs/purposes-of-use)
-- [Delegation Of Authority](https://docs.particlehealth.com/docs/delegation-of-authority)
-- [OpenAPI](openapi/particle-health-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/particle-health.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/particle-health.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral Rules](spectral/particle-health-spectral.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
+Model Context Protocol servers that expose the API to agents.
 
-## Common Properties
+- [particle-health-mcp.yml](https://apis.io/servers/particle-health/particle-health-mcp-yml/)
 
-- [GitHub Organization](https://github.com/ParticleHealth)
-- [LinkedIn](https://www.linkedin.com/company/particle-health)
-- [Twitter](https://twitter.com/particle_health)
-- [YouTube](https://www.youtube.com/channel/UCMT35sx6GKvA1mzMP6qyVkw)
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Particle Health Agentic Access](https://apis.io/agentic-access/particle-health/particle-health-agentic-access/)
+
+#### JSON Schema (2)
+
+The data models the API reads and writes.
+
+- [Particle Health Patient](https://apis.io/schemas/particle-health/particle-health-patient/)
+- [Particle Health Query](https://apis.io/schemas/particle-health/particle-health-query/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Particle Health Context](https://apis.io/jsonld/particle-health/particle-health-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Particle Health Vocabulary](https://apis.io/vocabularies/particle-health/particle-health-vocabulary/)
+
+#### Collections (35)
+
+Postman and Open Collection request collections.
+
+- [Particle Health API](https://apis.io/collections/particle-health/open-particle-health/)
+- [Particle Health Authentication API](https://apis.io/collections/particle-health/open-particle-health-authentication-api/)
+- [Particle Health Authentication Batches API](https://apis.io/collections/particle-health/open-particle-health-batches-api/)
+- [Particle Health Authentication CCDA API](https://apis.io/collections/particle-health/open-particle-health-ccda-api/)
+- [Particle Health Authentication Deltas API](https://apis.io/collections/particle-health/open-particle-health-deltas-api/)
+- [Particle Health Authentication Documents API](https://apis.io/collections/particle-health/open-particle-health-documents-api/)
+- [Particle Health Authentication FHIR API](https://apis.io/collections/particle-health/open-particle-health-fhir-api/)
+- [Particle Health Authentication Files API](https://apis.io/collections/particle-health/open-particle-health-files-api/)
+- [Particle Health Authentication Flat API](https://apis.io/collections/particle-health/open-particle-health-flat-api/)
+- [Particle Health Authentication HL7v2 API](https://apis.io/collections/particle-health/open-particle-health-hl7v2-api/)
+- [Particle Health Authentication NetworkParticipants API](https://apis.io/collections/particle-health/open-particle-health-networkparticipants-api/)
+- [Particle Health Authentication Notifications API](https://apis.io/collections/particle-health/open-particle-health-notifications-api/)
+- [Particle Health Authentication Patients API](https://apis.io/collections/particle-health/open-particle-health-patients-api/)
+- [Particle Health Authentication Projects API](https://apis.io/collections/particle-health/open-particle-health-projects-api/)
+- [Particle Health Authentication ProviderMap API](https://apis.io/collections/particle-health/open-particle-health-providermap-api/)
+- [Particle Health Authentication Queries API](https://apis.io/collections/particle-health/open-particle-health-queries-api/)
+- [Particle Health Authentication Signal API](https://apis.io/collections/particle-health/open-particle-health-signal-api/)
+- [Particle Health Authentication Subscriptions API](https://apis.io/collections/particle-health/open-particle-health-subscriptions-api/)
+- [Particle Health Authentication API](https://apis.io/collections/particle-health/postman-particle-health-authentication-api/)
+- [Particle Health Authentication Batches API](https://apis.io/collections/particle-health/postman-particle-health-batches-api/)
+- [Particle Health Authentication CCDA API](https://apis.io/collections/particle-health/postman-particle-health-ccda-api/)
+- [Particle Health Authentication Deltas API](https://apis.io/collections/particle-health/postman-particle-health-deltas-api/)
+- [Particle Health Authentication Documents API](https://apis.io/collections/particle-health/postman-particle-health-documents-api/)
+- [Particle Health Authentication FHIR API](https://apis.io/collections/particle-health/postman-particle-health-fhir-api/)
+- [Particle Health Authentication Files API](https://apis.io/collections/particle-health/postman-particle-health-files-api/)
+- …and 10 more published on APIs.io
+
+#### Overlays (17)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Particle Health Authentication Api Overlay](https://apis.io/overlays/particle-health/particle-health-authentication-api-overlay/)
+- [Particle Health Batches Api Overlay](https://apis.io/overlays/particle-health/particle-health-batches-api-overlay/)
+- [Particle Health Ccda Api Overlay](https://apis.io/overlays/particle-health/particle-health-ccda-api-overlay/)
+- [Particle Health Deltas Api Overlay](https://apis.io/overlays/particle-health/particle-health-deltas-api-overlay/)
+- [Particle Health Documents Api Overlay](https://apis.io/overlays/particle-health/particle-health-documents-api-overlay/)
+- [Particle Health Fhir Api Overlay](https://apis.io/overlays/particle-health/particle-health-fhir-api-overlay/)
+- [Particle Health Files Api Overlay](https://apis.io/overlays/particle-health/particle-health-files-api-overlay/)
+- [Particle Health Flat Api Overlay](https://apis.io/overlays/particle-health/particle-health-flat-api-overlay/)
+- [Particle Health Hl7V2 Api Overlay](https://apis.io/overlays/particle-health/particle-health-hl7v2-api-overlay/)
+- [Particle Health Networkparticipants Api Overlay](https://apis.io/overlays/particle-health/particle-health-networkparticipants-api-overlay/)
+- [Particle Health Notifications Api Overlay](https://apis.io/overlays/particle-health/particle-health-notifications-api-overlay/)
+- [Particle Health Patients Api Overlay](https://apis.io/overlays/particle-health/particle-health-patients-api-overlay/)
+- [Particle Health Projects Api Overlay](https://apis.io/overlays/particle-health/particle-health-projects-api-overlay/)
+- [Particle Health Providermap Api Overlay](https://apis.io/overlays/particle-health/particle-health-providermap-api-overlay/)
+- [Particle Health Queries Api Overlay](https://apis.io/overlays/particle-health/particle-health-queries-api-overlay/)
+- [Particle Health Signal Api Overlay](https://apis.io/overlays/particle-health/particle-health-signal-api-overlay/)
+- [Particle Health Subscriptions Api Overlay](https://apis.io/overlays/particle-health/particle-health-subscriptions-api-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Particle Health — jsonschema rules](https://apis.io/rules/particle-health/particle-health-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Particle Health Authentication](https://apis.io/security/particle-health/particle-health-authentication/)
+- [Particle Health Domain Security](https://apis.io/security/particle-health/particle-health-domain-security/)
+- [Particle Health Trust Center](https://apis.io/security/particle-health/particle-health-trust-center/)
+- [Particle Health Vulnerability Disclosure](https://apis.io/security/particle-health/particle-health-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Particle Health Plans Pricing](https://apis.io/plans/particle-health/particle-health-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Particle Health Rate Limits](https://apis.io/rate-limits/particle-health/particle-health-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Particle Health Finops](https://apis.io/finops/particle-health/particle-health-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://particlehealth.com/)
 - [Documentation](https://docs.particlehealth.com/)
-- [API Reference](https://docs.particlehealth.com/reference/getting-started)
-- [Developer](https://docs.particlehealth.com/docs/getting-started-for-developers)
-- [Sandbox](https://docs.particlehealth.com/docs/test-patient-sandbox)
-- [Status Page](https://status.particlehealth.com/)
+- [API reference](https://docs.particlehealth.com/reference/getting-started)
 - [Changelog](https://docs.particlehealth.com/docs/)
-- [Glossary](https://docs.particlehealth.com/docs/glossary)
 - [Blog](https://particlehealth.com/blog)
-- [Resources](https://particlehealth.com/resources)
-- [Contact](https://particlehealth.com/contact)
-- [Support](undefined)
-- [Compliance Contact](undefined)
-- [Media Contact](undefined)
-- [Press Releases](https://particlehealth.com/blog)
-- [Postman](https://www.postman.com/particlehealth/particle-health-api) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [L L Ms](https://docs.particlehealth.com/llms.txt)
-- [JSON-LD](json-ld/particle-health-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/particle-health-patient-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/particle-health-query-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Plans](plans/particle-health-plans-pricing.yml)
-- [Rate Limits](rate-limits/particle-health-rate-limits.yml)
-- [Fin Ops](finops/particle-health-finops.yml)
-- [Vocabulary](vocabulary/particle-health-vocabulary.yml)
+- [Terms of service](https://particlehealth.com/terms-of-use)
+- [Privacy policy](https://particlehealth.com/privacy-policy)
+- [GitHub](https://github.com/ParticleHealth)
+- [Status](https://status.particlehealth.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 58.5** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 58.9 |
+| Contract governance | 23.5 |
+| Operational transparency | 80.3 |
+| Developer ergonomics | 56.4 |
+| Access clarity | 44.7 |
+
+**Agent readiness 37.0** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 34.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/particle-health/](https://apis.io/providers/particle-health/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Particle Health: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/particle-health/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
